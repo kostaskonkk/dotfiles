@@ -136,7 +136,7 @@ alias v='vim ~/.vimrc'
 alias s='source ~/.bashrc'
 alias cc='xclip -selection clipboard'
 alias pc='xclip -o -selection clipboard'
-alias 7='roslaunch datmo 7_exp.launch'
+alias t='roslaunch datmo test.launch'
 alias o='rostopic echo /rosout'
 alias pi='ping 192.168.0.101'
 
