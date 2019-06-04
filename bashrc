@@ -138,10 +138,10 @@ alias conv='ffmpeg -i out.ogv -f mp4 out.mp4'
 
 # ROS
 if [ -f /opt/ros/kinetic/setup.bash ]; then
-  . source /opt/ros/kinetic/setup.bash
-  . source ~/datmo_ws/devel/setup.bash
-  . source ~/Documents/barc/workspace/devel/setup.bash
-  . export ROS_MASTER_URI=http://localhost:11311
+  source /opt/ros/kinetic/setup.bash
+  source ~/datmo_ws/devel/setup.bash
+  source ~/Documents/barc/workspace/devel/setup.bash
+  export ROS_MASTER_URI=http://localhost:11311
 fi
 alias mcar='export ROS_MASTER_URI=http://192.168.0.101:11311 && export ROS_IP=192.168.0.103'
 alias mmac='export ROS_MASTER_URI=http://localhost:11311'
@@ -194,9 +194,7 @@ alias pullupz='cd ~/Dropbox/pullupz && ls'
 
 alias notes='cd ~/Dropbox/report/notes'
 alias open='open -a Finder ./'              # f:Opens current directory in MacOS Finder
-alias s='source ~/.bash_profile'
-alias b='vim ~/.bash_profile'
 
 ################ Report ##################
-alias report_='cd ~/Dropbox/report'
-alias report_introduction='vim ~/Dropbox/report/literature_survey/Introduction.tex'
+alias report_='cd ~/report'
+alias report_introduction='vim ~/report/introduction.tex'

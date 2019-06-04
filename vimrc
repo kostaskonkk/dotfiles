@@ -1,8 +1,8 @@
 " imap <F5> <Esc>:w<CR>:!clear;python %<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <C-b> :make<CR>
-syntax enable
 filetype plugin on "important for nerdcommenter
+syntax enable
 " UI CONFIG
 set number
 set relativenumber
@@ -16,8 +16,10 @@ let g:ctrlp_cmd = 'CtrlP' "for ctrlp
 set incsearch  " search as characters are entered
 set nohlsearch " Don't continue to highlight searched phrases.
 set incsearch  " But do highlight as you type your search.
+
 " BUFFERS
 nnoremap gb :ls<CR>:b<Space>
+
 "CODE FOLDING
 set foldmethod=syntax
 set foldlevel=99
@@ -39,13 +41,12 @@ let g:UltiSnipsEditSplit="vertical"
 " LEADER SHORTCUTS
 let mapleader=","     " leader is comma and not \
 imap jk <Esc>
-" toggle gundo
-nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>u :GundoToggle<CR> " toggle gundo
 
 " ROS INDENTATION
 set shiftwidth=2  " Two space indents
-"set tabstop=2     " Tab key indents two spaces at a time
-"set expandtab     " Use spaces when the <Tab> key is pressed
+set tabstop=2     " Tab key indents two spaces at a time
+set expandtab     " Use spaces when the <Tab> key is pressed
 set cindent       " Turn on automatic C-code indentation
 
 " SYNTASTIC
@@ -68,6 +69,13 @@ if empty(glob('~/.vim/autoload/plug.vim'))
    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" vimtex
+let g:tex_flavor='latex'
+let g:vimtex_view_method='mupdf'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1 "concealment
+let g:tex_conceal='abdmg' "concealment
+
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 Plug 'taketwo/vim-ros'
@@ -76,5 +84,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'sjl/gundo.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
+Plug 'lervag/vimtex'
 " Initialize plugin system
 call plug#end()
