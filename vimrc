@@ -75,15 +75,18 @@ let g:vimtex_view_method='mupdf'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1 "concealment
 let g:tex_conceal='abdmg' "concealment
-
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
-Plug 'taketwo/vim-ros'
+
 Plug 'scrooloose/nerdcommenter'|Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'sjl/gundo.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'
-" Initialize plugin system
-call plug#end()
+if !has('macunix')
+      Plug 'taketwo/vim-ros'
+      echo"yo"
+endif
+
+call plug#end() " Initialize plugin system
