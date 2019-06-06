@@ -86,7 +86,6 @@ Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'
 if !has('macunix')
       Plug 'taketwo/vim-ros'
-      echo"yo"
 endif
 
 call plug#end() " Initialize plugin system
