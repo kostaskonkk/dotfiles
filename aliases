@@ -9,7 +9,7 @@ fi
 
 ###################### [L]ist aliases ###########################
 
-alias ll='ls -FGlAhp --time-style=+"%m-%d-%y"'
+alias ll='ls -FGlAhp --time-style=+"%d-%m-%y %H:%M"'
 alias la='ls -A'
 alias l='ls -CF'
 
