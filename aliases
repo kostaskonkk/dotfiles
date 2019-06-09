@@ -1,18 +1,23 @@
 # vim: filetype=sh: 
 
+######################## D[A]TMO ##############################
+
+alias datmo='cd ~/datmo_ws/src/datmo'
+alias vdatmo='vim -S ~/datmo_ws/src/datmo/.datmo.vim'
+alias t='roslaunch datmo test.launch'
+alias compile='cd ~/datmo_ws && find src/datmo/src |entr -p catkin_make'
+
 ###################### OS [S]pecifics ##########################
+
 if [[ $OSTYPE == darwin* ]]; then
   alias open='open -a Finder ./'    
 elif [[ $OSTYPE == linux-gnu ]]; then
   alias open='gnome-open . &'
 fi
 
-###################### [L]ist aliases ###########################
+###################### [P]lots ###########################
 
-alias ll='ls -FGlAhp --time-style=+"%d-%m-%y %H:%M"'
-alias la='ls -A'
-alias l='ls -CF'
-
+alias autoplot='cd ~/datmo_ws/src/plots/src && find plot.py |entr -p python plot.py'
 
 ######################## [G]eneral ##############################
 
@@ -33,19 +38,17 @@ alias which='type -all'           # which: Find executables
 alias b='vim ~/.dotfiles/bashrc' 
 alias a='vim ~/.dotfiles/aliases' 
 alias v='vim ~/.dotfiles/vimrc'
+alias d='vim -S ~/.dotfiles/.dotfiles.vim'
 alias s='source ~/.dotfiles/bashrc'
 alias path='echo -e ${PATH//:/\\n}'
+alias cal='ncal -MC3'
 #cd() { builtin cd "$@"; ll; }    # Always list dir contents after 'cd'
+alias ll='ls -FGlAhp --time-style=+"%d-%m-%y %H:%M"'
+alias la='ls -A'
+alias l='ls -CF'
 
 ########################## R[O]S ##############################
-if [ -f /opt/ros/kinetic/setup.bash ]; then
-  source /opt/ros/kinetic/setup.bash
-  source ~/datmo_ws/devel/setup.bash
-  source ~/Documents/barc/workspace/devel/setup.bash
-  export ROS_MASTER_URI=http://localhost:11311
-fi
 
-alias mcar='export ROS_MASTER_URI=http://192.168.0.101:11311 && export ROS_IP=192.168.0.103'
 alias mmac='export ROS_MASTER_URI=http://localhost:11311'
 alias core='roscore &'
 alias rviz='rosrun rviz rviz &'
@@ -55,14 +58,19 @@ alias list='rostopic list'
 alias mocap='roslaunch mocap_optitrack exp.launch'
 alias midi='rosrun midi_ros midi_input_node'
 alias singularity='singularity shell ~/Downloads/robprac-singularity2.4-fixes0.img'
-alias compile='cd ~/datmo_ws && find src/datmo/src |entr -p catkin_make'
-alias t='roslaunch datmo test.launch'
 alias o='rostopic echo /rosout'
-alias pi='ping 192.168.0.101'
 
+if [ -f /opt/ros/kinetic/setup.bash ]; then
+  source /opt/ros/kinetic/setup.bash
+  source ~/datmo_ws/devel/setup.bash
+  source ~/Documents/barc/workspace/devel/setup.bash
+  export ROS_MASTER_URI=http://localhost:11311
+fi
 ######################### [D]SV #############################
 
 alias car='ssh odroid@192.168.0.101'
+alias pi='ping 192.168.0.101'
+alias mcar='export ROS_MASTER_URI=http://192.168.0.101:11311 && export ROS_IP=192.168.0.103'
 alias bags_move='scp -r odroid@192.168.0.101:/home/odroid/kostas/bagfiles/* /home/kostas/Dropbox/experiments/'
 alias video_move='scp pi@192.168.1.103:/home/pi/ocam.h264 /home/kostas/Dropbox/experiments/ocam.h264'
 alias ch='ntpdate -q 192.168.0.101' # Time related
@@ -71,19 +79,12 @@ alias carodom='scp -r /home/kostas/datmo_ws/src/odometry/* odroid@192.168.0.101:
 alias cardatmo='scp -r /home/kostas/datmo_ws/src/datmo/ odroid@192.168.0.101:/home/odroid/datmo_ws/src/datmo'
 alias carmk='echo "cd ~/datmo_ws && catkin_make"|car'
 
-
-###################### [P]ullupz ############################
+###################### P[u]llupz ############################
 
 alias publish_site='scp -r ~/Dropbox/pullupz/website/* pi@192.168.1.3:/var/www/html/'
 alias publish='scp -r ~/Dropbox/pullupz pi@192.168.1.3:/home/pi/'
 alias pi='ssh pi@192.168.1.3'
 alias pullupz='cd ~/Dropbox/pullupz && ls'
-alias notes='cd ~/Dropbox/report/notes'
-
-####################### [R]eport #############################
-alias report_='cd ~/report'
-alias report_introduction='vim ~/report/introduction.tex'
-
 
 ####################### [N]otes #############################
 
@@ -94,13 +95,18 @@ alias notes_car='vim ~/Dropbox/report/notes/car.md'
 
 alias pdf='./Documents/pdf_sender.sh'
 alias mat='cd ~/Dropbox/path_following && matlab  && cd -'
-alias datmo='cd ~/datmo_ws/src/datmo'
 alias cc='xclip -selection clipboard'
 alias pc='xclip -o -selection clipboard'
 
-alias bags='cd ~/Dropbox/experiments'
+alias bags='cd ~/Dropbox/experiments/7_mid_exp/derivatives'
 alias presentation='cd ~/Dropbox/presentation/midterm'
 
 alias rec='recordmydesktop --fps 10 --no-sound'
 alias rec30='recordmydesktop --fps 30 --no-sound'
 alias conv='ffmpeg -i out.ogv -f mp4 out.mp4'
+
+####################### [R]eport #############################
+
+alias report_='cd ~/report'
+alias report_introduction='vim ~/report/introduction.tex'
+alias report_localization='vim ~/report/localization.tex'

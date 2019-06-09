@@ -105,3 +105,4 @@ if ! shopt -oq posix; then
 fi
 
 
+alias thesis='cd ~/Dropbox/report/MScTemplateLatex_new/DCSC\ Thesis\ Style/'
