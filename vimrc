@@ -15,8 +15,6 @@ syntax enable
  set incsearch  " search as characters are entered 
  set nohlsearch " Don't continue to highlight searched phrases  
  set incsearch  " But do highlight as you type your search. 
- 
-
 
 "CODE FOLDING
 set foldmethod=syntax
@@ -31,6 +29,13 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical" " :UltiSnipsEdit splits the window.
 let g:UltiSnipsSnippetDirectories = ['/home/kostas/.dotfiles/ultisnips', 'UltiSnips']
+if has('macunix')
+	let g:UltiSnipsSnippetDirectories = ['/Users/kostas/.dotfiles/ultisnips', 'UltiSnips']
+	"let g:vimtex_view_method='skim'
+elseif
+	let g:UltiSnipsSnippetDirectories = ['/home/kostas/.dotfiles/ultisnips', 'UltiSnips']
+	let g:vimtex_view_method='mupdf'
+endif
 
 " COLOURS
 "colorscheme molokai         " awesome colorscheme
@@ -85,10 +90,8 @@ au BufNewFile,BufRead *.py
 "let g:syntastic_cpp_check_header = 1 "check header files 
 
 
-
 """"""""" La[T]ex vimtex 
 let g:tex_flavor='latex'
-let g:vimtex_view_method='mupdf'
 let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg' "concealment
 set conceallevel=1 "concealment
