@@ -3,6 +3,7 @@
 ######################## D[A]TMO ##############################
 
 alias datmo='cd ~/datmo_ws/src/datmo'
+alias evo='cd ~/datmo_ws/src/evo'
 alias vdatmo='vim -S ~/datmo_ws/src/datmo/.datmo.vim'
 alias t='roslaunch datmo test.launch'
 alias compile='cd ~/datmo_ws && find src/datmo/src |entr -p catkin_make'
@@ -37,6 +38,7 @@ alias c='clear'                   # c: Clear terminal display
 alias which='type -all'           # which: Find executables
 alias b='vim ~/.dotfiles/bashrc' 
 alias a='vim ~/.dotfiles/aliases' 
+alias i='vim ~/.config/i3/config' 
 alias v='vim ~/.dotfiles/vimrc'
 alias d='vim -S ~/.dotfiles/.dotfiles.vim'
 alias s='source ~/.dotfiles/bashrc'
@@ -87,7 +89,7 @@ alias pi='ssh pi@192.168.1.3'
 alias pullupz='cd ~/Dropbox/pullupz && ls'
 
 ####################### [N]otes #############################
-
+alias todo='vim ~/Dropbox/todo.md'
 alias notes='cd ~/Dropbox/report/notes'
 alias notes_car='vim ~/Dropbox/report/notes/car.md'
 
@@ -110,3 +112,4 @@ alias conv='ffmpeg -i out.ogv -f mp4 out.mp4'
 alias report_='cd ~/report'
 alias report_introduction='vim ~/report/introduction.tex'
 alias report_localization='vim ~/report/localization.tex'
+alias malias='history | tail -n2 | head -n1 | alias_maker'

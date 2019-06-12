@@ -1,6 +1,6 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+
+shopt -s autocd
 
 export EDITOR=/usr/locan/bin/vim
 export VISUAL=/usr/locan/bin/vim
@@ -15,8 +15,7 @@ esac
 
 HISTCONTROL=ignoreboth # don't put duplicate lines or lines starting with space in the history.
 shopt -s histappend # append to the history file, don't overwrite it
-HISTSIZE=3000 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTFILESIZE=6000
+HISTSIZE= HISTFILESIZE= # infinite bash history
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -104,5 +103,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-alias thesis='cd ~/Dropbox/report/MScTemplateLatex_new/DCSC\ Thesis\ Style/'
+alias why=

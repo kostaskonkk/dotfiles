@@ -17,7 +17,6 @@ syntax enable
  set incsearch  " But do highlight as you type your search. 
  
 
-
 "CODE FOLDING
 set foldmethod=syntax
 set foldlevel=99
@@ -32,10 +31,16 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical" " :UltiSnipsEdit splits the window.
 let g:UltiSnipsSnippetDirectories = ['/home/kostas/.dotfiles/ultisnips', 'UltiSnips']
 
-" COLOURS
-"colorscheme molokai         " awesome colorscheme
-" let g:molokai_original = 1
-" let g:rehash256 = 1
+" [C]OLOURS
+set termguicolors
+colorscheme molokai         " poppy  colorscheme
+"let g:molokai_original = 1
+"let g:rehash256 = 1
+
+colorscheme gruvbox         " awesome colorscheme
+let g:gruvbox_dark = 'hard'
+let g:gruvbox_light= 'hard'
+"let g:gruvbox_(option) = '(value)'
 
 "[L]EADER SHORTCUTS
 let mapleader=" "     " leader is space and not \
@@ -46,7 +51,10 @@ nnoremap <leader>w   :w<CR>
 nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
 nnoremap <leader>x   :x<CR>
-"nnoremap <leader>qa  :qa<CR>
+" Check file in shellcheck:
+nnoremap <leader>s :!clear && shellcheck %<CR>
+" Spell-check set to <leader>o, 'o' for 'orthography':
+map <leader>o :setlocal spell! spelllang=en_us<CR>
 
 " [I]MAP
 imap jk <Esc>
@@ -112,6 +120,8 @@ Plug 'sjl/gundo.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'tpope/vim-surround'
 if !has('macunix')
       Plug 'taketwo/vim-ros'
 endif
