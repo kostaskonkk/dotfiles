@@ -1,10 +1,21 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
-shopt -s autocd
+
+stty -ixon # Disable ctrl-s and ctrl-q.
+shopt -s autocd #Allows you to cd into directory merely by typing the directory name.
 
 export EDITOR=/usr/locan/bin/vim
+export EDITOR="vim"
 export VISUAL=/usr/locan/bin/vim
+export PS1="kostas\$ "
 
+export TERMINAL="st"
+export FILE="ranger"
+export BROWSER="firefox"
+export READER="mupdf"
+
+#export PS1="\u@\h\\$ "
+#export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 set -o vi #set vi mode
 
 # If not running interactively, don't do anything
