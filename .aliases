@@ -36,12 +36,11 @@ alias 6.='cd ../../../../../../'  # Go back 6 directory levels
 alias ~="cd ~"                    # ~: Go Home
 alias c='clear'                   # c: Clear terminal display
 alias which='type -all'           # which: Find executables
-alias b='vim ~/.dotfiles/bashrc' 
-alias a='vim ~/.dotfiles/aliases' 
+alias b='vim ~/.bashrc' 
+alias a='vim ~/.aliases' 
 alias i='vim ~/.config/i3/config' 
-alias v='vim ~/.dotfiles/vimrc'
-alias d='vim -S ~/.dotfiles/.dotfiles.vim'
-alias s='source ~/.dotfiles/bashrc'
+alias v='vim ~/.vimrc'
+alias s='source ~/.bashrc'
 alias path='echo -e ${PATH//:/\\n}'
 alias cal='ncal -MC3'
 #cd() { builtin cd "$@"; ll; }    # Always list dir contents after 'cd'
