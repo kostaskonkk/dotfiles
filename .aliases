@@ -1,27 +1,23 @@
 # vim: filetype=sh: 
 
 ######################## D[A]TMO ##############################
-
 alias datmo='cd ~/datmo_ws/src/datmo'
-alias evo='cd ~/datmo_ws/src/evo'
 alias vdatmo='vim -S ~/datmo_ws/src/datmo/.datmo.vim'
 alias t='roslaunch datmo test.launch'
 alias compile='cd ~/datmo_ws && find src/datmo/src |entr -p catkin_make'
 
 ###################### OS [S]pecifics ##########################
-
 if [[ $OSTYPE == darwin* ]]; then
   alias open='open -a Finder ./'    
 elif [[ $OSTYPE == linux-gnu ]]; then
   alias open='gnome-open . &'
 fi
 
-###################### [P]lots ###########################
-
-alias autoplot='cd ~/datmo_ws/src/plots/src && find plot.py |entr -p python plot.py'
+###################### [E]vo ###########################
+alias evo='cd ~/datmo_ws/src/evo'
+alias run='find tracking_evaluation.py | entr python tracking_evaluation.py'
 
 ######################## [G]eneral ##############################
-
 alias cp='cp -iv'                 # Preferred 'cp' implementation
 alias mv='mv -iv'                 # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'           # Preferred 'mkdir' implementation
@@ -49,7 +45,6 @@ alias la='ls -A'
 alias l='ls -CF'
 
 ########################## R[O]S ##############################
-
 alias mmac='export ROS_MASTER_URI=http://localhost:11311'
 alias core='roscore &'
 alias rviz='rosrun rviz rviz &'

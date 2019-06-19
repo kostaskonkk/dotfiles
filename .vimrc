@@ -4,6 +4,8 @@ filetype plugin on "important for nerdcommenter
 
 syntax enable 
  set number 
+ set undofile "Maintain undo history between sessions 
+ set undodir=~/.vim/undo
  set relativenumber 
  set showcmd " show last command at the bottom bar 
  set cursorline " highlight current line 
@@ -30,10 +32,10 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical" " :UltiSnipsEdit splits the window.
 
 if has('macunix')
-	let g:UltiSnipsSnippetDirectories = ['/Users/kostas/.dotfiles/ultisnips', 'UltiSnips']
+	let g:UltiSnipsSnippetDirectories = ['/Users/kostas/ultisnips', 'UltiSnips']
 	" let g:vimtex_view_method='skim'
 else
-	let g:UltiSnipsSnippetDirectories = ['/home/kostas/.dotfiles/ultisnips', 'UltiSnips']
+	let g:UltiSnipsSnippetDirectories = ['/home/kostas/ultisnips', 'UltiSnips']
 	let g:vimtex_view_method='mupdf'
 endif
 
@@ -54,7 +56,7 @@ nnoremap <leader>b   :ls<CR>:b<Space>
 nnoremap <leader>u   :GundoToggle<CR> " toggle gundo
 nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
 nnoremap <leader>w   :w<CR>
-nnoremap <leader>a   :wa<CR>
+nnoremap <leader>a   a<CR>
 nnoremap <leader>q   :q<CR>
 nnoremap <leader>x   :x<CR>
 " Check file in shellcheck:
@@ -78,6 +80,7 @@ au BufNewFile,BufRead *.cpp,*.h,*.hpp
 au BufNewFile,BufRead *.py
      \ set tabstop=4 |
      \ set softtabstop=4 |
+     \ set foldmethod=syntax |
      \ set shiftwidth=4 |
      \ set textwidth=79 |
      \ set expandtab |
@@ -105,7 +108,8 @@ let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg' "concealment
 set conceallevel=1 "concealment
 au BufNewFile,BufRead *.tex
-     \ set spell spelllang=en_gb
+     \ set spell spelllang=en_gb |
+     \ set wrap linebreak nolist
 
 """"""""" [P]lugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))

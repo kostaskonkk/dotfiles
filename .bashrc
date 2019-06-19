@@ -4,9 +4,9 @@
 stty -ixon # Disable ctrl-s and ctrl-q.
 shopt -s autocd #Allows you to cd into directory merely by typing the directory name.
 
-export EDITOR=/usr/locan/bin/vim
+#export EDITOR=/usr/locan/bin/vim
 export EDITOR="vim"
-export VISUAL=/usr/locan/bin/vim
+#export VISUAL=/usr/locan/bin/vim
 export PS1="kostas\$ "
 
 export TERMINAL="st"

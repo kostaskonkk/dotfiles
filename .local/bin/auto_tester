@@ -1,0 +1,5 @@
+#! /bin/bash
+mkdir /home/kostas/results/"$(date +%d-%m_%H:%M:%S)"
+
+
+#find /home/kostas/Dropbox/experiments/7_mid_exp/*.bag
