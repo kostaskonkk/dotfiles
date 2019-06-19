@@ -48,6 +48,7 @@ bindsym $mod+d exec dmenu_run
   
 exec firefox
 exec st
+exec xrandr --auto
 
 # Wifi Icon
 exec --no-startup-id nm-applet

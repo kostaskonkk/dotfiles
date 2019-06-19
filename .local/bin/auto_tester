@@ -1,5 +1,55 @@
 #! /bin/bash
-mkdir /home/kostas/results/"$(date +%d-%m_%H:%M:%S)"
 
+dir=/home/kostas/results/"$(date +%d-%m_%H:%M:%S)"
+#dir=/home/kostas/results
+mkdir "$dir"
+killall -9 roscore
+killall -9 rosmaster
+roscore &	
+sleep 3
+for i in $(find /home/kostas/Dropbox/experiments/7/*.bag); do
+
+	echo "$i"
+
+	FILENAME=$(basename "$i")
+
+	rec_file=$dir/$FILENAME
+	
+	echo "$rec_file"
+
+	#roscore &	
+	roslaunch datmo auto_test.launch &
+	rosbag record -O "$rec_file" /tf /poseupdate /odometry/wheel_imu\
+		       /odometry/map /mocap_pose /tracks /robot_1 /robot_2 __name:=recorder &
+	rosbag play --clock "$i" && rosnode kill /recorder
+
+
+	##echo hi
+	#rosnode kill /recorder
+	rosnode kill -a
+done
+#while read bagfile; do
+	##statements
+	#echo "$bagfile"
+
+	#FILENAME=$(basename "$bagfile")
+
+	#rec_file=$dir/$FILENAME
+	
+	#echo "$rec_file"
+
+	#roscore &	
+	#roslaunch datmo auto_test.launch &
+	#rosbag record -O "$rec_file" /tf /poseupdate /odometry/wheel_imu\
+		       #/odometry/map /mocap_pose /tracks /robot_1 /robot_2 __name:=recorder &
+	#rosbag play --clock "$bagfile" && rosnode kill /recorder
+
+
+	###echo hi
+	###rosnode kill /recorder
+	#rosnode kill -a
+
+	#sleep 2
+#done
 
 #find /home/kostas/Dropbox/experiments/7_mid_exp/*.bag
