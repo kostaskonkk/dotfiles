@@ -89,12 +89,12 @@ alias notes_car='vim ~/Dropbox/report/notes/car.md'
 
 ####################### [V]arious #############################
 
-alias pdf='./Documents/pdf_sender.sh'
 alias mat='cd ~/Dropbox/path_following && matlab  && cd -'
 alias cc='xclip -selection clipboard'
 alias pc='xclip -o -selection clipboard'
 
-alias bags='cd ~/Dropbox/experiments/7_mid_exp/derivatives'
+alias bags='cd ~/Dropbox/experiments/7/derivatives'
+alias results='cd ~/results'
 alias presentation='cd ~/Dropbox/presentation/midterm'
 
 alias rec='recordmydesktop --fps 10 --no-sound'

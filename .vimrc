@@ -1,5 +1,3 @@
-map <C-n> :NERDTreeToggle<CR> 
-map <C-b> :make<CR> 
 filetype plugin on "important for nerdcommenter 
 
 syntax enable 
@@ -19,8 +17,6 @@ syntax enable
  set incsearch  " But do highlight as you type your search. 
  
 "CODE FOLDING
-set foldmethod=syntax
-set foldlevel=99
 "nnoremap <space> za
 
 "[U]LTISNIPS
@@ -32,10 +28,10 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical" " :UltiSnipsEdit splits the window.
 
 if has('macunix')
-	let g:UltiSnipsSnippetDirectories = ['/Users/kostas/ultisnips', 'UltiSnips']
+	let g:UltiSnipsSnippetDirectories = ['$HOME/ultisnips', 'UltiSnips']
 	" let g:vimtex_view_method='skim'
 else
-	let g:UltiSnipsSnippetDirectories = ['/home/kostas/ultisnips', 'UltiSnips']
+	let g:UltiSnipsSnippetDirectories = ['$HOME/ultisnips', 'UltiSnips']
 	let g:vimtex_view_method='mupdf'
 endif
 
@@ -63,6 +59,8 @@ nnoremap <leader>x   :x<CR>
 nnoremap <leader>s :!clear && shellcheck %<CR>
 " Spell-check set to <leader>o, 'o' for 'orthography':
 map <leader>o :setlocal spell! spelllang=en_us<CR>
+map <C-n> :NERDTreeToggle<CR> 
+map <C-b> :make<CR> 
 
 " [I]MAP
 imap jk <Esc>
@@ -73,6 +71,8 @@ au BufNewFile,BufRead *.cpp,*.h,*.hpp
      \ set tabstop=2     " Tab key indents two spaces at a time
      \ set expandtab     " Use spaces when the <Tab> key is pressed
      \ set cindent       " Turn on automatic C-code indentation
+     \ set foldmethod=syntax
+     \ set foldlevel=99
 
 " I should add badwhitespace also to cpp
 "highlight badwhitespace ctermbg=red guibg=red
@@ -80,7 +80,6 @@ au BufNewFile,BufRead *.cpp,*.h,*.hpp
 au BufNewFile,BufRead *.py
      \ set tabstop=4 |
      \ set softtabstop=4 |
-     \ set foldmethod=syntax |
      \ set shiftwidth=4 |
      \ set textwidth=79 |
      \ set expandtab |
@@ -129,7 +128,8 @@ Plug 'vim-syntastic/syntastic'
 Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'
 Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround' |Plug 'tpope/vim-obsession'
+Plug 'tmhedberg/SimpylFold'
 if !has('macunix')
       Plug 'taketwo/vim-ros'
 endif
