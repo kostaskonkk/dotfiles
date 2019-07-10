@@ -55,11 +55,14 @@ exec xrandr --auto
 exec --no-startup-id nm-applet
 exec --no-startup-id dropbox start
 exec --no-startup-id compton 
-exec --no-startup-id i3-msg 'workspace 8:Report; exec st -e vim -S /home/kostas/report/.report.vim'
-exec --no-startup-id i3-msg 'workspace 3:Plots; exec st -e vim -S /home/kostas/datmo_ws/src/evo/.plots.vim'
+exec --no-startup-id i3-msg workspace 8:Report; exec st -e vim -S /home/kostas/report/.report.vim
+exec --no-startup-id i3-msg workspace 3:Plots
+exec --no-startup-id i3-msg exec st -e vim -S /home/kostas/datmo_ws/src/evo/.evo.vim
+exec --no-startup-id i3-msg "workspace 2:Datmo; exec st -e vim -S /home/kostas/datmo_ws/src/datmo/.datmo.vim"
 
 # Keyboard man xkeyboard-config
-exec setxkbmap -layout us,gr -option 'grp:caps_toggle' -option 'grp:switch'
+exec setxkbmap -layout us,gr -option 'grp:caps_toggle' 
+#exec setxkbmap -layout us,gr -option 'grp:caps_toggle' -option 'grp:switch'
 
 
 # change focus
@@ -118,10 +121,10 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
+bindsym $mod+1 workspace 1:Firefox
+bindsym $mod+2 workspace 2:Datmo
 bindsym $mod+3 workspace 3:Plots
-bindsym $mod+4 workspace 4
+bindsym $mod+4 workspace 4:Papers
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
@@ -130,10 +133,10 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+1 move container to workspace 1:Firefox
+bindsym $mod+Shift+2 move container to workspace 2:Datmo
 bindsym $mod+Shift+3 move container to workspace 3:Plots
-bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+4 move container to workspace 4:Papers
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
@@ -157,16 +160,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width 10 px or 10 ppt
-        bindsym $down       resize grow height 10 px or 10 ppt
-        bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow width 10 px or 10 ppt
+        bindsym $left       resize shrink width 5 px or 5 ppt
+        bindsym $down       resize grow height 5 px or 5 ppt
+        bindsym $up         resize shrink height 5 px or 5 ppt
+        bindsym $right      resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 10 px or 10 ppt
-        bindsym Down        resize grow height 10 px or 10 ppt
-        bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
+        bindsym Left        resize shrink width 5 px or 5 ppt
+        bindsym Down        resize grow height 5 px or 5 ppt
+        bindsym Up          resize shrink height 5 px or 5 ppt
+        bindsym Right       resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"

@@ -1,11 +1,13 @@
 # vim: filetype=sh: 
 
 ######################## D[A]TMO ##############################
-alias datmo='cd ~/datmo_ws/src/datmo'
+export ROS_WORKSPACE=/home/kostas/datmo_ws
+alias datmo_='cd ~/datmo_ws/src/datmo'
 alias vdatmo='vim -S ~/datmo_ws/src/datmo/.datmo.vim'
 alias t='roslaunch datmo test.launch'
 alias compile='cd ~/datmo_ws && find src/datmo/src |entr -p catkin_make'
 
+alias datmo_compile='cd ~/datmo_ws && find  src/datmo/src/ -ignore_readdir_race |entr -p catkin_make -DCATKIN_WHITELIST_PACKAGES=datmo'
 ###################### OS [S]pecifics ##########################
 if [[ $OSTYPE == darwin* ]]; then
   alias open='open -a Finder ./'    
@@ -43,6 +45,8 @@ alias cal='ncal -MC3'
 alias ll='ls -FGlAhp --time-style=+"%d-%m-%y %H:%M"'
 alias la='ls -A'
 alias l='ls -CF'
+alias vs='vim -S'
+alias screens='sh ~/.screenlayout/monitor_laptop.sh'
 
 ########################## R[O]S ##############################
 alias mmac='export ROS_MASTER_URI=http://localhost:11311'
@@ -89,6 +93,7 @@ alias notes_car='vim ~/Dropbox/report/notes/car.md'
 
 ####################### [V]arious #############################
 
+alias malias='history | tail -n2 | head -n1 | alias_maker'
 alias mat='cd ~/Dropbox/path_following && matlab  && cd -'
 alias cc='xclip -selection clipboard'
 alias pc='xclip -o -selection clipboard'
@@ -106,4 +111,3 @@ alias conv='ffmpeg -i out.ogv -f mp4 out.mp4'
 alias report_='cd ~/report'
 alias report_introduction='vim ~/report/introduction.tex'
 alias report_localization='vim ~/report/localization.tex'
-alias malias='history | tail -n2 | head -n1 | alias_maker'
