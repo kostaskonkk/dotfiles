@@ -2,10 +2,8 @@
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
-#
 # To get a config file with the same key positions, but for your current
 # layout, use the i3-config-wizard
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 16
@@ -14,6 +12,18 @@ font pango:monospace 16
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+for_window [class="St" title="todo.md"] move scratchpad
+exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
+
+for_window [class="MuPDF" title="kim2018shape.pdf"] move workspace 4:Papers
+exec_always --no-startup-id "mupdf ~/report/papers/kim2018shape.pdf"
+
+for_window [class="St" title="datmo.tex"] move workspace 8:Report
+exec_always st -e vim -S /home/kostas/report/.report.vim
+
+for_window [window_role="pop-up"] floating enable
+
+hide_edge_borders smart
 set $mod Mod4
 set $up k
 set $down j
@@ -24,7 +34,7 @@ bar {
 	font pango:mono 10
 	status_command i3blocks
 	#status_command i3status
-        #tray_output primary
+	#tray_output primary
 	position top
 	mode dock
 	modifier None
@@ -41,7 +51,8 @@ bindsym $mod+Return exec st
 bindsym $mod+d exec dmenu_run 
 bindsym $mod+Shift+w exec firefox https://web.whatsapp.com
 bindsym $mod+Shift+m exec firefox https://messenger.com
-
+bindsym $mod+s sticky toggle
+ 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -55,10 +66,9 @@ exec xrandr --auto
 exec --no-startup-id nm-applet
 exec --no-startup-id dropbox start
 exec --no-startup-id compton 
-exec --no-startup-id i3-msg workspace 8:Report; exec st -e vim -S /home/kostas/report/.report.vim
-exec --no-startup-id i3-msg workspace 3:Plots
-exec --no-startup-id i3-msg exec st -e vim -S /home/kostas/datmo_ws/src/evo/.evo.vim
-exec --no-startup-id i3-msg "workspace 2:Datmo; exec st -e vim -S /home/kostas/datmo_ws/src/datmo/.datmo.vim"
+#exec --no-startup-id i3-msg workspace 3:Plots
+#exec --no-startup-id i3-msg exec st -e vim -S /home/kostas/datmo_ws/src/evo/.evo.vim
+#exec --no-startup-id i3-msg "workspace 2:Datmo; exec st -e vim -S /home/kostas/datmo_ws/src/datmo/.datmo.vim"
 
 # Keyboard man xkeyboard-config
 exec setxkbmap -layout us,gr -option 'grp:caps_toggle' 
@@ -86,6 +96,9 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+# move to different motitor
+bindsym $mod+greater move workspace to output right
+bindsym $mod+less move workspace to output left
 
 # split in horizontal orientation
 bindsym $mod+z split h
@@ -97,29 +110,32 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+#bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+minus floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+minus focus mode_toggle
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+space move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+space scratchpad show
 
 # focus the parent container
 bindsym $mod+a focus parent
+bindsym $mod+b bar mode toggle
 
 # focus the child container
 #bindsym $mod+d focus child
 
-# move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
 
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
-
+# [W]orkspaces
 # switch to workspace
 bindsym $mod+1 workspace 1:Firefox
 bindsym $mod+2 workspace 2:Datmo
@@ -151,8 +167,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"
+# [R]esize
+bindsym $mod+r mode "resize" 
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -175,5 +191,4 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 

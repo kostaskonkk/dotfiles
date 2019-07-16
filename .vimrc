@@ -123,13 +123,27 @@ au BufNewFile,BufRead *.py
 """"""""" [Y]CM 
 let g:ycm_server_python_interpreter="/usr/bin/python"
 
+""""""""" [F]ast Fold
+let g:tex_fold_enabled = 1
+let g:xml_syntax_folding = 1
+let g:fastfold_savehook = 1
 """"""""" La[T]ex vimtex 
-let g:tex_flavor='latex'
+"let g:tex_flavor='latex'
+let g:tex_flavor='pdflatex'
 let g:vimtex_quickfix_mode=0
+"let g:vimtex_fold_manual=1
 let g:tex_conceal='abdmg' "concealment
 set conceallevel=1 "concealment
+
+
+""""""""" Indentation
+"let g:vimtex_indent_enabled=1
+"let g:vimtex_indent_bib_enabled=1
+"let g:vimtex_indent_on_ampersands=1
+
 au BufNewFile,BufRead *.tex
      \ set wrap linebreak nolist |
+     \ set foldmethod=syntax
      "\ set spell spelllang=en_gb 
 
 """"""""" [P]lugin manager
@@ -149,10 +163,17 @@ Plug 'sjl/gundo.vim'
 "Plug 'vim-syntastic/syntastic'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'|Plug 'Konfekt/FastFold'
 Plug 'ycm-core/YouCompleteMe'
 if !has('macunix')
       Plug 'taketwo/vim-ros'
 endif
 
 call plug#end() " Initialize plugin system
+
+function! OpenBibtexPDF()
+    let s:word = expand("<cword>")
+    let s:cmd = "silent !setsid mupdf `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`"
+    execute s:cmd
+endfunction 
+map <silent> <leader>r :call OpenBibtexPDF()<cr>

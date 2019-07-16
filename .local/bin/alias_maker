@@ -1,20 +1,12 @@
 #! /bin/bash
 
+if [ "$1" == "" ]; then
+	cowsay -t "Give me a word, bitch"
+	exit 1
+fi
 read HIST
-echo "$HIST"
-#awk '{$1="";print $0}' "$HIST" > "$command"
+command=$(echo "$HIST" | awk '{$1="";print $0}')
+echo "alias $1='$command'">>/home/kostas/.aliases
 
-"$command" = "$(awk '{$1="";print $0}' "$HIST" )"
-#| cut -d' ' -f4- 
+cowsay "$alias $1='$command' has been added to your aliases"
 
-#cowsay -t "Give me a word, bitch"
-
-#if [ $1 =="" ]; then
-	#cowsay -t "Give me a word, bitch"
-	#exit 1
-#fi
-
-#new_alias="alias $1='$command'"
-#echo "${new_alias}">>~/.dotfiles/aliases
-
-#cowsay "${new_alias} has been added to your aliases"
