@@ -18,8 +18,6 @@ let g:ctrlp_cmd = 'CtrlP' "for ctrlp
  set nohlsearch " Don't continue to highlight searched phrases  
  set incsearch  " But do highlight as you type your search. 
  
-"CODE FOLDING
-"nnoremap <space> za
 
 "[U]LTISNIPS
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -30,10 +28,10 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 "let g:UltiSnipsEditSplit="vertical" " :UltiSnipsEdit splits the window.
 
 if has('macunix')
-	let g:UltiSnipsSnippetDirectories = ['$HOME/ultisnips', 'UltiSnips']
+	let g:UltiSnipsSnippetDirectories = ['$HOME/.vim/ultisnips', 'UltiSnips']
 	" let g:vimtex_view_method='skim'
 else
-	let g:UltiSnipsSnippetDirectories = ['/home/kostas/ultisnips', 'UltiSnips']
+	let g:UltiSnipsSnippetDirectories = ['/home/kostas/.vim/ultisnips', 'UltiSnips']
 	let g:vimtex_view_method='mupdf'
 endif
 
@@ -74,7 +72,7 @@ nnoremap <Leader>P :set paste<CR>"+P:set nopaste<CR>
 vnoremap <Leader>p :set paste<CR>"+p:set nopaste<CR>
 vnoremap <Leader>P :set paste<CR>"+P:set nopaste<CR>
 vnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
-map <leader>o :setlocal spell! spelllang=en_uk<CR> " 'o' for 'orthography'
+map <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
 map <C-n> :NERDTreeToggle<CR> 
 
 nmap <C-h> <C-w>h
@@ -99,6 +97,7 @@ au BufNewFile,BufRead *.cpp,*.h,*.hpp
 "highlight badwhitespace ctermbg=red guibg=red
 
 au BufNewFile,BufRead *.py
+     \ set foldmethod=indent |
      \ set tabstop=4 |
      \ set softtabstop=4 |
      \ set shiftwidth=4 |
@@ -108,18 +107,6 @@ au BufNewFile,BufRead *.py
      \ set fileformat=unix | "\ match BadWhitespace /\s\+$/
 
 
-" SYNTASTIC
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"" SYNTASTIC added by me
-"let g:syntastic_cpp_check_header = 1 "check header files 
-
 """"""""" [Y]CM 
 let g:ycm_server_python_interpreter="/usr/bin/python"
 
@@ -128,23 +115,28 @@ let g:tex_fold_enabled = 1
 let g:xml_syntax_folding = 1
 let g:fastfold_savehook = 1
 """"""""" La[T]ex vimtex 
+let g:vimtex_fold_enabled = 1
+"let g:vimtex_complete_recursive_bib = 1
+let g:vimtex_complete_bib = {'simple': 1} 
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 "let g:tex_flavor='latex'
 let g:tex_flavor='pdflatex'
 let g:vimtex_quickfix_mode=0
-"let g:vimtex_fold_manual=1
 let g:tex_conceal='abdmg' "concealment
 set conceallevel=1 "concealment
 
 
 """"""""" Indentation
-"let g:vimtex_indent_enabled=1
-"let g:vimtex_indent_bib_enabled=1
-"let g:vimtex_indent_on_ampersands=1
+let g:vimtex_indent_enabled=1
+let g:vimtex_indent_bib_enabled=1
+let g:vimtex_indent_on_ampersands=1
 
 au BufNewFile,BufRead *.tex
      \ set wrap linebreak nolist |
-     \ set foldmethod=syntax
-     "\ set spell spelllang=en_gb 
+     \ set spell spelllang=en_us 
 
 """"""""" [P]lugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -158,13 +150,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'|Plug 'scrooloose/nerdtree'
 "Plug 'junegunn/vim-peekaboo'
 Plug 'majutsushi/tagbar'
-Plug 'kien/ctrlp.vim'
+"Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-obsession'|Plug 'tpope/vim-surround'|Plug 'tpope/vim-fugitive'
 Plug 'sjl/gundo.vim'
 "Plug 'vim-syntastic/syntastic'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'|Plug 'Konfekt/FastFold'
 Plug 'ycm-core/YouCompleteMe'
+Plug 'w0rp/ale'
 if !has('macunix')
       Plug 'taketwo/vim-ros'
 endif
@@ -173,7 +167,13 @@ call plug#end() " Initialize plugin system
 
 function! OpenBibtexPDF()
     let s:word = expand("<cword>")
-    let s:cmd = "silent !setsid mupdf `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`"
+    let s:cmd = "silent !setsid mupdf `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
     execute s:cmd
 endfunction 
 map <silent> <leader>r :call OpenBibtexPDF()<cr>
+function! OpenEvincePDF()
+    let s:word = expand("<cword>")
+    let s:cmd = "silent !setsid evince `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
+    execute s:cmd
+endfunction 
+map <silent> <leader>e :call OpenEvincePDF()<cr>
