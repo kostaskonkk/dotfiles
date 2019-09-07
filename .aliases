@@ -1,4 +1,4 @@
-# vim: filetype=sh: 
+#filtered vim: filetype=sh: 
 
 ######################## D[A]TMO ##############################
 export ROS_WORKSPACE=/home/kostas/datmo_ws
@@ -6,10 +6,10 @@ alias datmo_='cd ~/datmo_ws/src/datmo'
 alias vdatmo='vim -S ~/datmo_ws/src/datmo/.datmo.vim'
 alias t='roslaunch datmo test.launch'
 alias to='roslaunch odometry test.launch'
-alias compile='cd ~/datmo_ws && find src/datmo/src |entr -p catkin_make'
 alias lshape='mupdf ~/report/papers/L-Shape.pdf'
 
 alias datmo_compile='cd ~/datmo_ws && find  src/datmo/src/ -ignore_readdir_race |entr -p catkin_make -DCATKIN_WHITELIST_PACKAGES=datmo'
+alias localization_compile='cd ~/datmo_ws && find  src/localization/src/ -ignore_readdir_race |entr -p catkin_make -DCATKIN_WHITELIST_PACKAGES=localization'
 ###################### OS [S]pecifics ##########################
 if [[ $OSTYPE == darwin* ]]; then
   alias open='open -a Finder ./'    
@@ -51,6 +51,8 @@ alias vs='vim -S'
 alias screens='sh ~/.screenlayout/monitor_laptop.sh'
 alias cl='xrandr --output eDP-1 --off'
 alias ol='xrandr --output eDP-1 --auto'
+alias m='mupdf'
+alias shutdown='systemctl poweroff'
 
 ########################## R[O]S ##############################
 alias mmac='export ROS_MASTER_URI=http://localhost:11311'
@@ -105,7 +107,7 @@ alias pc='xclip -o -selection clipboard'
 
 alias bags='cd ~/Dropbox/experiments/7/derivatives'
 alias results='cd ~/results'
-alias presentation='cd ~/Dropbox/presentation/midterm'
+alias presentation_='cd ~/presentation'
 
 alias rec='recordmydesktop --fps 10 --no-sound'
 alias rec30='recordmydesktop --fps 30 --no-sound'
@@ -116,3 +118,12 @@ alias conv='ffmpeg -i out.ogv -f mp4 out.mp4'
 alias report_='cd ~/report'
 alias report_introduction='vim ~/report/introduction.tex'
 alias report_localization='vim ~/report/localization.tex'
+alias report_papers=' cd ~/report/papers/'
+alias report_figures_=' cd ~/report/figures/'
+alias report_figures_ink=' cd ~/report/figures/ink/'
+alias g=' grep -irn'
+alias ss=' gnome-screenshot -af /home/kostas/report/figures/screenshots/$(date +"%d%H:%M").png'
+alias train=' clisp ~/projects/train.lisp'
+alias θσ=' setxkbmap us'
+alias gr=' setxkbmap gr'
+alias baars=' m ~/report/papers/delft/baars2018modelling.pdf'

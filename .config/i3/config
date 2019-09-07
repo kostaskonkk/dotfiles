@@ -16,12 +16,16 @@ for_window [class="St" title="todo.md"] move scratchpad
 exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
 
 for_window [class="MuPDF" title="kim2018shape.pdf"] move workspace 4:Papers
+for_window [class="MuPDF" title="jeon2018nonlinear.pdf"] move workspace 4:Papers
 exec_always --no-startup-id "mupdf ~/report/papers/kim2018shape.pdf"
+exec_always --no-startup-id "mupdf ~/report/papers/jeon2018nonlinear.pdf"
 
 for_window [class="St" title="datmo.tex"] move workspace 8:Report
 exec_always st -e vim -S /home/kostas/report/.report.vim
 
 for_window [window_role="pop-up"] floating enable
+for_window [class="Mathpix Snipping Tool"] floating enable
+exec_always ~/.screenlayout/battlenet.sh
 
 hide_edge_borders smart
 set $mod Mod4
@@ -59,7 +63,6 @@ bindsym $mod+Shift+q kill
 
   
 exec firefox
-exec st
 exec xrandr --auto
 
 # Wifi Icon
@@ -72,6 +75,7 @@ exec --no-startup-id compton
 
 # Keyboard man xkeyboard-config
 exec setxkbmap -layout us,gr -option 'grp:caps_toggle' 
+exec xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 #exec setxkbmap -layout us,gr -option 'grp:caps_toggle' -option 'grp:switch'
 
 
@@ -143,7 +147,7 @@ bindsym $mod+3 workspace 3:Plots
 bindsym $mod+4 workspace 4:Papers
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
+bindsym $mod+7 workspace 7:Inkscape
 bindsym $mod+8 workspace 8:Report
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
@@ -155,7 +159,7 @@ bindsym $mod+Shift+3 move container to workspace 3:Plots
 bindsym $mod+Shift+4 move container to workspace 4:Papers
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+7 move container to workspace 7:Inkscape
 bindsym $mod+Shift+8 move container to workspace 8:Report
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
