@@ -109,6 +109,7 @@ au BufNewFile,BufRead *.py
 
 """"""""" [Y]CM 
 let g:ycm_server_python_interpreter="/usr/bin/python"
+let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
 
 """"""""" [F]ast Fold
 let g:tex_fold_enabled = 1
@@ -136,7 +137,9 @@ let g:vimtex_indent_on_ampersands=1
 
 au BufNewFile,BufRead *.tex
      \ set wrap linebreak nolist |
-     \ set spell spelllang=en_us 
+     \ set spell spelllang=en_us |
+     "\ nnoremap <Leader>t :ThesaurusQueryReplaceCurrentWord<CR> 
+     "\ vnoremap <Leader>t y:ThesaurusQueryReplace <C-r>"<CR>
 
 """"""""" [P]lugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -159,6 +162,7 @@ Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'|Plug 'Konfekt/FastFold'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'w0rp/ale'
+"Plug 'ron89/thesaurus_query.vim'
 if !has('macunix')
       Plug 'taketwo/vim-ros'
 endif
