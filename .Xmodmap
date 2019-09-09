@@ -1,0 +1,12 @@
+! Swap caps lock and escape
+remove Lock = Caps_Lock
+keysym Escape = Caps_Lock
+keysym Caps_Lock = Escape
+add Lock = Caps_Lock
+
+! Swap super and control
+remove mod4 = Super_L
+add control = Super_L
+remove control = Control_L
+add mod4 = Control_L
+
