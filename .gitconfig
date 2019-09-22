@@ -1,0 +1,15 @@
+[user]
+	name = Kostantinos Konstantinidis
+	email = kostaskonkk@gmail.com
+[push]
+	defaul = simple
+	default = simple
+[core]
+	excludesFile = .gitignore
+[alias]
+        ci = commit
+        st = status
+        co = checkout
+        ;oneline = log --pretty=oneline
+        ;br = branch
+        ;la = log --pretty="format:%ad %h (%an): %s" --date=short
