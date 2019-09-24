@@ -20,12 +20,9 @@ let g:ctrlp_cmd = 'CtrlP' "for ctrlp
  
 
 "[U]LTISNIPS
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<leader>tab>"
-let g:UltiSnipsExpandTrigger="<c-j>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"let g:UltiSnipsEditSplit="vertical" " :UltiSnipsEdit splits the window.
+" Trigger for expansion configuration. I do not use <tab>, since I use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<leader>tab>"
+let g:UltiSnipsEditSplit="vertical" " :UltiSnipsEdit splits the window.
 
 if has('macunix')
 	let g:UltiSnipsSnippetDirectories = ['$HOME/.vim/ultisnips', 'UltiSnips']
@@ -49,6 +46,7 @@ colorscheme gruvbox         " awesome colorscheme
 set bg=dark
 let g:gruvbox_dark = 'hard'
 let g:gruvbox_light= 'hard'
+let g:airline_theme='gruvbox'
 
 "[L]EADER SHORTCUTS
 let mapleader=" "     " leader is space and not \
@@ -61,7 +59,6 @@ nnoremap <leader>q   :q<CR>
 nnoremap <leader>x   :x<CR>
 nnoremap <leader>s :!clear && shellcheck %<CR>
 nnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
-"let g:NERDCommenterToggle = '<leader>c'
 
 nnoremap <Leader>y "+y
 nnoremap <Leader>d "+d
@@ -73,8 +70,8 @@ vnoremap <Leader>p :set paste<CR>"+p:set nopaste<CR>
 vnoremap <Leader>P :set paste<CR>"+P:set nopaste<CR>
 vnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
 map <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
-map <C-n> :NERDTreeToggle<CR> 
 
+map <C-n> :NERDTreeToggle<CR> 
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
@@ -83,6 +80,7 @@ nnoremap <cr> <c-w>w
 
 " [I]MAP
 imap jk <Esc>
+
 
 " ROS INDENTATION
 au BufNewFile,BufRead *.cpp,*.h,*.hpp
@@ -153,10 +151,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'|Plug 'scrooloose/nerdtree'
 "Plug 'junegunn/vim-peekaboo'
 Plug 'majutsushi/tagbar'
-"Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-obsession'|Plug 'tpope/vim-surround'|Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-dispatch'
 Plug 'sjl/gundo.vim'
-"Plug 'vim-syntastic/syntastic'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' 
+Plug 'morhetz/gruvbox' 
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'|Plug 'Konfekt/FastFold'
