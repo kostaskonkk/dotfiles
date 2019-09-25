@@ -21,7 +21,7 @@ let g:ctrlp_cmd = 'CtrlP' "for ctrlp
 
 "[U]LTISNIPS
 " Trigger for expansion configuration. I do not use <tab>, since I use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<leader>tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsEditSplit="vertical" " :UltiSnipsEdit splits the window.
 
 if has('macunix')
@@ -50,7 +50,6 @@ let g:airline_theme='gruvbox'
 
 "[L]EADER SHORTCUTS
 let mapleader=" "     " leader is space and not \
-nnoremap <leader>b   :ls<CR>:b<Space>
 nnoremap <leader>u   :GundoToggle<CR> " toggle gundo
 nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
 nnoremap <leader>w   :w<CR>
@@ -69,7 +68,13 @@ nnoremap <Leader>P :set paste<CR>"+P:set nopaste<CR>
 vnoremap <Leader>p :set paste<CR>"+p:set nopaste<CR>
 vnoremap <Leader>P :set paste<CR>"+P:set nopaste<CR>
 vnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
-map <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
+nnoremap <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
+
+nmap <leader>b :Buffers<CR>
+"nnoremap <leader>b   :ls<CR>:b<Space>
+
+nmap <Leader>t :Files<CR>
+"nmap <Leader>r :Tags<CR>
 
 map <C-n> :NERDTreeToggle<CR> 
 nmap <C-h> <C-w>h
@@ -104,6 +109,11 @@ au BufNewFile,BufRead *.py
      \ set autoindent |
      \ set fileformat=unix | "\ match BadWhitespace /\s\+$/
 
+au BufNewFile,BufRead *.tex
+     \ set wrap linebreak nolist |
+     \ set spell spelllang=en_us |
+     "\ nnoremap <Leader>t :ThesaurusQueryReplaceCurrentWord<CR> 
+     "\ vnoremap <Leader>t y:ThesaurusQueryReplace <C-r>"<CR>
 
 """"""""" [Y]CM 
 let g:ycm_server_python_interpreter="/usr/bin/python"
@@ -133,12 +143,6 @@ let g:vimtex_indent_enabled=1
 let g:vimtex_indent_bib_enabled=1
 let g:vimtex_indent_on_ampersands=1
 
-au BufNewFile,BufRead *.tex
-     \ set wrap linebreak nolist |
-     \ set spell spelllang=en_us |
-     "\ nnoremap <Leader>t :ThesaurusQueryReplaceCurrentWord<CR> 
-     "\ vnoremap <Leader>t y:ThesaurusQueryReplace <C-r>"<CR>
-
 """"""""" [P]lugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -150,6 +154,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdcommenter'|Plug 'scrooloose/nerdtree'
 "Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/fzf.vim' |Plug 'junegunn/fzf'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-obsession'|Plug 'tpope/vim-surround'|Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
@@ -173,10 +178,10 @@ function! OpenBibtexPDF()
     let s:cmd = "silent !setsid mupdf `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
     execute s:cmd
 endfunction 
-map <silent> <leader>r :call OpenBibtexPDF()<cr>
+nnoremap <silent> <leader>r :call OpenBibtexPDF()<cr>
 function! OpenEvincePDF()
     let s:word = expand("<cword>")
     let s:cmd = "silent !setsid evince `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
     execute s:cmd
 endfunction 
-map <silent> <leader>e :call OpenEvincePDF()<cr>
+nnoremap <silent> <leader>e :call OpenEvincePDF()<cr>
