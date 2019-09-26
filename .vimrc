@@ -114,9 +114,12 @@ au BufNewFile,BufRead *.tex
      \ set spell spelllang=en_us |
      "\ nnoremap <Leader>t :ThesaurusQueryReplaceCurrentWord<CR> 
      "\ vnoremap <Leader>t y:ThesaurusQueryReplace <C-r>"<CR>
+     "
+au BufNewFile,BufRead *.md
+     \ set filetype=markdown
 
 """"""""" [Y]CM 
-let g:ycm_server_python_interpreter="/usr/bin/python"
+let g:ycm_server_python_interpreter="/usr/bin/python3"
 let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
 
 """"""""" [F]ast Fold
