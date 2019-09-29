@@ -19,15 +19,26 @@ for_window [class="MuPDF" title="kim2018shape.pdf"] move workspace 4:Papers
 for_window [class="MuPDF" title="jeon2018nonlinear.pdf"] move workspace 4:Papers
 exec_always --no-startup-id "mupdf ~/report/papers/kim2018shape.pdf"
 exec_always --no-startup-id "mupdf ~/report/papers/jeon2018nonlinear.pdf"
+exec_always --no-startup-id "spotify"
+exec_always --no-startup-id st -e cava
+exec_always --no-startup-id st -e alsamixer
+exec_always --no-startup-id st -e xmodmap .xmodmap
 
-for_window [class="St" title="datmo.tex"] move workspace 8:Report
-exec_always st -e vim -S /home/kostas/report/.report.vim
+#for_window [class="spotify" title="Spotify Premium"] move workspace 10:Music
+
+exec_always st -T 'report' -e vim -S /home/kostas/report/.report.vim
+for_window [class="St" title="report"] move workspace 8:Report
+
+exec_always st -T 'literature' -e vim -S /home/kostas/literature/.literature.vim
+for_window [class="St" title="literature"] move workspace 9:Literature
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
-exec_always ~/.screenlayout/battlenet.sh
+exec_always ~/.screenlayout/lab.sh
+exec --no-startup-id "i3-msg 'workspace 10:Music; append_layout /home/kostas/.config/i3/workspace-10.json'"
 
 hide_edge_borders smart
+set $mod Control
 set $mod Mod4
 set $up k
 set $down j
@@ -74,6 +85,7 @@ exec --no-startup-id compton
 #exec --no-startup-id i3-msg "workspace 2:Datmo; exec st -e vim -S /home/kostas/datmo_ws/src/datmo/.datmo.vim"
 
 # Keyboard man xkeyboard-config
+exec --no-startup-id xmodmap ~/.xmodmap 
 exec setxkbmap -layout us,gr -option 'grp:caps_toggle' 
 exec xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 #exec setxkbmap -layout us,gr -option 'grp:caps_toggle' -option 'grp:switch'
@@ -149,8 +161,8 @@ bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7:Inkscape
 bindsym $mod+8 workspace 8:Report
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+9 workspace 9:Literature
+bindsym $mod+0 workspace 10:Music
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1:Firefox
@@ -161,8 +173,8 @@ bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7:Inkscape
 bindsym $mod+Shift+8 move container to workspace 8:Report
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+9 move container to workspace 9:Literature
+bindsym $mod+Shift+0 move container to workspace 10:Music
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

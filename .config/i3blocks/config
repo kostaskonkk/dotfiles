@@ -2,14 +2,21 @@ command=~/.local/bin/statusbar/$BLOCK_NAME
 separator_block_width=15
 markup=pango
 
-
-[news]
-label=📰
-interval=once
-signal=6
+#[news]
+#label=📰
+#interval=once
+#signal=6
 
 [ip-address]
 interval=30
+
+[disk]
+interval=60
+command=disk /
+
+#[disk]
+#interval=60
+#command=disk /home 🏠
 
 [torrent]
 interval=20
@@ -36,13 +43,6 @@ signal=12
 #interval=once
 #signal=10
 
-#[disk]
-#interval=60
-#command=disk /
-
-#[disk]
-#interval=60
-#command=disk /home 🏠
 
 [battery]
 command=battery BAT0
