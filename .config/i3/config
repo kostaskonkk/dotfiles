@@ -23,7 +23,6 @@ exec_always --no-startup-id "mupdf ~/report/papers/jeon2018nonlinear.pdf"
 exec_always --no-startup-id "spotify"
 exec_always --no-startup-id st -e cava
 exec_always --no-startup-id st -e alsamixer
-exec_always --no-startup-id st -e xmodmap .xmodmap
 
 #for_window [class="spotify" title="Spotify Premium"] move workspace 10:Music
 
@@ -35,8 +34,8 @@ for_window [class="St" title="literature"] move workspace 9:Literature
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
-exec_always ~/.screenlayout/home.sh
-exec --no-startup-id "i3-msg 'workspace 10:Music; append_layout /home/kostas/.config/i3/workspace-10.json'"
+exec_always ~/.screenlayout/std.sh
+#exec --no-startup-id "i3-msg 'workspace 10:Music; append_layout /home/kostas/.config/i3/workspace-10.json'"
 
 hide_edge_borders smart
 set $mod Control
@@ -87,9 +86,9 @@ exec --no-startup-id compton
 #exec --no-startup-id i3-msg "workspace 2:Datmo; exec st -e vim -S /home/kostas/datmo_ws/src/datmo/.datmo.vim"
 
 # Keyboard man xkeyboard-config
-exec --no-startup-id xmodmap ~/.xmodmap 
-exec setxkbmap -layout us,gr -option 'grp:caps_toggle' 
-exec xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+exec setxkbmap -layout us,gr -option 'grp:alt_shift_toggle' 
+exec --no-startup-id xmodmap ~/.Xmodmap
+#exec xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 #exec setxkbmap -layout us,gr -option 'grp:caps_toggle' -option 'grp:switch'
 
 
