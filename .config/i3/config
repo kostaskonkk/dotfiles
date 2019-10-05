@@ -13,6 +13,7 @@ font pango:monospace 16
 #font pango:DejaVu Sans Mono 8
 
 for_window [class="St" title="todo.md"] move scratchpad
+for_window [title="Google Translate - Mozilla Firefox"] move scratchpad
 exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
 
 for_window [class="MuPDF" title="kim2018shape.pdf"] move workspace 4:Papers
@@ -34,7 +35,7 @@ for_window [class="St" title="literature"] move workspace 9:Literature
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
-exec_always ~/.screenlayout/lab.sh
+exec_always ~/.screenlayout/home.sh
 exec --no-startup-id "i3-msg 'workspace 10:Music; append_layout /home/kostas/.config/i3/workspace-10.json'"
 
 hide_edge_borders smart
@@ -66,6 +67,7 @@ bindsym $mod+Return exec st
 bindsym $mod+d exec dmenu_run 
 bindsym $mod+Shift+w exec firefox https://web.whatsapp.com
 bindsym $mod+Shift+m exec firefox https://messenger.com
+bindsym $mod+Shift+t exec firefox https://translate.google.com
 bindsym $mod+s sticky toggle
  
 
@@ -142,6 +144,8 @@ bindsym $mod+Shift+space move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+space scratchpad show
+
+bindsym $mod+t [title="Google Translate - Mozilla Firefox"] scratchpad show
 
 # focus the parent container
 bindsym $mod+a focus parent
