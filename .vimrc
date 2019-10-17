@@ -1,5 +1,4 @@
 filetype plugin on "important for nerdcommenter 
-
 syntax enable 
 set nocompatible " required by Ultisnips
 set hidden
@@ -10,9 +9,6 @@ set relativenumber
 set showcmd " show last command at the bottom bar 
 set cursorline " highlight current line 
 set showmatch " highlight matching [{()}] 
-let g:ctrlp_map = '<c-p>' "for ctrlp 
-let g:ctrlp_cmd = 'CtrlP' "for ctrlp 
-
  " SEARCHING 
  set incsearch  " search as characters are entered 
  set nohlsearch " Don't continue to highlight searched phrases  
@@ -23,10 +19,11 @@ let g:ctrlp_cmd = 'CtrlP' "for ctrlp
 " Trigger for expansion configuration. I do not use <tab>, since I use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsEditSplit="vertical" " :UltiSnipsEdit splits the window.
-
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 if has('macunix')
 	let g:UltiSnipsSnippetDirectories = ['$HOME/.vim/ultisnips', 'UltiSnips']
-	" let g:vimtex_view_method='skim'
+	let g:vimtex_view_method='skim'
 else
 	let g:UltiSnipsSnippetDirectories = ['/home/kostas/.vim/ultisnips', 'UltiSnips']
 	let g:vimtex_view_method='mupdf'
@@ -70,13 +67,15 @@ vnoremap <Leader>P :set paste<CR>"+P:set nopaste<CR>
 vnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
 nnoremap <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
 
-nmap <leader>b :Buffers<CR>
-"nnoremap <leader>b   :ls<CR>:b<Space>
+"nmap <leader>b :Buffers<CR>
+nnoremap <leader>b   :ls<CR>:b<Space>
 
 nmap <Leader>t :Files<CR>
 "nmap <Leader>r :Tags<CR>
 
-map <C-n> :NERDTreeToggle<CR> 
+"map <C-n> :NERDTreeToggle<CR> 
+
+"Windows view with just control
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
@@ -89,12 +88,12 @@ imap jk <Esc>
 
 " ROS INDENTATION
 au BufNewFile,BufRead *.cpp,*.h,*.hpp
-     \ set shiftwidth=2  " Two space indents
-     \ set tabstop=2     " Tab key indents two spaces at a time
-     \ set expandtab     " Use spaces when the <Tab> key is pressed
-     \ set cindent       " Turn on automatic C-code indentation
-     \ set foldmethod=syntax
-     \ set foldlevel=99
+     \ set shiftwidth=2 | " Two space indents
+     \ set tabstop=2    | " Tab key indents two spaces at a time
+     \ set expandtab    | " Use spaces when the <Tab> key is pressed
+     \ set cindent      | " Turn on automatic C-code indentation
+     \ set foldmethod=syntax |
+     \ set foldlevel=99      |
 
 " I should add badwhitespace also to cpp
 "highlight badwhitespace ctermbg=red guibg=red
@@ -112,23 +111,24 @@ au BufNewFile,BufRead *.py
 au BufNewFile,BufRead *.tex
      \ set wrap linebreak nolist |
      \ set spell spelllang=en_us |
-     "\ nnoremap <Leader>t :ThesaurusQueryReplaceCurrentWord<CR> 
-     "\ vnoremap <Leader>t y:ThesaurusQueryReplace <C-r>"<CR>
-     "
+     \ set tabstop=4    | " Tab key indents 4 spaces at a time
+     \ set expandtab    | " Use spaces when the <Tab> key is pressed
+     \ nnoremap <Leader>t :ThesaurusQueryReplaceCurrentWord<CR> |
+
 au BufNewFile,BufRead *.md
      \ set filetype=markdown
 
 """"""""" [Y]CM 
-let g:ycm_server_python_interpreter="/usr/bin/python3"
+let g:ycm_server_python_interpreter="/usr/bin/python"
 let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
 
 """"""""" [F]ast Fold
 let g:tex_fold_enabled = 1
 let g:xml_syntax_folding = 1
 let g:fastfold_savehook = 1
+
 """"""""" La[T]ex vimtex 
 let g:vimtex_fold_enabled = 1
-"let g:vimtex_complete_recursive_bib = 1
 let g:vimtex_complete_bib = {'simple': 1} 
 if !exists('g:ycm_semantic_triggers')
   let g:ycm_semantic_triggers = {}
@@ -139,9 +139,6 @@ let g:tex_flavor='pdflatex'
 let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg' "concealment
 set conceallevel=1 "concealment
-
-
-""""""""" Indentation
 let g:vimtex_indent_enabled=1
 let g:vimtex_indent_bib_enabled=1
 let g:vimtex_indent_on_ampersands=1
@@ -169,7 +166,7 @@ Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'|Plug 'Konfekt/FastFold'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'w0rp/ale'
-"Plug 'ron89/thesaurus_query.vim'
+Plug 'ron89/thesaurus_query.vim'
 if !has('macunix')
       Plug 'taketwo/vim-ros'
 endif
