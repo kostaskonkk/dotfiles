@@ -10,11 +10,10 @@ snippet table "Table environment" b
 endsnippet
 
 snippet fig "Figure environment" b
-\begin{figure}
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.31415\textwidth]{figures/${4:name.ext}}
-	\caption{${4/(\w+)\.\w+/\u$1/}$0}
-	\label{fig:${4/(\w+)\.\w+/$1/}}
+	\includegraphics[width=1\textwidth]{figures/${4:name.ext}}
+	\caption{$0}\label{fig:${4/(\w+)\.\w+/$1/}}
 \end{figure}
 endsnippet
 
