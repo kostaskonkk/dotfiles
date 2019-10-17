@@ -35,6 +35,7 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set termguicolors
+set t_Co=256
 "colorscheme molokai         " poppy  colorscheme
 "let g:molokai_original = 1
 "let g:rehash256 = 1
@@ -154,6 +155,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdcommenter'|Plug 'scrooloose/nerdtree'
 "Plug 'junegunn/vim-peekaboo'
+Plug 'dag/vim-fish'
 Plug 'junegunn/fzf.vim' |Plug 'junegunn/fzf'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-obsession'|Plug 'tpope/vim-surround'|Plug 'tpope/vim-fugitive'
