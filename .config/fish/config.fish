@@ -1,5 +1,5 @@
 fish_vi_key_bindings
-
+source /opt/ros/kinetic/share/rosbash/rosfish
 # GIT
 abbr g 'git'
 abbr ga 'git add'
@@ -32,7 +32,7 @@ alias localization_compile='cd ~/datmo_ws && find  src/localization/src/ -ignore
 
 ###################### [E]vo ###########################
 abbr evo 'cd ~/datmo_ws/src/evo'
-alias run='cd ~/datmo_ws/src/evo && find -name "*.py" | entr python3 tracking_evaluation.py'
+alias run='cd ~/datmo_ws/src/evo && find -name "*.py" | entr python3 datmo_evaluation.py'
 
 ######################## [G]eneral ##############################
 alias cp='cp -iv'                 # Preferred 'cp' implementation
@@ -53,6 +53,7 @@ alias b='vim ~/.bashrc'
 alias a='vim ~/.aliases' 
 abbr i 'vim ~/.config/i3/config' 
 abbr v 'vim ~/.vimrc'
+abbr f 'vim ~/.config/fish/config.fish'
 alias s='source ~/.config/fish/config.fish'
 #alias path='echo -e ${PATH//:/\\n}'
 alias cal='ncal -MC3'
@@ -77,7 +78,6 @@ alias mmac='export ROS_MASTER_URI=http://localhost:11311'
 alias rviz='rosrun rviz rviz &'
 alias mocap='roslaunch mocap_optitrack exp.launch'
 alias midi='rosrun midi_ros midi_input_node'
-alias singularity='singularity shell ~/Downloads/robprac-singularity2.4-fixes0.img'
 
 #if [ -f /opt/ros/kinetic/setup.bash ]; then
   #source /opt/ros/kinetic/setup.bash

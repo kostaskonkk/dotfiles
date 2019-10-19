@@ -9,6 +9,7 @@ set relativenumber
 set showcmd " show last command at the bottom bar 
 set cursorline " highlight current line 
 set showmatch " highlight matching [{()}] 
+set shell=/bin/bash "sets shell to bash, because fish causes some problems
  " SEARCHING 
  set incsearch  " search as characters are entered 
  set nohlsearch " Don't continue to highlight searched phrases  
