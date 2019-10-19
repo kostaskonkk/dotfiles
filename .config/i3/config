@@ -14,19 +14,22 @@ font pango:monospace 16
 
 for_window [class="St" title="todo.md"] move scratchpad
 for_window [title="Google Translate - Mozilla Firefox"] move scratchpad
+for_window [title="Thesaurus.com - Mozilla Firefox"] move scratchpad
 exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
+for_window [class="Matplotlib"] move workspace 3:Plots
+for_window [class="rviz"] move workspace 3:Plots
 
-for_window [class="MuPDF" title="kim2018shape.pdf"] move workspace 4:Papers
-for_window [class="MuPDF" title="jeon2018nonlinear.pdf"] move workspace 4:Papers
-exec_always --no-startup-id "mupdf ~/report/papers/kim2018shape.pdf"
-exec_always --no-startup-id "mupdf ~/report/papers/jeon2018nonlinear.pdf"
+#for_window [class="MuPDF" title="kim2018shape.pdf"] move workspace 4:Papers
+#for_window [class="MuPDF" title="jeon2018nonlinear.pdf"] move workspace 4:Papers
+#exec_always --no-startup-id "mupdf ~/report/papers/kim2018shape.pdf"
+#exec_always --no-startup-id "mupdf ~/report/papers/jeon2018nonlinear.pdf"
 exec_always --no-startup-id "spotify"
-exec_always --no-startup-id st -e cava
-exec_always --no-startup-id st -e alsamixer
+#exec_always --no-startup-id st -e cava
+#exec_always --no-startup-id st -e alsamixer
 
 #for_window [class="spotify" title="Spotify Premium"] move workspace 10:Music
 
-exec_always st -T 'report' -e vim -S /home/kostas/report/.report.vim
+#exec_always st -T 'report' -e vim -S /home/kostas/report/.report.vim
 for_window [class="St" title="report"] move workspace 8:Report
 
 exec_always st -T 'literature' -e vim -S /home/kostas/literature/.literature.vim
@@ -79,6 +82,7 @@ exec xrandr --auto
 
 # Wifi Icon
 exec --no-startup-id nm-applet
+
 exec --no-startup-id dropbox start
 exec --no-startup-id compton 
 #exec --no-startup-id i3-msg workspace 3:Plots
@@ -142,9 +146,10 @@ bindsym $mod+Shift+space move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+space scratchpad show
 
+bindsym $mod+space [class="St" title="todo.md"] scratchpad show
 bindsym $mod+t [title="Google Translate - Mozilla Firefox"] scratchpad show
+bindsym $mod+y [title="Thesaurus.com - Mozilla Firefox"] scratchpad show
 
 # focus the parent container
 bindsym $mod+a focus parent

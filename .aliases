@@ -52,6 +52,7 @@ alias screens='sh ~/.screenlayout/monitor_laptop.sh'
 alias cl='xrandr --output eDP-1 --off'
 alias ol='xrandr --output eDP-1 --auto'
 alias m='mupdf'
+alias z='zathura'
 alias shutdown='systemctl poweroff'
 
 ########################## R[O]S ##############################
@@ -66,23 +67,31 @@ alias midi='rosrun midi_ros midi_input_node'
 alias singularity='singularity shell ~/Downloads/robprac-singularity2.4-fixes0.img'
 alias o='rostopic echo /rosout'
 
+
 if [ -f /opt/ros/kinetic/setup.bash ]; then
   source /opt/ros/kinetic/setup.bash
   source ~/datmo_ws/devel/setup.bash
   source ~/Documents/barc/workspace/devel/setup.bash
   export ROS_MASTER_URI=http://localhost:11311
 fi
+
+if [ -f /opt/ros/melodic/setup.bash ]; then
+  source /opt/ros/melodic/setup.bash
+  source /home/kostas/datmo_ws/devel/setup.bash
+  #source ~/Documents/barc/workspace/devel/setup.bash
+  export ROS_MASTER_URI=http://localhost:11311
+fi
 ######################### [D]SV #############################
 
-alias car='ssh odroid@192.168.0.101'
+alias car='ssh kostas@192.168.0.101'
 alias pi='ping 192.168.0.101'
-alias mcar='export ROS_MASTER_URI=http://192.168.0.101:11311 && export ROS_IP=192.168.0.103'
-alias bags_move='scp -r odroid@192.168.0.101:/home/odroid/kostas/bagfiles/* /home/kostas/Dropbox/experiments/'
+alias mcar='export ROS_MASTER_URI=http://192.168.0.101:11311 && export ROS_IP=192.168.0.102'
+alias bags_move='scp -r kostas@192.168.0.101:/home/odroid/kostas/bagfiles/* /home/kostas/Dropbox/experiments/'
 alias video_move='scp pi@192.168.1.103:/home/pi/ocam.h264 /home/kostas/Dropbox/experiments/ocam.h264'
 alias ch='ntpdate -q 192.168.0.101' # Time related
 alias adjust_time='sudo ntpdate -u pool.ntp.org' # Time related  
-alias carodom='scp -r /home/kostas/datmo_ws/src/odometry/* odroid@192.168.0.101:/home/odroid/datmo_ws/src/odometry'
-alias cardatmo='scp -r /home/kostas/datmo_ws/src/datmo/ odroid@192.168.0.101:/home/odroid/datmo_ws/src/datmo'
+alias carodom='scp -r /home/kostas/datmo_ws/src/odometry/* datmo@192.168.0.101:/home/odroid/datmo_ws/src/odometry'
+alias cardatmo='scp -r /home/kostas/datmo_ws/src/datmo/ datmo@192.168.0.101:/home/odroid/datmo_ws/src/datmo'
 alias carmk='echo "cd ~/datmo_ws && catkin_make"|car'
 
 ###################### P[u]llupz ############################
@@ -127,3 +136,8 @@ alias train=' clisp ~/projects/train.lisp'
 alias θσ=' setxkbmap us'
 alias gr=' setxkbmap gr'
 alias baars=' m ~/report/papers/delft/baars2018modelling.pdf'
+#alias car=' cd ~/datmo_ws/src/car_demo-master/car_demo/'
+alias sim='roslaunch car_demo sim.launch'
+alias vevo=' vim -S .evo.vim'
+#alias st=' roslaunch datmo sim_test.launch'
+alias rp=' cd ~/report/papers/'

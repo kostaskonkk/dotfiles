@@ -27,7 +27,7 @@ if has('macunix')
 	let g:vimtex_view_method='skim'
 else
 	let g:UltiSnipsSnippetDirectories = ['/home/kostas/.vim/ultisnips', 'UltiSnips']
-	let g:vimtex_view_method='mupdf'
+	let g:vimtex_view_method='zathura'
 endif
 
 " [C]OLOURS
@@ -36,7 +36,7 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set termguicolors
-set t_Co=256
+"set t_Co=256
 "colorscheme molokai         " poppy  colorscheme
 "let g:molokai_original = 1
 "let g:rehash256 = 1
@@ -55,6 +55,7 @@ nnoremap <leader>w   :w<CR>
 nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
 nnoremap <leader>x   :x<CR>
+nnoremap <leader>m   :Make<CR>
 nnoremap <leader>s :!clear && shellcheck %<CR>
 nnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
 
@@ -71,9 +72,25 @@ nnoremap <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
 
 "nmap <leader>b :Buffers<CR>
 nnoremap <leader>b   :ls<CR>:b<Space>
-
-nmap <Leader>t :Files<CR>
+"nmap <Leader>t :Files<CR>
 "nmap <Leader>r :Tags<CR>
+"
+"Git
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit -v -q<CR>
+nnoremap <leader>ga :Gcommit --amend<CR>
+nnoremap <leader>gt :Gcommit -v -q %<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gr :Gread<CR>
+nnoremap <leader>gw :Gwrite<CR><CR>
+nnoremap <leader>gl :silent! Glog<CR>
+nnoremap <leader>gp :Ggrep<Space>
+nnoremap <leader>gm :Gmove<Space>
+nnoremap <leader>gb :Git branch<Space>
+nnoremap <leader>go :Git checkout<Space>
+nnoremap <leader>gps :Dispatch! git push<CR>
+nnoremap <leader>gpl :Dispatch! git pull<CR>
 
 "map <C-n> :NERDTreeToggle<CR> 
 
@@ -100,22 +117,21 @@ au BufNewFile,BufRead *.cpp,*.h,*.hpp
 " I should add badwhitespace also to cpp
 "highlight badwhitespace ctermbg=red guibg=red
 
-au BufNewFile,BufRead *.py
-     \ set foldmethod=indent |
-     \ set tabstop=4 |
-     \ set softtabstop=4 |
-     \ set shiftwidth=4 |
-     \ set textwidth=79 |
-     \ set expandtab |
-     \ set autoindent |
-     \ set fileformat=unix | "\ match BadWhitespace /\s\+$/
+"au BufNewFile,BufRead *.py
+     "\ set foldmethod=indent |
+     "\ set tabstop=4 |
+     "\ set softtabstop=4 |
+     "\ set shiftwidth=4 |
+     "\ set textwidth=79 |
+     "\ set expandtab |
+     "\ set autoindent |
+     "\ set fileformat=unix | "\ match BadWhitespace /\s\+$/
 
 au BufNewFile,BufRead *.tex
      \ set wrap linebreak nolist |
      \ set spell spelllang=en_us |
      \ set tabstop=4    | " Tab key indents 4 spaces at a time
      \ set expandtab    | " Use spaces when the <Tab> key is pressed
-     \ nnoremap <Leader>t :ThesaurusQueryReplaceCurrentWord<CR> |
 
 au BufNewFile,BufRead *.md
      \ set filetype=markdown
@@ -145,6 +161,10 @@ let g:vimtex_indent_enabled=1
 let g:vimtex_indent_bib_enabled=1
 let g:vimtex_indent_on_ampersands=1
 
+"""""""Thesaurus
+let g:tq_map_keys = 0
+nnoremap <Leader>, :ThesaurusQueryReplaceCurrentWord<CR> 
+
 """"""""" [P]lugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -160,7 +180,7 @@ Plug 'dag/vim-fish'
 Plug 'junegunn/fzf.vim' |Plug 'junegunn/fzf'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-obsession'|Plug 'tpope/vim-surround'|Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-dispatch' |Plug 'tpope/vim-unimpaired'
 Plug 'sjl/gundo.vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' 
 Plug 'morhetz/gruvbox' 
@@ -182,9 +202,18 @@ function! OpenBibtexPDF()
     execute s:cmd
 endfunction 
 nnoremap <silent> <leader>r :call OpenBibtexPDF()<cr>
+
+function! OpenZathuraPDF()
+    let s:word = expand("<cword>")
+    let s:cmd = "silent !setsid zathura `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
+    execute s:cmd
+endfunction 
+nnoremap <silent> <leader>z :call OpenZathuraPDF()<cr>
+
 function! OpenEvincePDF()
     let s:word = expand("<cword>")
     let s:cmd = "silent !setsid evince `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
     execute s:cmd
 endfunction 
 nnoremap <silent> <leader>e :call OpenEvincePDF()<cr>
+
