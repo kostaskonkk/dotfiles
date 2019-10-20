@@ -30,19 +30,6 @@ else
 endif
 
 " [C]OLOURS
-<<<<<<< Updated upstream
-" set Vim-specific sequences for RGB colors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-set termguicolors
-"set t_Co=256
-"colorscheme molokai         " poppy  colorscheme
-"let g:molokai_original = 1
-"let g:rehash256 = 1
-
-=======
->>>>>>> Stashed changes
 colorscheme gruvbox         " awesome colorscheme
 "colorscheme molokai        " poppy  colorscheme
 set bg=dark
@@ -78,10 +65,7 @@ vnoremap <Leader>P :set paste<CR>"+P:set nopaste<CR>
 vnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
 nnoremap <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
 nnoremap <leader>b   :ls<CR>:b<Space>
-<<<<<<< Updated upstream
-=======
 "nmap <leader>b :Buffers<CR>
->>>>>>> Stashed changes
 "nmap <Leader>t :Files<CR>
 "nmap <Leader>r :Tags<CR>
 "
@@ -130,17 +114,6 @@ au BufNewFile,BufRead *.cpp,*.h,*.hpp
 " I should add badwhitespace also to cpp
 "highlight badwhitespace ctermbg=red guibg=red
 
-<<<<<<< Updated upstream
-"au BufNewFile,BufRead *.py
-     "\ set foldmethod=indent |
-     "\ set tabstop=4 |
-     "\ set softtabstop=4 |
-     "\ set shiftwidth=4 |
-     "\ set textwidth=79 |
-     "\ set expandtab |
-     "\ set autoindent |
-     "\ set fileformat=unix | "\ match BadWhitespace /\s\+$/
-=======
 au BufNewFile,BufRead *.py
      \ set foldmethod=indent |
      \ set tabstop=4 |
@@ -149,7 +122,6 @@ au BufNewFile,BufRead *.py
      \ set textwidth=79 |
      \ set expandtab |
      \ set autoindent |
->>>>>>> Stashed changes
 
 au BufNewFile,BufRead *.tex
      \ set wrap linebreak nolist |
