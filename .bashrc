@@ -76,6 +76,14 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+# Required by powerline
+#function _update_ps1() {
+    #PS1=$(powerline-shell $?)
+#}
+
+#if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    #PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+#fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

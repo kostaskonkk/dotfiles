@@ -1,6 +1,6 @@
 filetype plugin on "important for nerdcommenter 
 syntax enable 
-set nocompatible " required by Ultisnips
+set nocompatible
 set hidden
 set number 
 set undofile "Maintain undo history between sessions 
@@ -17,7 +17,6 @@ set shell=/bin/bash "sets shell to bash, because fish causes some problems
  
 
 "[U]LTISNIPS
-" Trigger for expansion configuration. I do not use <tab>, since I use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsEditSplit="vertical" " :UltiSnipsEdit splits the window.
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
@@ -31,6 +30,7 @@ else
 endif
 
 " [C]OLOURS
+<<<<<<< Updated upstream
 " set Vim-specific sequences for RGB colors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -41,11 +41,19 @@ set termguicolors
 "let g:molokai_original = 1
 "let g:rehash256 = 1
 
+=======
+>>>>>>> Stashed changes
 colorscheme gruvbox         " awesome colorscheme
+"colorscheme molokai        " poppy  colorscheme
 set bg=dark
 let g:gruvbox_dark = 'hard'
 let g:gruvbox_light= 'hard'
 let g:airline_theme='gruvbox'
+" set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+set t_Co=256
 
 "[L]EADER SHORTCUTS
 let mapleader=" "     " leader is space and not \
@@ -69,9 +77,11 @@ vnoremap <Leader>p :set paste<CR>"+p:set nopaste<CR>
 vnoremap <Leader>P :set paste<CR>"+P:set nopaste<CR>
 vnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
 nnoremap <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
-
-"nmap <leader>b :Buffers<CR>
 nnoremap <leader>b   :ls<CR>:b<Space>
+<<<<<<< Updated upstream
+=======
+"nmap <leader>b :Buffers<CR>
+>>>>>>> Stashed changes
 "nmap <Leader>t :Files<CR>
 "nmap <Leader>r :Tags<CR>
 "
@@ -94,16 +104,19 @@ nnoremap <leader>gpl :Dispatch! git pull<CR>
 
 "map <C-n> :NERDTreeToggle<CR> 
 
+"Control Shortcuts
 "Windows view with just control
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
-nnoremap <cr> <c-w>w
+"nmap <C-h> <C-w>h
+"nmap <C-j> <C-w>j
+"nmap <C-k> <C-w>k
+"nmap <C-l> <C-w>l
+"nmap <C-H> <C-w>H
+"nmap <C-J> <C-w>J
+"nmap <C-K> <C-w>K
+"nmap <C-L> <C-w>L
 
 " [I]MAP
 imap jk <Esc>
-
 
 " ROS INDENTATION
 au BufNewFile,BufRead *.cpp,*.h,*.hpp
@@ -117,6 +130,7 @@ au BufNewFile,BufRead *.cpp,*.h,*.hpp
 " I should add badwhitespace also to cpp
 "highlight badwhitespace ctermbg=red guibg=red
 
+<<<<<<< Updated upstream
 "au BufNewFile,BufRead *.py
      "\ set foldmethod=indent |
      "\ set tabstop=4 |
@@ -126,6 +140,16 @@ au BufNewFile,BufRead *.cpp,*.h,*.hpp
      "\ set expandtab |
      "\ set autoindent |
      "\ set fileformat=unix | "\ match BadWhitespace /\s\+$/
+=======
+au BufNewFile,BufRead *.py
+     \ set foldmethod=indent |
+     \ set tabstop=4 |
+     \ set softtabstop=4 |
+     \ set shiftwidth=4 |
+     \ set textwidth=79 |
+     \ set expandtab |
+     \ set autoindent |
+>>>>>>> Stashed changes
 
 au BufNewFile,BufRead *.tex
      \ set wrap linebreak nolist |
@@ -175,7 +199,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdcommenter'|Plug 'scrooloose/nerdtree'
-"Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/vim-peekaboo'
 Plug 'dag/vim-fish'
 Plug 'junegunn/fzf.vim' |Plug 'junegunn/fzf'
 Plug 'majutsushi/tagbar'
@@ -190,6 +214,7 @@ Plug 'lervag/vimtex'|Plug 'Konfekt/FastFold'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'w0rp/ale'
 Plug 'ron89/thesaurus_query.vim'
+Plug 'vimwiki/vimwiki'
 if !has('macunix')
       Plug 'taketwo/vim-ros'
 endif
