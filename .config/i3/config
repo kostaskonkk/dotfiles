@@ -14,6 +14,7 @@ font pango:monospace 16
 
 for_window [class="St" title="todo.md"] move scratchpad
 for_window [title="Google Translate - Mozilla Firefox"] move scratchpad
+for_window [title="Gmail - Mozilla Firefox"] move scratchpad
 for_window [title="Thesaurus.com - Mozilla Firefox"] move scratchpad
 exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
 for_window [class="Matplotlib"] move workspace 3:Plots
@@ -43,6 +44,7 @@ exec_always ~/.screenlayout/std.sh
 hide_edge_borders smart
 set $mod Control
 set $mod Mod4
+set $mod2 Shift
 set $up k
 set $down j
 set $left h
@@ -64,17 +66,17 @@ new_window pixel 4
 floating_modifier $mod
 
 # start applications
-bindsym $mod+Shift+f exec firefox
+bindsym $mod+$mod2+f exec firefox
 bindsym $mod+Return exec st
 bindsym $mod+d exec dmenu_run 
-bindsym $mod+Shift+w exec firefox https://web.whatsapp.com
-bindsym $mod+Shift+m exec firefox https://messenger.com
-bindsym $mod+Shift+t exec firefox https://translate.google.com
+bindsym $mod+$mod2+w exec firefox https://web.whatsapp.com
+bindsym $mod+$mod2+m exec firefox https://messenger.com
+bindsym $mod+$mod2+t exec firefox https://translate.google.com
 bindsym $mod+s sticky toggle
  
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+$mod2+q kill
 
   
 exec firefox
@@ -108,15 +110,15 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
+bindsym $mod+$mod2+$left move left
+bindsym $mod+$mod2+$down move down
+bindsym $mod+$mod2+$up move up
+bindsym $mod+$mod2+$right move right
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+$mod2+Left move left
+bindsym $mod+$mod2+Down move down
+bindsym $mod+$mod2+Up move up
+bindsym $mod+$mod2+Right move right
 # move to different motitor
 bindsym $mod+greater move workspace to output right
 bindsym $mod+less move workspace to output left
@@ -136,13 +138,13 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+minus floating toggle
+bindsym $mod+$mod2+minus floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+minus focus mode_toggle
 
 # move the currently focused window to the scratchpad
-bindsym $mod+Shift+space move scratchpad
+bindsym $mod+$mod2+space move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
@@ -150,6 +152,7 @@ bindsym $mod+Shift+space move scratchpad
 bindsym $mod+space [class="St" title="todo.md"] scratchpad show
 bindsym $mod+t [title="Google Translate - Mozilla Firefox"] scratchpad show
 bindsym $mod+y [title="Thesaurus.com - Mozilla Firefox"] scratchpad show
+bindsym $mod+g [title="Gmail - Mozilla Firefox"] scratchpad show
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -173,23 +176,23 @@ bindsym $mod+9 workspace 9:Literature
 bindsym $mod+0 workspace 10:Music
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1:Firefox
-bindsym $mod+Shift+2 move container to workspace 2:Datmo
-bindsym $mod+Shift+3 move container to workspace 3:Plots
-bindsym $mod+Shift+4 move container to workspace 4:Papers
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7:Inkscape
-bindsym $mod+Shift+8 move container to workspace 8:Report
-bindsym $mod+Shift+9 move container to workspace 9:Literature
-bindsym $mod+Shift+0 move container to workspace 10:Music
+bindsym $mod+$mod2+1 move container to workspace 1:Firefox
+bindsym $mod+$mod2+2 move container to workspace 2:Datmo
+bindsym $mod+$mod2+3 move container to workspace 3:Plots
+bindsym $mod+$mod2+4 move container to workspace 4:Papers
+bindsym $mod+$mod2+5 move container to workspace 5
+bindsym $mod+$mod2+6 move container to workspace 6
+bindsym $mod+$mod2+7 move container to workspace 7:Inkscape
+bindsym $mod+$mod2+8 move container to workspace 8:Report
+bindsym $mod+$mod2+9 move container to workspace 9:Literature
+bindsym $mod+$mod2+0 move container to workspace 10:Music
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+$mod2+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+$mod2+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+$mod2+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # [R]esize
 bindsym $mod+r mode "resize" 
