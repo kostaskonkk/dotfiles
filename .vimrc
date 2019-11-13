@@ -134,7 +134,7 @@ au BufNewFile,BufRead *.md
      \ set filetype=markdown
 
 """"""""" [Y]CM 
-let g:ycm_server_python_interpreter="/usr/bin/python"
+let g:ycm_server_python_interpreter="/usr/bin/python3"
 let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
 
 """"""""" [F]ast Fold
@@ -174,7 +174,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdcommenter'|Plug 'scrooloose/nerdtree'
-Plug 'junegunn/vim-peekaboo'
+"Plug 'junegunn/vim-peekaboo'
 Plug 'dag/vim-fish'
 Plug 'junegunn/fzf.vim' |Plug 'junegunn/fzf'
 Plug 'majutsushi/tagbar'
@@ -202,7 +202,7 @@ function! OpenBibtexPDF()
     let s:cmd = "silent !setsid mupdf `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
     execute s:cmd
 endfunction 
-nnoremap <silent> <leader>r :call OpenBibtexPDF()<cr>
+nnoremap <silent> <leader>r :call OpenZathuraPDF()<cr>
 
 function! OpenZathuraPDF()
     let s:word = expand("<cword>")
