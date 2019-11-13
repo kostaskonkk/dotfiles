@@ -6,6 +6,14 @@
 	default = simple
 [core]
 	excludesFile = .gitignore
+	editor = vim
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[difftool]
+	prompt = 0
 [alias]
         ci = commit
         st = status
