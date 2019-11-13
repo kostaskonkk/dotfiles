@@ -65,6 +65,7 @@ vnoremap <Leader>P :set paste<CR>"+P:set nopaste<CR>
 vnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
 nnoremap <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
 nnoremap <leader>b   :ls<CR>:b<Space>
+nnoremap <leader>v   :ls<CR>:vsp<Space>
 "nmap <leader>b :Buffers<CR>
 "nmap <Leader>t :Files<CR>
 "nmap <Leader>r :Tags<CR>
@@ -90,10 +91,10 @@ nnoremap <leader>gpl :Dispatch! git pull<CR>
 
 "Control Shortcuts
 "Windows view with just control
-"nmap <C-h> <C-w>h
-"nmap <C-j> <C-w>j
-"nmap <C-k> <C-w>k
-"nmap <C-l> <C-w>l
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
 "nmap <C-H> <C-w>H
 "nmap <C-J> <C-w>J
 "nmap <C-K> <C-w>K
@@ -161,6 +162,8 @@ let g:vimtex_indent_on_ampersands=1
 let g:tq_map_keys = 0
 nnoremap <Leader>, :ThesaurusQueryReplaceCurrentWord<CR> 
 
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'mediawiki', 'ext': '.md'}]
+
 """"""""" [P]lugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -177,11 +180,12 @@ Plug 'junegunn/fzf.vim' |Plug 'junegunn/fzf'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-obsession'|Plug 'tpope/vim-surround'|Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch' |Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
 Plug 'sjl/gundo.vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' 
 Plug 'morhetz/gruvbox' 
 Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'|Plug 'Konfekt/FastFold'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'w0rp/ale'
