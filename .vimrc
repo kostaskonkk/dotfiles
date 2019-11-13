@@ -15,6 +15,11 @@ set shell=/bin/bash "sets shell to bash, because fish causes some problems
  set nohlsearch " Don't continue to highlight searched phrases  
  set incsearch  " But do highlight as you type your search. 
  
+" BASIC 
+set wildignore=*.pdf
+set splitright
+
+
 
 "[U]LTISNIPS
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -41,8 +46,12 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 set t_Co=256
+let g:rainbow_active = 1     " parentheses of different colors
+let g:Illuminate_delay = 300
 
-"[L]EADER SHORTCUTS
+" General Mappings
+nnoremap Y y$
+"[L]eader Mappings
 let mapleader=" "     " leader is space and not \
 nnoremap <leader>u   :GundoToggle<CR> " toggle gundo
 nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
@@ -51,7 +60,6 @@ nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
 nnoremap <leader>x   :x<CR>
 nnoremap <leader>m   :Make<CR>
-nnoremap <leader>s :!clear && shellcheck %<CR>
 nnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
 
 nnoremap <Leader>y "+y
@@ -65,7 +73,8 @@ vnoremap <Leader>P :set paste<CR>"+P:set nopaste<CR>
 vnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
 nnoremap <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
 nnoremap <leader>b   :ls<CR>:b<Space>
-nnoremap <leader>v   :ls<CR>:vsp<Space>
+nnoremap <leader>v   :ls<CR>:vsplit<Space>
+nnoremap <leader>s   :ls<CR>:split<Space>
 "nmap <leader>b :Buffers<CR>
 "nmap <Leader>t :Files<CR>
 "nmap <Leader>r :Tags<CR>
@@ -100,9 +109,6 @@ nmap <C-l> <C-w>l
 "nmap <C-K> <C-w>K
 "nmap <C-L> <C-w>L
 
-" [I]MAP
-imap jk <Esc>
-
 " ROS INDENTATION
 au BufNewFile,BufRead *.cpp,*.h,*.hpp
      \ set shiftwidth=2 | " Two space indents
@@ -134,7 +140,7 @@ au BufNewFile,BufRead *.md
      \ set filetype=markdown
 
 """"""""" [Y]CM 
-let g:ycm_server_python_interpreter="/usr/bin/python3"
+let g:ycm_server_python_interpreter="/usr/bin/python"
 let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
 
 """"""""" [F]ast Fold
@@ -190,7 +196,10 @@ Plug 'lervag/vimtex'|Plug 'Konfekt/FastFold'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'w0rp/ale'
 Plug 'ron89/thesaurus_query.vim'
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
+Plug 'RRethy/vim-illuminate'
+Plug 'luochen1990/rainbow'
+
 if !has('macunix')
       Plug 'taketwo/vim-ros'
 endif
