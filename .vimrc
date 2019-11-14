@@ -139,6 +139,9 @@ au BufNewFile,BufRead *.tex
 au BufNewFile,BufRead *.md
      \ set filetype=markdown
 
+au BufNewFile,BufRead *.log  set autoread
+au BufNewFile,BufRead *.log  au CursorHold * checktime
+
 """"""""" [Y]CM 
 let g:ycm_server_python_interpreter="/usr/bin/python"
 let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
@@ -191,15 +194,17 @@ Plug 'sjl/gundo.vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' 
 Plug 'morhetz/gruvbox' 
 Plug 'PotatoesMaster/i3-vim-syntax'
-"Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
-Plug 'lervag/vimtex'|Plug 'Konfekt/FastFold'
+Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
+Plug 'kostaskonkk/texconceal'
+Plug 'lervag/vimtex' 
+Plug 'Konfekt/FastFold'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'w0rp/ale'
 Plug 'ron89/thesaurus_query.vim'
 "Plug 'vimwiki/vimwiki'
 Plug 'RRethy/vim-illuminate'
 Plug 'luochen1990/rainbow'
-
+Plug 'Raimondi/delimitMate'
 if !has('macunix')
       Plug 'taketwo/vim-ros'
 endif

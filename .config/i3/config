@@ -16,25 +16,27 @@ for_window [class="St" title="todo.md"] move scratchpad
 for_window [title="Google Translate - Mozilla Firefox"] move scratchpad
 for_window [title="Gmail - Mozilla Firefox"] move scratchpad
 for_window [title="Thesaurus.com - Mozilla Firefox"] move scratchpad
-exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
 for_window [class="Matplotlib"] move workspace 3:Plots
 for_window [class="rviz"] move workspace 3:Plots
-
+for_window [class="MuPDF" title="rachman2017MOT.pdf"] move workspace 4:Papers
 #for_window [class="MuPDF" title="kim2018shape.pdf"] move workspace 4:Papers
-#for_window [class="MuPDF" title="jeon2018nonlinear.pdf"] move workspace 4:Papers
-#exec_always --no-startup-id "mupdf ~/report/papers/kim2018shape.pdf"
-#exec_always --no-startup-id "mupdf ~/report/papers/jeon2018nonlinear.pdf"
+for_window [class="gazebo"] move workspace 5
+for_window [title="Execution Time"] move workspace 6
+for_window [class="St" title="report"] move workspace 9:Report
+for_window [class="spotify" title="Spotify Premium"] move workspace 10:Music
+
+exec_always --no-startup-id "zathura ~/report/papers/delft/rachman2017MOT.pdf"
+exec_always --no-startup-id "mupdf ~/report/papers/kim2018shape.pdf"
 exec_always --no-startup-id "spotify"
+exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
+exec_always st -T 'report' -e vim -S /home/kostas/report/.report.vim
 #exec_always --no-startup-id st -e cava
 #exec_always --no-startup-id st -e alsamixer
 
-#for_window [class="spotify" title="Spotify Premium"] move workspace 10:Music
 
-#exec_always st -T 'report' -e vim -S /home/kostas/report/.report.vim
-for_window [class="St" title="report"] move workspace 8:Report
 
-exec_always st -T 'literature' -e vim -S /home/kostas/literature/.literature.vim
-for_window [class="St" title="literature"] move workspace 9:Literature
+#exec_always st -T 'literature' -e vim -S /home/kostas/literature/.literature.vim
+#for_window [class="St" title="literature"] move workspace 9:Literature
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
@@ -171,8 +173,8 @@ bindsym $mod+4 workspace 4:Papers
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7:Inkscape
-bindsym $mod+8 workspace 8:Report
-bindsym $mod+9 workspace 9:Literature
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9:Report
 bindsym $mod+0 workspace 10:Music
 
 # move focused container to workspace
@@ -183,8 +185,8 @@ bindsym $mod+$mod2+4 move container to workspace 4:Papers
 bindsym $mod+$mod2+5 move container to workspace 5
 bindsym $mod+$mod2+6 move container to workspace 6
 bindsym $mod+$mod2+7 move container to workspace 7:Inkscape
-bindsym $mod+$mod2+8 move container to workspace 8:Report
-bindsym $mod+$mod2+9 move container to workspace 9:Literature
+bindsym $mod+$mod2+8 move container to workspace 8
+bindsym $mod+$mod2+9 move container to workspace 9:Report
 bindsym $mod+$mod2+0 move container to workspace 10:Music
 
 # reload the configuration file
