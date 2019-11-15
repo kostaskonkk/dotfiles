@@ -55,14 +55,14 @@ nnoremap Y y$
 "[L]eader Mappings
 let mapleader=" "     " leader is space and not \
 nnoremap <leader>u   :GundoToggle<CR> " toggle gundo
-nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
+"nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
+nnoremap <leader>t   :Start! roslaunch datmo test.launch
 nnoremap <leader>w   :w<CR>
 nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
 nnoremap <leader>x   :x<CR>
 nnoremap <leader>m   :Make<CR>
 nnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
-
 nnoremap <Leader>y "+y
 nnoremap <Leader>d "+d
 vnoremap <Leader>y "+y
@@ -111,40 +111,42 @@ nmap <C-l> <C-w>l
 "nmap <C-L> <C-w>L
 
 " ROS INDENTATION
-au BufNewFile,BufRead *.cpp,*.h,*.hpp
+autocmd BufNewFile,BufRead *.cpp,*.h,*.hpp
      \ set shiftwidth=2 | " Two space indents
      \ set tabstop=2    | " Tab key indents two spaces at a time
      \ set expandtab    | " Use spaces when the <Tab> key is pressed
      \ set cindent      | " Turn on automatic C-code indentation
      \ set foldmethod=syntax |
-     \ set foldlevel=99      |
+     \ set foldlevel=99
+
 
 " I should add badwhitespace also to cpp
 "highlight badwhitespace ctermbg=red guibg=red
 
-au BufNewFile,BufRead *.py
+autocmd BufNewFile,BufRead *.py
      \ set foldmethod=indent |
      \ set tabstop=4 |
      \ set softtabstop=4 |
      \ set shiftwidth=4 |
      \ set textwidth=79 |
      \ set expandtab |
-     \ set autoindent |
+     "\ set autoindent |
+     "\ let b:dispatch = 'python3 ~/datmo_ws/src/evo/datmo_evaluation.py'
 
-au BufNewFile,BufRead *.tex
+autocmd BufNewFile,BufRead *.tex
      \ set wrap linebreak nolist |
      \ set spell spelllang=en_us |
      \ set tabstop=4    | " Tab key indents 4 spaces at a time
      \ set expandtab    | " Use spaces when the <Tab> key is pressed
 
-au BufNewFile,BufRead *.md
+autocmd BufNewFile,BufRead *.md
      \ set filetype=markdown
 
-au BufNewFile,BufRead *.log  set autoread
-au BufNewFile,BufRead *.log  au CursorHold * checktime
+autocmd BufNewFile,BufRead *.log  set autoread
+autocmd BufNewFile,BufRead *.log  au CursorHold * checktime
 
 """"""""" [Y]CM 
-let g:ycm_server_python_interpreter="/usr/bin/python3"
+let g:ycm_server_python_interpreter="/usr/bin/python"
 let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
 
 """"""""" [F]ast Fold
