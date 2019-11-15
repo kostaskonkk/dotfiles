@@ -5,10 +5,11 @@ export ROS_WORKSPACE=/home/kostas/datmo_ws
 alias datmo_='cd ~/datmo_ws/src/datmo'
 alias vdatmo='vim -S ~/datmo_ws/src/datmo/.datmo.vim'
 alias t='roslaunch datmo test.launch'
+alias ts=' roslaunch datmo sim_test.launch'
 alias to='roslaunch odometry test.launch'
 alias lshape='mupdf ~/report/papers/L-Shape.pdf'
 
-alias datmo_compile='cd ~/datmo_ws && find  src/datmo/src/ -ignore_readdir_race |entr catkin_make -DCATKIN_WHITELIST_PACKAGES=datmo'
+alias datmo_compile='cd ~/datmo_ws && find  src/datmo/src/ -ignore_readdir_race |entr catkin_make -DCATKIN_WHITELIST_PACKAGES=datmo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
 alias localization_compile='cd ~/datmo_ws && find  src/localization/src/ -ignore_readdir_race |entr -p catkin_make -DCATKIN_WHITELIST_PACKAGES=localization'
 ###################### OS [S]pecifics ##########################
 if [[ $OSTYPE == darwin* ]]; then
@@ -139,5 +140,4 @@ alias baars=' m ~/report/papers/delft/baars2018modelling.pdf'
 #alias car=' cd ~/datmo_ws/src/car_demo-master/car_demo/'
 alias sim='roslaunch car_demo sim.launch'
 alias vevo=' vim -S .evo.vim'
-#alias st=' roslaunch datmo sim_test.launch'
 alias rp=' cd ~/report/papers/'

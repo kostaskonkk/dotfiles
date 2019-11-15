@@ -19,7 +19,8 @@ set shell=/bin/bash "sets shell to bash, because fish causes some problems
 set wildignore=*.pdf
 set splitright
 
-
+let g:ale_c_build_dir = 'build'
+let g:ale_linters = {'cpp': ['g++']}
 
 "[U]LTISNIPS
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -143,7 +144,7 @@ au BufNewFile,BufRead *.log  set autoread
 au BufNewFile,BufRead *.log  au CursorHold * checktime
 
 """"""""" [Y]CM 
-let g:ycm_server_python_interpreter="/usr/bin/python"
+let g:ycm_server_python_interpreter="/usr/bin/python3"
 let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
 
 """"""""" [F]ast Fold
