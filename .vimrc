@@ -56,7 +56,7 @@ nnoremap Y y$
 let mapleader=" "     " leader is space and not \
 nnoremap <leader>u   :GundoToggle<CR> " toggle gundo
 "nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
-nnoremap <leader>t   :Start! roslaunch datmo test.launch
+nnoremap <leader>t   :Start! roslaunch datmo sim_test.launch <CR>
 nnoremap <leader>w   :w<CR>
 nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
@@ -130,6 +130,7 @@ autocmd BufNewFile,BufRead *.py
      \ set shiftwidth=4 |
      \ set textwidth=79 |
      \ set expandtab |
+"nnoremap <leader>l   :Dispatch! python3 ~/datmo_ws/src/evo/datmo_evaluation.py <CR>
      "\ set autoindent |
      "\ let b:dispatch = 'python3 ~/datmo_ws/src/evo/datmo_evaluation.py'
 
@@ -146,7 +147,7 @@ autocmd BufNewFile,BufRead *.log  set autoread
 autocmd BufNewFile,BufRead *.log  au CursorHold * checktime
 
 """"""""" [Y]CM 
-let g:ycm_server_python_interpreter="/usr/bin/python"
+let g:ycm_server_python_interpreter="/usr/bin/python3"
 let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
 
 """"""""" [F]ast Fold
@@ -208,6 +209,7 @@ Plug 'ron89/thesaurus_query.vim'
 Plug 'RRethy/vim-illuminate'
 Plug 'luochen1990/rainbow'
 Plug 'Raimondi/delimitMate'
+Plug 'chrisbra/csv.vim'
 if !has('macunix')
       Plug 'taketwo/vim-ros'
 endif

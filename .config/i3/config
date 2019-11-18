@@ -18,12 +18,12 @@ for_window [title="Gmail - Mozilla Firefox"] move scratchpad
 for_window [title="Thesaurus.com - Mozilla Firefox"] move scratchpad
 for_window [class="Matplotlib"] move workspace 3:Plots
 for_window [class="rviz"] move workspace 3:Plots
-for_window [class="MuPDF" title="rachman2017MOT.pdf"] move workspace 4:Papers
-#for_window [class="MuPDF" title="kim2018shape.pdf"] move workspace 4:Papers
+for_window [class="zathura" title="rachman2017MOT.pdf"] move workspace 4:Papers
+for_window [class="zathura" title="kim2018shape.pdf"] move workspace 4:Papers
 for_window [class="gazebo"] move workspace 5
 for_window [title="Execution Time"] move workspace 6
 for_window [class="St" title="report"] move workspace 9:Report
-for_window [class="spotify" title="Spotify Premium"] move workspace 10:Music
+for_window [class="spotify"] move workspace 10:Music
 
 exec_always --no-startup-id "zathura ~/report/papers/delft/rachman2017MOT.pdf"
 exec_always --no-startup-id "mupdf ~/report/papers/kim2018shape.pdf"
@@ -32,11 +32,6 @@ exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
 exec_always st -T 'report' -e vim -S /home/kostas/report/.report.vim
 #exec_always --no-startup-id st -e cava
 #exec_always --no-startup-id st -e alsamixer
-
-
-
-#exec_always st -T 'literature' -e vim -S /home/kostas/literature/.literature.vim
-#for_window [class="St" title="literature"] move workspace 9:Literature
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
