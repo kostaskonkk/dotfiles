@@ -16,17 +16,17 @@ for_window [class="St" title="todo.md"] move scratchpad
 for_window [title="Google Translate - Mozilla Firefox"] move scratchpad
 for_window [title="Gmail - Mozilla Firefox"] move scratchpad
 for_window [title="Thesaurus.com - Mozilla Firefox"] move scratchpad
-for_window [class="Matplotlib"] move workspace 3:Plots
-for_window [class="rviz"] move workspace 3:Plots
-for_window [class="zathura" title="rachman2017MOT.pdf"] move workspace 4:Papers
-for_window [class="zathura" title="kim2018shape.pdf"] move workspace 4:Papers
-for_window [class="gazebo"] move workspace 5
+for_window [class="Matplotlib"] move workspace 5
+for_window [class="rviz"] move workspace 5
+for_window [class="gazebo"] move workspace 6
 for_window [title="Execution Time"] move workspace 6
 for_window [class="St" title="report"] move workspace 9:Report
 for_window [class="spotify"] move workspace 10:Music
 
 exec_always --no-startup-id "zathura ~/report/papers/delft/rachman2017MOT.pdf"
-exec_always --no-startup-id "mupdf ~/report/papers/kim2018shape.pdf"
+exec_always --no-startup-id "zathura ~/report/papers/kim2018shape.pdf"
+for_window [class="zathura" title="rachman2017MOT.pdf"] move workspace 4:Papers
+for_window [class="zathura" title="kim2018shape.pdf"] move workspace 4:Papers
 exec_always --no-startup-id "spotify"
 exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
 exec_always st -T 'report' -e vim -S /home/kostas/report/.report.vim

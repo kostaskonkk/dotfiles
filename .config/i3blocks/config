@@ -6,6 +6,8 @@ markup=pango
 #label=📰
 #interval=once
 #signal=6
+[tex_counter]
+interval=3
 
 [ip-address]
 interval=30
@@ -48,9 +50,10 @@ signal=12
 command=battery BAT0
 interval=5
 
+[internet]
+interval=10
+
 [clock]
 label=📅
 interval=30
 
-[internet]
-interval=10
