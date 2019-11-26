@@ -7,7 +7,7 @@ markup=pango
 #interval=once
 #signal=6
 [tex_counter]
-interval=3
+interval=500
 
 [ip-address]
 interval=30
