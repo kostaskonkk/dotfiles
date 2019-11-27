@@ -14,7 +14,20 @@ set shell=/bin/bash "sets shell to bash, because fish causes some problems
  set incsearch  " search as characters are entered 
  set nohlsearch " Don't continue to highlight searched phrases  
  set incsearch  " But do highlight as you type your search. 
- 
+
+ " Search for visually selected text, forwards or backwards.
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
 " BASIC 
 set wildignore=*.pdf
 set splitright
@@ -56,7 +69,7 @@ nnoremap Y y$
 let mapleader=" "     " leader is space and not \
 nnoremap <leader>u   :GundoToggle<CR> " toggle gundo
 "nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
-nnoremap <leader>t   :Start! roslaunch datmo sim_test.launch <CR>
+nnoremap <leader>t   :Start! roslaunch datmo test.launch <CR>
 nnoremap <leader>w   :w<CR>
 nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
@@ -110,7 +123,9 @@ nmap <C-l> <C-w>l
 "nmap <C-K> <C-w>K
 "nmap <C-L> <C-w>L
 
-" ROS INDENTATION
+"hi cCustomFunc  gui=bold guifg=yellowgreen
+"hi cCustomClass gui=reverse guifg=#00FF00
+
 autocmd BufNewFile,BufRead *.cpp,*.h,*.hpp
      \ set shiftwidth=2 | " Two space indents
      \ set tabstop=2    | " Tab key indents two spaces at a time
@@ -147,7 +162,7 @@ autocmd BufNewFile,BufRead *.log  set autoread
 autocmd BufNewFile,BufRead *.log  au CursorHold * checktime
 
 """"""""" [Y]CM 
-let g:ycm_server_python_interpreter="/usr/bin/python3"
+let g:ycm_server_python_interpreter="/usr/bin/python"
 let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
 
 """"""""" [F]ast Fold
@@ -198,7 +213,7 @@ Plug 'sjl/gundo.vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' 
 Plug 'morhetz/gruvbox' 
 Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
 Plug 'kostaskonkk/texconceal'
 Plug 'lervag/vimtex' 
 Plug 'Konfekt/FastFold'
