@@ -15,6 +15,12 @@ set shell=/bin/bash "sets shell to bash, because fish causes some problems
  set nohlsearch " Don't continue to highlight searched phrases  
  set incsearch  " But do highlight as you type your search. 
 
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
  " Search for visually selected text, forwards or backwards.
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 vnoremap <silent> * :<C-U>
@@ -69,7 +75,7 @@ nnoremap Y y$
 let mapleader=" "     " leader is space and not \
 nnoremap <leader>u   :GundoToggle<CR> " toggle gundo
 "nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
-nnoremap <leader>t   :Start! roslaunch datmo test.launch <CR>
+nnoremap <leader>t   :Start! roslaunch datmo sim_test.launch <CR>
 nnoremap <leader>w   :w<CR>
 nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
@@ -162,7 +168,7 @@ autocmd BufNewFile,BufRead *.log  set autoread
 autocmd BufNewFile,BufRead *.log  au CursorHold * checktime
 
 """"""""" [Y]CM 
-let g:ycm_server_python_interpreter="/usr/bin/python"
+let g:ycm_server_python_interpreter="/usr/bin/python3"
 let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
 
 """"""""" [F]ast Fold
@@ -225,6 +231,7 @@ Plug 'RRethy/vim-illuminate'
 Plug 'luochen1990/rainbow'
 Plug 'Raimondi/delimitMate'
 Plug 'chrisbra/csv.vim'
+Plug 'junegunn/vim-easy-align'
 if !has('macunix')
       Plug 'taketwo/vim-ros'
 endif
