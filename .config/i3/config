@@ -29,14 +29,14 @@ exec_always --no-startup-id "zathura ~/report/papers/kim2018shape.pdf"
 for_window [class="zathura" title="rachman2017MOT.pdf"] move workspace 4:Papers
 for_window [class="zathura" title="kim2018shape.pdf"] move workspace 4:Papers
 exec_always --no-startup-id "spotify"
-exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
+#exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
 exec_always st -T 'report' -e vim -S /home/kostas/report/.report.vim
 #exec_always --no-startup-id st -e cava
 #exec_always --no-startup-id st -e alsamixer
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
-exec_always ~/.screenlayout/std.sh
+exec_always ~/.screenlayout/paul.sh
 #exec --no-startup-id "i3-msg 'workspace 10:Music; append_layout /home/kostas/.config/i3/workspace-10.json'"
 
 hide_edge_borders smart
