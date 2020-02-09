@@ -42,10 +42,10 @@ let g:ale_c_build_dir = 'build'
 let g:ale_linters = {'cpp': ['g++']}
 
 "[U]LTISNIPS
-let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<C-k>"
 let g:UltiSnipsEditSplit="vertical" " :UltiSnipsEdit splits the window.
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+"let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-b>"
 if has('macunix')
 	let g:UltiSnipsSnippetDirectories = ['$HOME/.vim/ultisnips', 'UltiSnips']
 	let g:vimtex_view_method='skim'
@@ -56,6 +56,7 @@ endif
 
 " [C]OLOURS
 colorscheme gruvbox         " awesome colorscheme
+"colorscheme atom-dark         " awesome colorscheme
 "colorscheme molokai        " poppy  colorscheme
 set bg=dark
 let g:gruvbox_dark = 'hard'
@@ -74,8 +75,8 @@ nnoremap Y y$
 "[L]eader Mappings
 let mapleader=" "     " leader is space and not \
 nnoremap <leader>u   :GundoToggle<CR> " toggle gundo
-"nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
-nnoremap <leader>t   :Start! roslaunch datmo sim_test.launch <CR>
+nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
+"nnoremap <leader>t   :Start! roslaunch datmo sim_test.launch <CR>
 nnoremap <leader>w   :w<CR>
 nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
@@ -170,6 +171,7 @@ autocmd BufNewFile,BufRead *.log  au CursorHold * checktime
 """"""""" [Y]CM 
 let g:ycm_server_python_interpreter="/usr/bin/python3"
 let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
+let g:ycm_filepath_blacklist = {'python': 1}
 
 """"""""" [F]ast Fold
 let g:tex_fold_enabled = 1
@@ -219,7 +221,7 @@ Plug 'sjl/gundo.vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' 
 Plug 'morhetz/gruvbox' 
 Plug 'PotatoesMaster/i3-vim-syntax'
-"Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
 Plug 'kostaskonkk/texconceal'
 Plug 'lervag/vimtex' 
 Plug 'Konfekt/FastFold'
@@ -232,6 +234,8 @@ Plug 'luochen1990/rainbow'
 Plug 'Raimondi/delimitMate'
 Plug 'chrisbra/csv.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'davidhalter/jedi-vim'
+
 if !has('macunix')
       Plug 'taketwo/vim-ros'
 endif
