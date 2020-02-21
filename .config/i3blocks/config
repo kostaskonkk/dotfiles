@@ -2,27 +2,19 @@ command=~/.local/bin/statusbar/$BLOCK_NAME
 separator_block_width=15
 markup=pango
 
-#[news]
-#label=📰
-#interval=once
-#signal=6
-[tex_counter]
-interval=500
+[disk]
+interval=60
+command=disk /home 🏠
+
+/*[tex_counter]*/
+/*interval=60*/
 
 [ip-address]
 interval=30
 
-[disk]
-interval=60
-command=disk /
-
 #[disk]
 #interval=60
-#command=disk /home 🏠
-
-[torrent]
-interval=20
-signal=7
+#command=disk /
 
 [weather]
 interval=18000
