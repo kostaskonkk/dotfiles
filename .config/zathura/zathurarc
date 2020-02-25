@@ -1,7 +1,0 @@
-set selection-clipboard clipboard
-set synctex true
-set default-bg "#282828"
-set default-fg \#ebdbb2
-set statusbar-bg \#7c6f64
-set statusbar-fg \#1d2021
-set statusbar-home-tilde true

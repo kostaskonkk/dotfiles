@@ -92,6 +92,8 @@ fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# fixes vim warning erros
+export LC_ALL=en_US.UTF-8
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
