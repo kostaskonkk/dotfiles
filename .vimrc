@@ -177,6 +177,7 @@ let g:ycm_filepath_blacklist = {'python': 1}
 let g:tex_fold_enabled = 1
 let g:xml_syntax_folding = 1
 let g:fastfold_savehook = 1
+let g:markdown_folding = 1
 
 """"""""" La[T]ex vimtex 
 let g:vimtex_fold_enabled = 1
@@ -228,13 +229,14 @@ Plug 'Konfekt/FastFold'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'w0rp/ale'
 Plug 'ron89/thesaurus_query.vim'
-"Plug 'vimwiki/vimwiki'
 Plug 'RRethy/vim-illuminate'
 Plug 'luochen1990/rainbow'
 Plug 'Raimondi/delimitMate'
 Plug 'chrisbra/csv.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'davidhalter/jedi-vim'
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
 
 if !has('macunix')
       Plug 'taketwo/vim-ros'
