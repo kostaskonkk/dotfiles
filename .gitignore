@@ -33,6 +33,7 @@
 .vim/plugged/
 .viminfo
 .virtualenvs
+.config/fish/fish_variables
 Desktop/
 Documents/
 Downloads/

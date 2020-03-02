@@ -1,5 +1,8 @@
 fish_vi_key_bindings
 
+set fish_greeting
+export LC_ALL=en_US.UTF-8
+
 # GIT
 abbr g 'git'
 abbr ga 'git add'
