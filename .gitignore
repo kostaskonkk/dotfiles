@@ -29,6 +29,7 @@
 .vim/.netrwhist
 .vim/autoload/
 .vim/colors/
+.vim/undo
 .vim/plugged/
 .viminfo
 .virtualenvs
