@@ -1,5 +1,6 @@
 ctrl - return : open -na /Applications/kitty.app
 ctrl + cmd - f : open -na /Applications/firefox.app 
+ctrl - q : yabai -m window --close
 
 # ############################################################### #
 # THE FOLLOWING SECTION CONTAIN SIMPLE MAPPINGS DEMONSTRATING HOW #
@@ -8,10 +9,26 @@ ctrl + cmd - f : open -na /Applications/firefox.app
 # ############################################################### #
 
 # focus window
- ctrl - h : yabai -m window --focus west
+ #ctrl - h : yabai -m window --focus west
  ctrl - j : yabai -m window --focus south
  ctrl - k : yabai -m window --focus north
- ctrl - l : yabai -m window --focus east
+ #ctrl - l : yabai -m window --focus east
+
+# cycle forward
+ctrl -l : yabai -m window --focus next \
+    || yabai -m window --focus "$( \
+	(yabai -m query --spaces --display next || yabai -m query --spaces --display first) \
+	    | jq -re '.[] | select(.visible == 1)."first-window"')" \
+    || yabai -m display --focus next \
+    || yabai -m display --focus first
+
+# cycle backwards
+ctrl - h : yabai -m window --focus prev \
+    || yabai -m window --focus "$( \
+        (yabai -m query --spaces --display prev || yabai -m query --spaces --display last) \
+            | jq -re '.[] | select(.visible == 1)."last-window"')" \
+    || yabai -m display --focus prev \
+    || yabai -m display --focus last
 
 # swap managed window
  ctrl + cmd - h : yabai -m window --swap west
