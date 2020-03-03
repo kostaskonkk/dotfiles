@@ -34,6 +34,7 @@
 .viminfo
 .virtualenvs
 .config/fish/fish_variables
+.config/omf
 Desktop/
 Documents/
 Downloads/
