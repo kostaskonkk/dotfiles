@@ -20,7 +20,7 @@ fi
 
 ###################### [E]vo ###########################
 alias evo='cd ~/datmo_ws/src/evo'
-alias run='cd ~/datmo_ws/src/evo && find -name "*.py" | entr python3 datmo_evaluation.py'
+alias run='cd ~/datmo_ws/src/evo && find -name "*.py" | entr -d -c python3 datmo_evaluation.py'
 
 ######################## [G]eneral ##############################
 alias cp='cp -iv'                 # Preferred 'cp' implementation
