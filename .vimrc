@@ -63,10 +63,10 @@ let g:gruvbox_dark = 'hard'
 let g:gruvbox_light= 'hard'
 let g:airline_theme='gruvbox'
 " set Vim-specific sequences for RGB colors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
-set t_Co=256
+"set t_Co=256
 let g:rainbow_active = 1     " parentheses of different colors
 let g:Illuminate_delay = 300
 
@@ -74,9 +74,9 @@ let g:Illuminate_delay = 300
 nnoremap Y y$
 "[L]eader Mappings
 let mapleader=" "     " leader is space and not \
+nnoremap <leader>f   :Start python3 recognize.py -i tu_friens.jpg<CR>
 nnoremap <leader>u   :GundoToggle<CR> " toggle gundo
 nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
-"nnoremap <leader>t   :Start! roslaunch datmo sim_test.launch <CR>
 nnoremap <leader>w   :w<CR>
 nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
@@ -96,6 +96,7 @@ nnoremap <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
 nnoremap <leader>b   :ls<CR>:b<Space>
 nnoremap <leader>v   :ls<CR>:vsplit<Space>
 nnoremap <leader>s   :ls<CR>:split<Space>
+nmap     <leader>n :NERDTreeToggle<CR> 
 "nmap <leader>b :Buffers<CR>
 "nmap <Leader>t :Files<CR>
 "nmap <Leader>r :Tags<CR>
@@ -116,22 +117,19 @@ nnoremap <leader>gb :Git branch<Space>
 nnoremap <leader>go :Git checkout<Space>
 nnoremap <leader>gps :Dispatch! git push<CR>
 nnoremap <leader>gpl :Dispatch! git pull<CR>
-
-"map <C-n> :NERDTreeToggle<CR> 
+"Windows view 
+nmap <leader>h <C-w>h
+nmap <leader>j <C-w>j
+nmap <leader>k <C-w>k
+nmap <leader>l <C-w>l
 
 "Control Shortcuts
-"Windows view with just control
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
 "nmap <C-H> <C-w>H
 "nmap <C-J> <C-w>J
 "nmap <C-K> <C-w>K
 "nmap <C-L> <C-w>L
-
-"hi cCustomFunc  gui=bold guifg=yellowgreen
-"hi cCustomClass gui=reverse guifg=#00FF00
+autocmd BufWinEnter *.vimrc
+    \ nmap <leader>s :source ~/.vimrc<CR>
 
 autocmd BufNewFile,BufRead *.cpp,*.h,*.hpp
      \ set shiftwidth=2 | " Two space indents
@@ -152,9 +150,6 @@ autocmd BufNewFile,BufRead *.py
      \ set shiftwidth=4 |
      \ set textwidth=79 |
      \ set expandtab |
-"nnoremap <leader>l   :Dispatch! python3 ~/datmo_ws/src/evo/datmo_evaluation.py <CR>
-     "\ set autoindent |
-     "\ let b:dispatch = 'python3 ~/datmo_ws/src/evo/datmo_evaluation.py'
 
 autocmd BufNewFile,BufRead *.tex
      \ set wrap linebreak nolist |
@@ -169,7 +164,7 @@ autocmd BufNewFile,BufRead *.log  set autoread
 autocmd BufNewFile,BufRead *.log  au CursorHold * checktime
 
 """"""""" [Y]CM 
-let g:ycm_server_python_interpreter="/usr/local/bin/python3.7"
+let g:ycm_server_python_interpreter="/usr/local/Cellar/python/3.7.6_1/bin/python3.7"
 let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
 let g:ycm_filepath_blacklist = {'python': 1}
 
@@ -186,7 +181,6 @@ if !exists('g:ycm_semantic_triggers')
   let g:ycm_semantic_triggers = {}
 endif
 au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
-"let g:tex_flavor='latex'
 let g:tex_flavor='pdflatex'
 let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg' "concealment
@@ -195,11 +189,6 @@ let g:vimtex_indent_enabled=1
 let g:vimtex_indent_bib_enabled=1
 let g:vimtex_indent_on_ampersands=1
 
-"""""""Thesaurus
-let g:tq_map_keys = 0
-nnoremap <Leader>, :ThesaurusQueryReplaceCurrentWord<CR> 
-
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'mediawiki', 'ext': '.md'}]
 
 """"""""" [P]lugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -228,7 +217,6 @@ Plug 'lervag/vimtex'
 Plug 'Konfekt/FastFold'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'w0rp/ale'
-Plug 'ron89/thesaurus_query.vim'
 Plug 'RRethy/vim-illuminate'
 Plug 'luochen1990/rainbow'
 Plug 'Raimondi/delimitMate'
@@ -238,30 +226,4 @@ Plug 'davidhalter/jedi-vim'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 
-if !has('macunix')
-      Plug 'taketwo/vim-ros'
-endif
-
 call plug#end() " Initialize plugin system
-
-function! OpenBibtexPDF()
-    let s:word = expand("<cword>")
-    let s:cmd = "silent !setsid mupdf `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
-    execute s:cmd
-endfunction 
-nnoremap <silent> <leader>r :call OpenZathuraPDF()<cr>
-
-function! OpenZathuraPDF()
-    let s:word = expand("<cword>")
-    let s:cmd = "silent !setsid zathura `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
-    execute s:cmd
-endfunction 
-nnoremap <silent> <leader>z :call OpenZathuraPDF()<cr>
-
-function! OpenEvincePDF()
-    let s:word = expand("<cword>")
-    let s:cmd = "silent !setsid evince `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
-    execute s:cmd
-endfunction 
-nnoremap <silent> <leader>e :call OpenEvincePDF()<cr>
-
