@@ -45,7 +45,7 @@ alias s='source ~/.bashrc'
 alias path='echo -e ${PATH//:/\\n}'
 alias cal='ncal -MC3'
 #cd() { builtin cd "$@"; ll; }    # Always list dir contents after 'cd'
-alias ll='ls -FGlAhp --time-style=+"%d-%m-%y %H:%M"'
+alias ll='ls -FGlAhp --time-style=+"%d/%m/%y %H:%M"'
 alias la='ls -A'
 alias l='ls -CF'
 alias vs='vim -S'
@@ -110,7 +110,6 @@ alias notes_car='vim ~/Dropbox/report/notes/car.md'
 
 #alias malias="history | tail -n2 | head -n1 | awk '{$1="";=print $0}' | alias_maker"
 alias malias='history | tail -n2 | head -n1 | alias_maker'
-alias mat='cd ~/Dropbox/path_following && matlab  && cd -'
 alias cc='xclip -selection clipboard'
 alias pc='xclip -o -selection clipboard'
 
