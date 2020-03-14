@@ -1,12 +1,7 @@
 ctrl - return : open -na /Applications/kitty.app
 ctrl + cmd - f : open -na /Applications/firefox.app 
 ctrl - q : yabai -m window --close
-
-# ############################################################### #
-# THE FOLLOWING SECTION CONTAIN SIMPLE MAPPINGS DEMONSTRATING HOW #
-# TO INTERACT WITH THE YABAI WM. THESE ARE SUPPOSED TO BE USED AS #
-# A REFERENCE ONLY, WHEN MAKING YOUR OWN CONFIGURATION..          #
-# ############################################################### #
+#ctrl - q : osascript -e 'tell application "System Events" to perform action "AXPress" of (first button whose subrole is "AXCloseButton") of (first window whose subrole is "AXStandardWindow") of (first process whose frontmost is true)'
 
 # focus window
  #ctrl - h : yabai -m window --focus west

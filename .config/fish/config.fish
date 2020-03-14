@@ -2,6 +2,7 @@ fish_vi_key_bindings
 
 set fish_greeting
 export LC_ALL=en_US.UTF-8
+eval (python3 -m virtualfish)
 
 set -g theme_display_git no
 set -g theme_display_git_dirty yes

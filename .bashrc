@@ -118,7 +118,7 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# virtualenv and virtualenvwrapper
-#export WORKON_HOME=$HOME/.virtualenvs
-#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-#source /usr/local/bin/virtualenvwrapper.sh
+ #virtualenv and virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+source /usr/local/bin/virtualenvwrapper.sh
