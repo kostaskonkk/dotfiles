@@ -63,10 +63,10 @@ let g:gruvbox_dark = 'hard'
 let g:gruvbox_light= 'hard'
 let g:airline_theme='gruvbox'
 " set Vim-specific sequences for RGB colors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
-set t_Co=256
+"set t_Co=256
 let g:rainbow_active = 1     " parentheses of different colors
 let g:Illuminate_delay = 300
 
@@ -96,6 +96,7 @@ nnoremap <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
 nnoremap <leader>b   :ls<CR>:b<Space>
 nnoremap <leader>v   :ls<CR>:vsplit<Space>
 nnoremap <leader>s   :ls<CR>:split<Space>
+nmap     <leader>n :NERDTreeToggle<CR> 
 "nmap <leader>b :Buffers<CR>
 "nmap <Leader>t :Files<CR>
 "nmap <Leader>r :Tags<CR>
@@ -116,8 +117,11 @@ nnoremap <leader>gb :Git branch<Space>
 nnoremap <leader>go :Git checkout<Space>
 nnoremap <leader>gps :Dispatch! git push<CR>
 nnoremap <leader>gpl :Dispatch! git pull<CR>
-
-"map <C-n> :NERDTreeToggle<CR> 
+"Windows view 
+nmap <leader>h <C-w>h
+nmap <leader>j <C-w>j
+nmap <leader>k <C-w>k
+nmap <leader>l <C-w>l
 
 "Control Shortcuts
 "Windows view with just control
@@ -129,9 +133,8 @@ nmap <C-l> <C-w>l
 "nmap <C-J> <C-w>J
 "nmap <C-K> <C-w>K
 "nmap <C-L> <C-w>L
-
-"hi cCustomFunc  gui=bold guifg=yellowgreen
-"hi cCustomClass gui=reverse guifg=#00FF00
+autocmd BufWinEnter *.vimrc
+    \ nmap <leader>s :source ~/.vimrc<CR>
 
 autocmd BufNewFile,BufRead *.cpp,*.h,*.hpp
      \ set shiftwidth=2 | " Two space indents
@@ -177,6 +180,7 @@ let g:ycm_filepath_blacklist = {'python': 1}
 let g:tex_fold_enabled = 1
 let g:xml_syntax_folding = 1
 let g:fastfold_savehook = 1
+let g:markdown_folding = 1
 
 """"""""" La[T]ex vimtex 
 let g:vimtex_fold_enabled = 1
@@ -185,7 +189,6 @@ if !exists('g:ycm_semantic_triggers')
   let g:ycm_semantic_triggers = {}
 endif
 au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
-"let g:tex_flavor='latex'
 let g:tex_flavor='pdflatex'
 let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg' "concealment
@@ -194,11 +197,6 @@ let g:vimtex_indent_enabled=1
 let g:vimtex_indent_bib_enabled=1
 let g:vimtex_indent_on_ampersands=1
 
-"""""""Thesaurus
-let g:tq_map_keys = 0
-nnoremap <Leader>, :ThesaurusQueryReplaceCurrentWord<CR> 
-
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'mediawiki', 'ext': '.md'}]
 
 """"""""" [P]lugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -227,18 +225,15 @@ Plug 'lervag/vimtex'
 Plug 'Konfekt/FastFold'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'w0rp/ale'
-Plug 'ron89/thesaurus_query.vim'
-"Plug 'vimwiki/vimwiki'
 Plug 'RRethy/vim-illuminate'
 Plug 'luochen1990/rainbow'
 Plug 'Raimondi/delimitMate'
 Plug 'chrisbra/csv.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'davidhalter/jedi-vim'
-
-if !has('macunix')
-      Plug 'taketwo/vim-ros'
-endif
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
+Plug 'taketwo/vim-ros'
 
 call plug#end() " Initialize plugin system
 
