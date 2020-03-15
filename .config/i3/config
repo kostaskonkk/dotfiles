@@ -90,10 +90,8 @@ exec --no-startup-id compton
 #exec --no-startup-id i3-msg "workspace 2:Datmo; exec st -e vim -S /home/kostas/datmo_ws/src/datmo/.datmo.vim"
 
 # Keyboard man xkeyboard-config
-exec setxkbmap -layout us,gr -option 'grp:alt_shift_toggle' 
-exec --no-startup-id xmodmap ~/.Xmodmap
-#exec xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-#exec setxkbmap -layout us,gr -option 'grp:caps_toggle' -option 'grp:switch'
+# Examples of remappings can be found in /usr/share/X11/xkb/rules/xorg.lst
+exec setxkbmap -layout us,gr -option 'grp:win_space_toggle' -option 'ctrl:swap_lalt_lctl_lwin' -option 'caps:escape'
 
 
 # change focus
