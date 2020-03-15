@@ -63,8 +63,8 @@ let g:gruvbox_dark = 'hard'
 let g:gruvbox_light= 'hard'
 let g:airline_theme='gruvbox'
 " set Vim-specific sequences for RGB colors
-"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 "set t_Co=256
 let g:rainbow_active = 1     " parentheses of different colors
@@ -76,7 +76,6 @@ nnoremap Y y$
 let mapleader=" "     " leader is space and not \
 nnoremap <leader>u   :GundoToggle<CR> " toggle gundo
 nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
-"nnoremap <leader>t   :Start! roslaunch datmo sim_test.launch <CR>
 nnoremap <leader>w   :w<CR>
 nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
