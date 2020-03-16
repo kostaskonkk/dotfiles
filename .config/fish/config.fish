@@ -1,5 +1,5 @@
 fish_vi_key_bindings
-source /opt/ros/melodic/share/rosbash/rosfish
+
 # GIT
 abbr g 'git'
 abbr ga 'git add'
