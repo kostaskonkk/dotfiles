@@ -1,3 +1,4 @@
+set fish_greeting #removes greeting
 fish_vi_key_bindings
 
 # GIT
