@@ -1,2 +1,13 @@
 /**
+!.aliases
+!.bashrc
+!.gitconfig
 !.gitignore
+!.latexmkrc
+!.vimrc
+
+!.config
+!.config/**
+!.config/kitty/kitty.conf
+!.local
+!.local/**
