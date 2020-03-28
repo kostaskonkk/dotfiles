@@ -12,32 +12,28 @@ font pango:monospace 16
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-#for_window [class="St" title="todo.md"] move scratchpad
+# find windows name with xprop
 for_window [title="Google Translate - Mozilla Firefox"] move scratchpad
-#for_window [title="Gmail - Mozilla Firefox"] move scratchpad
 for_window [title="Thesaurus.com - Mozilla Firefox"] move scratchpad
 for_window [class="Matplotlib"] move workspace 5
 for_window [class="rviz"] move workspace 5
 for_window [class="gazebo"] move workspace 6
-#for_window [title="Execution Time"] move workspace 6
-#for_window [class="Tk"] move workspace 3:Plots
-#for_window [class="St" title="report"] move workspace 9:Report
-for_window [class="spotify"] move workspace 10:Music
+for_window [class="Spotify"] move workspace 10:🎵Music🎵
 
-#exec_always --no-startup-id "zathura ~/report/papers/delft/rachman2017MOT.pdf"
-#exec_always --no-startup-id "zathura ~/report/papers/kim2018shape.pdf"
-#for_window [class="zathura" title="rachman2017MOT.pdf"] move workspace 4:Papers
-#for_window [class="zathura" title="kim2018shape.pdf"] move workspace 4:Papers
+gaps inner 10
+gaps outer 10
+
 exec_always --no-startup-id "spotify"
 #exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
-#exec_always st -T 'report' -e vim -S /home/kostas/report/.report.vim
 #exec_always --no-startup-id st -e cava
 #exec_always --no-startup-id st -e alsamixer
+exec_always kitty
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
-exec_always ~/.screenlayout/std.sh
-#exec --no-startup-id "i3-msg 'workspace 10:Music; append_layout /home/kostas/.config/i3/workspace-10.json'"
+exec --no-startup-id picom &
+#exec_always --no-startup-id sh ~/.screenlayout/std.sh
+exec_always --no-startup-id sh ~/.fehbg
 
 hide_edge_borders smart
 set $mod Control
@@ -49,7 +45,7 @@ set $left h
 set $right l
 
 bar {
-	font pango:mono 10
+	font pango:mono 12
 	status_command i3blocks
 	#status_command i3status
 	#tray_output primary
@@ -59,32 +55,39 @@ bar {
 }
 new_window pixel 4 
 
+bindsym $mod+F1 exec --no-startup-id echo "😜" | tr -d '\n' | xclip -selection primary && xdotool key Shift+Insert
+bindsym $mod+F2 exec --no-startup-id echo "😆" | tr -d '\n' | xclip -selection primary
+#bindsym $mod+F1 exec 
+#bindsym $mod+F2 exec dmenu_run 
+#bindsym $mod+F3 exec dmenu_run 
+#bindsym $mod+F4 exec dmenu_run 
+#bindsym $mod+F5 exec dmenu_run 
+#bindsym $mod+F6 exec dmenu_run 
+#bindsym $mod+F6 exec dmenu_run 
+
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start applications
 bindsym $mod+$mod2+f exec firefox
-bindsym $mod+Return exec st
+bindsym $mod+Return exec kitty
 bindsym $mod+d exec dmenu_run 
 bindsym $mod+$mod2+w exec firefox https://web.whatsapp.com
 bindsym $mod+$mod2+m exec firefox https://messenger.com
 bindsym $mod+$mod2+t exec firefox https://translate.google.com
 bindsym $mod+s sticky toggle
  
-
 # kill focused window
 bindsym $mod+$mod2+q kill
 
   
 exec firefox
-exec xrandr --auto
+#exec xrandr --auto
 
 # Wifi Icon
 exec --no-startup-id nm-applet
-
-exec --no-startup-id dropbox start
-exec --no-startup-id compton 
+#exec --no-startup-id dropbox start
 #exec --no-startup-id i3-msg workspace 3:Plots
 #exec --no-startup-id i3-msg exec st -e vim -S /home/kostas/datmo_ws/src/evo/.evo.vim
 #exec --no-startup-id i3-msg "workspace 2:Datmo; exec st -e vim -S /home/kostas/datmo_ws/src/datmo/.datmo.vim"
@@ -93,6 +96,9 @@ exec --no-startup-id compton
 # Examples of remappings can be found in /usr/share/X11/xkb/rules/xorg.lst
 exec setxkbmap -layout us,gr -option 'grp:win_space_toggle' -option 'ctrl:swap_lalt_lctl_lwin' -option 'caps:escape'
 
+
+# bindsym $mod+BackSpace
+bindsym $mod+$mod2+BackSpace	exec --no-startup-id prompt "Reboot computer?" "$reboot"
 
 # change focus
 bindsym $mod+$left focus left
@@ -169,7 +175,7 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7:Inkscape
 bindsym $mod+8 workspace 8:Evaluation
 bindsym $mod+9 workspace 9:Report
-bindsym $mod+0 workspace 10:Music
+bindsym $mod+0 workspace 10:🎵Music🎵
 
 # move focused container to workspace
 bindsym $mod+$mod2+1 move container to workspace 1:Firefox
@@ -181,7 +187,7 @@ bindsym $mod+$mod2+6 move container to workspace 6
 bindsym $mod+$mod2+7 move container to workspace 7:Inkscape
 bindsym $mod+$mod2+8 move container to workspace 8:Evaluation
 bindsym $mod+$mod2+9 move container to workspace 9:Report
-bindsym $mod+$mod2+0 move container to workspace 10:Music
+bindsym $mod+$mod2+0 move container to workspace 10:🎵Music🎵
 
 # reload the configuration file
 bindsym $mod+$mod2+c reload
@@ -189,8 +195,14 @@ bindsym $mod+$mod2+c reload
 bindsym $mod+$mod2+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+$mod2+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# Shutdown the computer
 
 # [R]esize
+bindsym $mod+u	exec i3resize left
+bindsym $mod+i	exec i3resize up
+bindsym $mod+o	exec i3resize down
+bindsym $mod+p	exec i3resize right
+
 bindsym $mod+r mode "resize" 
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
