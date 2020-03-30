@@ -27,7 +27,7 @@ exec_always --no-startup-id "spotify"
 #exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
 #exec_always --no-startup-id st -e cava
 #exec_always --no-startup-id st -e alsamixer
-exec_always kitty
+#exec_always kitty
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
@@ -55,16 +55,8 @@ bar {
 }
 new_window pixel 4 
 
-bindsym $mod+F1 exec --no-startup-id echo "😜" | tr -d '\n' | xclip -selection primary && xdotool key Shift+Insert
-bindsym $mod+F2 exec --no-startup-id echo "😆" | tr -d '\n' | xclip -selection primary
-#bindsym $mod+F1 exec 
-#bindsym $mod+F2 exec dmenu_run 
-#bindsym $mod+F3 exec dmenu_run 
-#bindsym $mod+F4 exec dmenu_run 
-#bindsym $mod+F5 exec dmenu_run 
-#bindsym $mod+F6 exec dmenu_run 
-#bindsym $mod+F6 exec dmenu_run 
-
+#bindsym $mod+F1 exec --no-startup-id echo "😜" | tr -d '\n' | xclip -selection primary && xdotool key Shift+Insert
+#bindsym $mod+F2 exec --no-startup-id echo "😆" | tr -d '\n' | xclip -selection primary
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -83,14 +75,11 @@ bindsym $mod+$mod2+q kill
 
   
 exec firefox
-#exec xrandr --auto
 
 # Wifi Icon
 exec --no-startup-id nm-applet
 #exec --no-startup-id dropbox start
 #exec --no-startup-id i3-msg workspace 3:Plots
-#exec --no-startup-id i3-msg exec st -e vim -S /home/kostas/datmo_ws/src/evo/.evo.vim
-#exec --no-startup-id i3-msg "workspace 2:Datmo; exec st -e vim -S /home/kostas/datmo_ws/src/datmo/.datmo.vim"
 
 # Keyboard man xkeyboard-config
 # Examples of remappings can be found in /usr/share/X11/xkb/rules/xorg.lst
