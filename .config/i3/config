@@ -55,6 +55,12 @@ bar {
 }
 new_window pixel 4 
 
+#F-keys shortcuts
+bindsym F9 exec playerctl play-pause
+bindsym F10 exec playerctl stop
+bindsym F11 exec playerctl previous
+bindsym F12 exec playerctl next
+
 #bindsym $mod+F1 exec --no-startup-id echo "😜" | tr -d '\n' | xclip -selection primary && xdotool key Shift+Insert
 #bindsym $mod+F2 exec --no-startup-id echo "😆" | tr -d '\n' | xclip -selection primary
 
