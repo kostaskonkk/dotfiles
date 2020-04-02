@@ -43,9 +43,11 @@ let g:ale_linters = {'cpp': ['g++']}
 
 "[U]LTISNIPS
 let g:UltiSnipsExpandTrigger="<C-k>"
+"let g:UltiSnipsExpandTrigger="<space-tab>"
 let g:UltiSnipsEditSplit="vertical" " :UltiSnipsEdit splits the window.
 "let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-b>"
+
 if has('macunix')
 	let g:UltiSnipsSnippetDirectories = ['$HOME/.vim/ultisnips', 'UltiSnips']
 	let g:vimtex_view_method='skim'
@@ -74,8 +76,6 @@ let g:Illuminate_delay = 300
 nnoremap Y y$
 "[L]eader Mappings
 let mapleader=" "     " leader is space and not \
-nnoremap <leader>u   :GundoToggle<CR> " toggle gundo
-nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
 nnoremap <leader>w   :w<CR>
 nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
@@ -90,12 +90,17 @@ nnoremap <Leader>p :set paste<CR>"+p:set nopaste<CR>
 nnoremap <Leader>P :set paste<CR>"+P:set nopaste<CR>
 vnoremap <Leader>p :set paste<CR>"+p:set nopaste<CR>
 vnoremap <Leader>P :set paste<CR>"+P:set nopaste<CR>
-vnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
 nnoremap <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
 nnoremap <leader>b   :ls<CR>:b<Space>
 nnoremap <leader>v   :ls<CR>:vsplit<Space>
 nnoremap <leader>s   :ls<CR>:split<Space>
-nmap     <leader>n :NERDTreeToggle<CR> 
+
+"Plugin Calls
+nnoremap <leader>nu   :GundoToggle<CR> " toggle gundo
+nnoremap <leader>nt   :TagbarToggle<CR> " toggle tagbar
+nmap     <leader>nn :NERDTreeToggle<CR> 
+nmap     <leader>ns :source ~/.vimrc<CR>
+
 "nmap <leader>b :Buffers<CR>
 "nmap <Leader>t :Files<CR>
 "nmap <Leader>r :Tags<CR>
@@ -132,8 +137,7 @@ nmap <C-l> <C-w>l
 "nmap <C-J> <C-w>J
 "nmap <C-K> <C-w>K
 "nmap <C-L> <C-w>L
-autocmd BufWinEnter *.vimrc
-    \ nmap <leader>s :source ~/.vimrc<CR>
+
 
 autocmd BufNewFile,BufRead *.cpp,*.h,*.hpp
      \ set shiftwidth=2 | " Two space indents
@@ -142,10 +146,9 @@ autocmd BufNewFile,BufRead *.cpp,*.h,*.hpp
      \ set cindent      | " Turn on automatic C-code indentation
      \ set foldmethod=syntax |
      \ set foldlevel=99
-
-
-" I should add badwhitespace also to cpp
-"highlight badwhitespace ctermbg=red guibg=red
+     \ set makeprg=cmake 
+	" I should add badwhitespace also to cpp
+	"highlight badwhitespace ctermbg=red guibg=red
 
 autocmd BufNewFile,BufRead *.py
      \ set foldmethod=indent |
@@ -163,6 +166,9 @@ autocmd BufNewFile,BufRead *.tex
      \ set spell spelllang=en_us |
      \ set tabstop=4    | " Tab key indents 4 spaces at a time
      \ set expandtab    | " Use spaces when the <Tab> key is pressed
+     \ nnoremap <silent> <leader>e :call OpenEvincePDF()<CR> |
+     \ nnoremap <silent> <leader>z :call OpenZathuraPDF()<CR> |
+     \ nnoremap <silent> <leader>r :call OpenZathuraPDF()<CR> |
 
 autocmd BufNewFile,BufRead *.md
      \ set filetype=markdown
@@ -230,9 +236,9 @@ Plug 'Raimondi/delimitMate'
 Plug 'chrisbra/csv.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'davidhalter/jedi-vim'
-Plug 'camspiers/animate.vim'
-Plug 'camspiers/lens.vim'
-Plug 'taketwo/vim-ros'
+"Plug 'camspiers/animate.vim'
+"Plug 'camspiers/lens.vim'
+"Plug 'taketwo/vim-ros'
 
 call plug#end() " Initialize plugin system
 
@@ -241,19 +247,16 @@ function! OpenBibtexPDF()
     let s:cmd = "silent !setsid mupdf `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
     execute s:cmd
 endfunction 
-nnoremap <silent> <leader>r :call OpenZathuraPDF()<cr>
 
 function! OpenZathuraPDF()
     let s:word = expand("<cword>")
     let s:cmd = "silent !setsid zathura `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
     execute s:cmd
 endfunction 
-nnoremap <silent> <leader>z :call OpenZathuraPDF()<cr>
 
 function! OpenEvincePDF()
     let s:word = expand("<cword>")
     let s:cmd = "silent !setsid evince `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
     execute s:cmd
 endfunction 
-nnoremap <silent> <leader>e :call OpenEvincePDF()<cr>
 
