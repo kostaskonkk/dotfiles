@@ -146,7 +146,7 @@ autocmd BufNewFile,BufRead *.cpp,*.h,*.hpp
      \ set cindent      | " Turn on automatic C-code indentation
      \ set foldmethod=syntax |
      \ set foldlevel=99
-     \ set makeprg=cmake 
+     \ set makeprg=make 
 	" I should add badwhitespace also to cpp
 	"highlight badwhitespace ctermbg=red guibg=red
 
