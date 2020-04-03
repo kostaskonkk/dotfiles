@@ -1,4 +1,4 @@
-/**
+/*
 !.aliases
 !.bashrc
 !.gitconfig
@@ -8,6 +8,23 @@
 
 !.config
 !.config/**
-!.config/kitty/kitty.conf
 !.local
 !.local/**
+!.vim/
+!.vim/**
+
+.vim/undo
+.vim/autoload
+.vim/plugged
+
+.config/guitarix/
+.config/htop/
+.config/omf/
+.config/picom/
+.config/pulse/
+.config/sinew.in/
+.config/spotify/
+.config/vlc/
+.config/Dharkael/
+.config/QtProject.conf
+.config/dconf/
