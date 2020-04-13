@@ -13,8 +13,8 @@ font pango:monospace 16
 #font pango:DejaVu Sans Mono 8
 
 # find windows name with xprop
-for_window [title="Google Translate - Mozilla Firefox"] move scratchpad
-for_window [title="Thesaurus.com - Mozilla Firefox"] move scratchpad
+#for_window [title="Google Translate - Mozilla Firefox"] move scratchpad
+#for_window [title="Thesaurus.com - Mozilla Firefox"] move scratchpad
 for_window [title="jobs"] move workspace 2:Jobs👨‍💻
 for_window [class="Matplotlib"] move workspace 5
 for_window [class="rviz"] move workspace 5
