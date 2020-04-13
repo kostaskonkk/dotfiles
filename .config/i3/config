@@ -15,19 +15,19 @@ font pango:monospace 16
 # find windows name with xprop
 for_window [title="Google Translate - Mozilla Firefox"] move scratchpad
 for_window [title="Thesaurus.com - Mozilla Firefox"] move scratchpad
+for_window [title="jobs"] move workspace 2:Jobs👨‍💻
 for_window [class="Matplotlib"] move workspace 5
 for_window [class="rviz"] move workspace 5
 for_window [class="gazebo"] move workspace 6
-for_window [class="Spotify"] move workspace 10:🎵Music🎵
+for_window [class="Spotify"] move workspace 10:Music🎵
 
 gaps inner 10
 gaps outer 10
 
-exec_always --no-startup-id "spotify"
+exec --no-startup-id "spotify"
 #exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
-#exec_always --no-startup-id st -e cava
+exec --no-startup-id "kitty -T 'jobs' -e vim ~/job-applications/letter.tex "
 #exec_always --no-startup-id st -e alsamixer
-#exec_always kitty
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
@@ -62,6 +62,8 @@ bindsym F11 exec playerctl previous
 bindsym F12 exec playerctl next
 
 #bindsym $mod+F1 exec --no-startup-id echo "😜" | tr -d '\n' | xclip -selection primary && xdotool key Shift+Insert
+#bindsym $mod+F1 exec xdotool sleep 0.2 type "😜" 
+#bindsym $mod+F2 exec xdotool sleep 0.2 type "😆"
 #bindsym $mod+F2 exec --no-startup-id echo "😆" | tr -d '\n' | xclip -selection primary
 
 # use Mouse+$mod to drag floating windows to their wanted position
@@ -146,10 +148,10 @@ bindsym $mod+$mod2+space move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 
-bindsym $mod+space [class="St" title="todo.md"] scratchpad show
-bindsym $mod+t [title="Google Translate - Mozilla Firefox"] scratchpad show
-bindsym $mod+y [title="Thesaurus.com - Mozilla Firefox"] scratchpad show
-bindsym $mod+g [title="Gmail - Mozilla Firefox"] scratchpad show
+#bindsym $mod+space [class="St" title="todo.md"] scratchpad show
+#bindsym $mod+t [title="Google Translate - Mozilla Firefox"] scratchpad show
+#bindsym $mod+y [title="Thesaurus.com - Mozilla Firefox"] scratchpad show
+#bindsym $mod+g [title="Gmail - Mozilla Firefox"] scratchpad show
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -161,28 +163,28 @@ bindsym $mod+b bar mode toggle
 
 # [W]orkspaces
 # switch to workspace
-bindsym $mod+1 workspace 1:Firefox
-bindsym $mod+2 workspace 2:Datmo
-bindsym $mod+3 workspace 3:Plots
-bindsym $mod+4 workspace 4:Papers
+bindsym $mod+1 workspace 1:Firefox🌐
+bindsym $mod+2 workspace 2:Jobs👨‍💻
+bindsym $mod+3 workspace 3:Plots📈
+bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7:Inkscape
-bindsym $mod+8 workspace 8:Evaluation
-bindsym $mod+9 workspace 9:Report
-bindsym $mod+0 workspace 10:🎵Music🎵
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10:Music🎵
 
 # move focused container to workspace
-bindsym $mod+$mod2+1 move container to workspace 1:Firefox
-bindsym $mod+$mod2+2 move container to workspace 2:Datmo
-bindsym $mod+$mod2+3 move container to workspace 3:Plots
+bindsym $mod+$mod2+1 move container to workspace 1:Firefox🌐
+bindsym $mod+$mod2+2 move container to workspace 2:Jobs👨‍💻
+bindsym $mod+$mod2+3 move container to workspace 3:Plots📈
 bindsym $mod+$mod2+4 move container to workspace 4:Papers
 bindsym $mod+$mod2+5 move container to workspace 5
 bindsym $mod+$mod2+6 move container to workspace 6
 bindsym $mod+$mod2+7 move container to workspace 7:Inkscape
-bindsym $mod+$mod2+8 move container to workspace 8:Evaluation
-bindsym $mod+$mod2+9 move container to workspace 9:Report
-bindsym $mod+$mod2+0 move container to workspace 10:🎵Music🎵
+bindsym $mod+$mod2+8 move container to workspace 8:
+bindsym $mod+$mod2+9 move container to workspace 9:
+bindsym $mod+$mod2+0 move container to workspace 10:Music🎵
 
 # reload the configuration file
 bindsym $mod+$mod2+c reload
