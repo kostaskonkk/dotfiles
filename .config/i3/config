@@ -45,7 +45,9 @@ set $left h
 set $right l
 
 bar {
-	font pango:mono 12
+	#font pango:mono 12
+	font pango:DejaVu Sans Mono, Terminus Bold Semi-Condensed 11
+	#font pango:Terminus 12
 	status_command i3blocks
 	#status_command i3status
 	#tray_output primary
@@ -178,7 +180,7 @@ bindsym $mod+0 workspace 10:Music🎵
 bindsym $mod+$mod2+1 move container to workspace 1:Firefox🌐
 bindsym $mod+$mod2+2 move container to workspace 2:Jobs👨‍💻
 bindsym $mod+$mod2+3 move container to workspace 3:Plots📈
-bindsym $mod+$mod2+4 move container to workspace 4:Papers
+bindsym $mod+$mod2+4 move container to workspace 4
 bindsym $mod+$mod2+5 move container to workspace 5
 bindsym $mod+$mod2+6 move container to workspace 6
 bindsym $mod+$mod2+7 move container to workspace 7:Inkscape
