@@ -42,7 +42,7 @@ let g:ale_c_build_dir = 'build'
 let g:ale_linters = {'cpp': ['g++']}
 
 "[U]LTISNIPS
-let g:UltiSnipsExpandTrigger="<C-k>"
+let g:UltiSnipsExpandTrigger="<leader>s"
 let g:UltiSnipsEditSplit="vertical" " :UltiSnipsEdit splits the window.
 "let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-b>"
@@ -75,8 +75,6 @@ nnoremap Y y$
 "[L]eader Mappings
 let mapleader=" "     " leader is space and not \
 nnoremap <leader>f   :Start python3 recognize.py -i tu_friens.jpg<CR>
-nnoremap <leader>u   :GundoToggle<CR> " toggle gundo
-nnoremap <leader>t   :TagbarToggle<CR> " toggle tagbar
 nnoremap <leader>w   :w<CR>
 nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
@@ -95,8 +93,14 @@ vnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
 nnoremap <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
 nnoremap <leader>b   :ls<CR>:b<Space>
 nnoremap <leader>v   :ls<CR>:vsplit<Space>
-nnoremap <leader>s   :ls<CR>:split<Space>
-nmap     <leader>n :NERDTreeToggle<CR> 
+"nnoremap <leader>s   :ls<CR>:split<Space>
+
+"Plugin Calls
+nnoremap <leader>nu   :GundoToggle<CR> " toggle gundo
+nnoremap <leader>nt   :TagbarToggle<CR> " toggle tagbar
+nmap     <leader>nn :NERDTreeToggle<CR> 
+nmap     <leader>ns :source ~/.vimrc<CR>
+
 "nmap <leader>b :Buffers<CR>
 "nmap <Leader>t :Files<CR>
 "nmap <Leader>r :Tags<CR>
@@ -138,7 +142,7 @@ autocmd BufNewFile,BufRead *.cpp,*.h,*.hpp
      \ set cindent      | " Turn on automatic C-code indentation
      \ set foldmethod=syntax |
      \ set foldlevel=99
-
+     \ set makeprg=make 
 
 " I should add badwhitespace also to cpp
 "highlight badwhitespace ctermbg=red guibg=red
@@ -164,7 +168,7 @@ autocmd BufNewFile,BufRead *.log  set autoread
 autocmd BufNewFile,BufRead *.log  au CursorHold * checktime
 
 """"""""" [Y]CM 
-let g:ycm_server_python_interpreter="/usr/local/Cellar/python/3.7.6_1/bin/python3.7"
+let g:ycm_server_python_interpreter="/usr/local/Cellar/python/3.7.7/bin/python3.7"
 let g:ycm_global_ycm_extra_conf="/home/kostas/.vim/.ycm_extra_conf.py"
 let g:ycm_filepath_blacklist = {'python': 1}
 
@@ -202,6 +206,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'|Plug 'scrooloose/nerdtree'
 "Plug 'junegunn/vim-peekaboo'
 Plug 'dag/vim-fish'
+Plug 'jupyter-vim/jupyter-vim'
 Plug 'junegunn/fzf.vim' |Plug 'junegunn/fzf'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-obsession'|Plug 'tpope/vim-surround'|Plug 'tpope/vim-fugitive'
