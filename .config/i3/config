@@ -15,29 +15,28 @@ font pango:monospace 16
 # find windows name with xprop
 #for_window [title="Google Translate - Mozilla Firefox"] move scratchpad
 #for_window [title="Thesaurus.com - Mozilla Firefox"] move scratchpad
-for_window [title="jobs"] move workspace 2:Jobs👨‍💻
 for_window [class="Matplotlib"] move workspace 5
 for_window [class="rviz"] move workspace 5
 for_window [class="gazebo"] move workspace 6
 for_window [class="Spotify"] move workspace 10:Music🎵
 
-gaps inner 10
-gaps outer 10
+#gaps inner 10
+#gaps outer 10
 
 exec --no-startup-id "spotify"
 #exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
-exec --no-startup-id "kitty -T 'jobs' -e vim ~/job-applications/letter.tex "
+#exec --no-startup-id "kitty -T 'jobs' -e vim ~/job-applications/letter.tex "
 #exec_always --no-startup-id st -e alsamixer
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
-exec --no-startup-id picom &
-#exec_always --no-startup-id sh ~/.screenlayout/std.sh
+exec --no-startup-id compton &
+exec_always --no-startup-id sh ~/.screenlayout/std.sh
 exec_always --no-startup-id sh ~/.fehbg
 
 hide_edge_borders smart
-set $mod Control
 set $mod Mod4
+set $mod3 Control
 set $mod2 Shift
 set $up k
 set $down j
@@ -93,7 +92,7 @@ exec --no-startup-id nm-applet
 
 # Keyboard man xkeyboard-config
 # Examples of remappings can be found in /usr/share/X11/xkb/rules/xorg.lst
-exec setxkbmap -layout us,gr -option 'grp:win_space_toggle' -option 'ctrl:swap_lalt_lctl_lwin' -option 'caps:escape'
+exec_always setxkbmap -layout us,gr -option 'grp:win_space_toggle' -option 'ctrl:swap_lalt_lctl_lwin' -option 'caps:escape'
 
 
 # bindsym $mod+BackSpace
@@ -166,8 +165,8 @@ bindsym $mod+b bar mode toggle
 # [W]orkspaces
 # switch to workspace
 bindsym $mod+1 workspace 1:Firefox🌐
-bindsym $mod+2 workspace 2:Jobs👨‍💻
-bindsym $mod+3 workspace 3:Plots📈
+bindsym $mod+2 workspace 2:Vim👨‍💻
+bindsym $mod+3 workspace 3:ROS
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -176,17 +175,30 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10:Music🎵
 
+#bindsym $mod+$mod3+1 workspace R1:TF; exec [ $(pgrep -f rqt_tf_tree | wc -l) = 0 ] && rosrun rqt_tf_tree rqt_tf_tree 
+bindsym $mod+$mod3+1 workspace R1:TF; exec [ $(ps h -C 'python /opt/ros/melodic/lib/rqt_tf_tree/rqt_tf_tree' | wc -l) = 0 ] && rosrun rqt_tf_tree rqt_tf_tree 
+bindsym $mod+$mod3+2 workspace R2:Topic; exec [ $(ps h -C 'python /opt/ros/melodic/lib/rqt_topic/rqt_topic' | wc -l) = 0 ] && rosrun rqt_topic rqt_topic
+bindsym $mod+$mod3+3 workspace R3:
+bindsym $mod+$mod3+4 workspace R4:
+bindsym $mod+$mod3+5 workspace R5:
+
 # move focused container to workspace
 bindsym $mod+$mod2+1 move container to workspace 1:Firefox🌐
-bindsym $mod+$mod2+2 move container to workspace 2:Jobs👨‍💻
-bindsym $mod+$mod2+3 move container to workspace 3:Plots📈
+bindsym $mod+$mod2+2 move container to workspace 2:Vim👨‍💻
+bindsym $mod+$mod2+3 move container to workspace 3:ROS
 bindsym $mod+$mod2+4 move container to workspace 4
 bindsym $mod+$mod2+5 move container to workspace 5
 bindsym $mod+$mod2+6 move container to workspace 6
 bindsym $mod+$mod2+7 move container to workspace 7:Inkscape
-bindsym $mod+$mod2+8 move container to workspace 8:
-bindsym $mod+$mod2+9 move container to workspace 9:
+bindsym $mod+$mod2+8 move container to workspace 8
+bindsym $mod+$mod2+9 move container to workspace 9
 bindsym $mod+$mod2+0 move container to workspace 10:Music🎵
+
+bindsym $mod+$mod2+$mod3+1 move container to workspace R1:
+bindsym $mod+$mod2+$mod3+2 move container to workspace R2:
+bindsym $mod+$mod2+$mod3+3 move container to workspace R3:
+bindsym $mod+$mod2+$mod3+4 move container to workspace R4:
+bindsym $mod+$mod2+$mod3+5 move container to workspace R5:
 
 # reload the configuration file
 bindsym $mod+$mod2+c reload
