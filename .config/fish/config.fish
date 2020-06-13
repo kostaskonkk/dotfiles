@@ -1,6 +1,13 @@
 set fish_greeting #removes greeting
 fish_vi_key_bindings
-fzf_key_bindings
+#fzf_key_bindings
+
+# Set the normal and visual mode cursors to a block
+set fish_cursor_default block
+# Set the insert mode cursor to a line
+set fish_cursor_insert line
+# Set the replace mode cursor to an underscore
+set fish_cursor_replace_one underscore
 
 # BOB THE FISH
 set -g theme_display_git yes
@@ -23,7 +30,8 @@ set -g theme_title_display_path yes
 set -g theme_title_display_user yes
 set -g theme_title_use_abbreviated_path no
 #set -g theme_date_format "+%a %H:%M"
-set -g theme_nerd_fonts yes
+set -g theme_nerd_fonts no
+set -g theme_powerline_fonts yes
 set -g default_user your_normal_user
 set -g theme_color_scheme gruvbox
 # GIT
@@ -47,18 +55,6 @@ abbr grb 'git rebase'
 abbr gs 'git status'
 abbr gst 'git stash'
 
-######################## D[A]TMO ##############################
-export ROS_WORKSPACE=/home/kostas/datmo_ws
-abbr datmo_ 'cd ~/datmo_ws/src/datmo'
-abbr vdatmo 'vim -S ~/datmo_ws/src/datmo/.datmo.vim'
-abbr t 'roslaunch datmo test.launch'
-
-alias datmo_compile='cd ~/datmo_ws && find  src/datmo/src/ -ignore_readdir_race |entr catkin_make -DCATKIN_WHITELIST_PACKAGES=datmo'
-alias localization_compile='cd ~/datmo_ws && find  src/localization/src/ -ignore_readdir_race |entr -p catkin_make -DCATKIN_WHITELIST_PACKAGES=localization'
-
-###################### [E]vo ###########################
-abbr evo 'cd ~/datmo_ws/src/evo'
-alias run='cd ~/datmo_ws/src/evo && find -name "*.py" | entr python3 datmo_evaluation.py'
 
 ######################## [G]eneral ##############################
 alias cp='cp -iv'                 # Preferred 'cp' implementation
@@ -74,7 +70,7 @@ alias 5.='cd ../../../../../'     # Go back 5 directory levels
 alias 6.='cd ../../../../../../'  # Go back 6 directory levels
 #alias ~='cd ~'                    # ~: Go Home
 alias c='clear'                   # c: Clear terminal display
-alias which='type -all'           # which: Find executables
+#alias which='type -all'           # which: Find executables
 alias b='vim ~/.bashrc' 
 alias a='vim ~/.aliases' 
 abbr i 'vim ~/.config/i3/config' 
@@ -95,37 +91,38 @@ alias m='mupdf'
 alias shutdown='systemctl poweroff'
 
 ########################## R[O]S ##############################
-abbr rc 'roscore &'
+abbr core 'roscore &'
+abbr rc 'roscd '
 abbr re 'rostopic echo /'
-abbr rl 'rostopic list'
+abbr rl 'roslaunch'
+abbr rr 'rosrun'
 abbr rh 'rostopic hz /'
 abbr ro 'rostopic echo /rosout'
+abbr list 'rostopic list'
 alias mmac='export ROS_MASTER_URI=http://localhost:11311'
 alias rviz='rosrun rviz rviz &'
 alias mocap='roslaunch mocap_optitrack exp.launch'
 alias midi='rosrun midi_ros midi_input_node'
 
-#if [ -f /opt/ros/kinetic/setup.bash ]; then
-  #source /opt/ros/kinetic/setup.bash
-  #source ~/datmo_ws/devel/setup.bash
-  #source ~/Documents/barc/workspace/devel/setup.bash
-  #export ROS_MASTER_URI=http://localhost:11311
-#fi
-########################## [D]SV #############################
+if [ -f /opt/ros/melodic/share/rosbash/rosfish ];
+  source /opt/ros/melodic/share/rosbash/rosfish
+  bass source ~/catkin_ws/devel/setup.bash
+  bass source ~/simulator_ws/devel/setup.bash
+  export ROS_MASTER_URI=http://localhost:11311
+end
+########################## ROBOT #############################
 
-alias car='ssh odroid@192.168.0.101'
-alias pi='ping 192.168.0.101'
-alias mcar='export ROS_MASTER_URI=http://192.168.0.101:11311 && export ROS_IP=192.168.0.103'
+abbr bot 'ssh eaibot@192.168.31.200'
+abbr pi 'ping 192.168.31.200'
+abbr mbot 'export ROS_MASTER_URI=http://192.168.31.200:11311 && export ROS_IP=192.168.31.101'
 alias bags_move='scp -r odroid@192.168.0.101:/home/odroid/kostas/bagfiles/* /home/kostas/Dropbox/experiments/'
 alias video_move='scp pi@192.168.1.103:/home/pi/ocam.h264 /home/kostas/Dropbox/experiments/ocam.h264'
 alias ch='ntpdate -q 192.168.0.101' # Time related
 alias adjust_time='sudo ntpdate -u pool.ntp.org' # Time related  
 alias carodom='scp -r /home/kostas/datmo_ws/src/odometry/* odroid@192.168.0.101:/home/odroid/datmo_ws/src/odometry'
 alias cardatmo='scp -r /home/kostas/datmo_ws/src/datmo/ odroid@192.168.0.101:/home/odroid/datmo_ws/src/datmo'
-alias carmk='echo "cd ~/datmo_ws && catkin_make"|car'
+#alias carmk='echo "cd ~/datmo_ws && catkin_make"|car'
 
-####################### [N]otes #############################
-alias todo='vim ~/Dropbox/todo.md'
 
 ####################### [V]arious #############################
 
