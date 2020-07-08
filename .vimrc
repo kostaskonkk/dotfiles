@@ -57,10 +57,19 @@ else
 endif
 
 " [C]OLOURS
-colorscheme gruvbox         " awesome colorscheme
-"colorscheme atom-dark         " awesome colorscheme
+if strftime("%H") < 20
+  "colorscheme PaperColor      " Light colorschem
+  set background=light
+  colorscheme gruvbox         " awesome dark colorscheme
+else
+  colorscheme gruvbox         " awesome dark colorscheme
+  set background=dark
+endif
+
+"colorscheme PaperColor      " Light colorschem
+"colorscheme atom-dark      " awesome colorscheme
 "colorscheme molokai        " poppy  colorscheme
-set bg=dark
+"set bg=light
 let g:gruvbox_dark = 'hard'
 let g:gruvbox_light= 'hard'
 let g:airline_theme='gruvbox'
@@ -82,6 +91,7 @@ nnoremap <leader>q   :q<CR>
 nnoremap <leader>x   :x<CR>
 nnoremap <leader>m   :Make<CR>
 nnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
+vnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
 nnoremap <Leader>y "+y
 nnoremap <Leader>d "+d
 vnoremap <Leader>y "+y
@@ -96,11 +106,17 @@ nnoremap <leader>v   :ls<CR>:vsplit<Space>
 nnoremap <leader>s   :ls<CR>:split<Space>
 
 "Plugin Calls
+nnoremap <silent> <Leader>ng :Rg <C-R><C-W><CR>
 nnoremap <leader>nu   :GundoToggle<CR> " toggle gundo
 nnoremap <leader>nt   :TagbarToggle<CR> " toggle tagbar
 nmap     <leader>nn :NERDTreeToggle<CR> 
 nmap     <leader>ns :source ~/.vimrc<CR>
-
+" Replace the text with translation
+nmap <silent> <leader>e <Plug>TranslateR
+vmap <silent> <leader>r <Plug>TranslateRV
+" Display translation in a window
+nmap <silent> <leader>nw <Plug>TranslateW
+vmap <silent> <leader>z <Plug>TranslateWV
 "nmap <leader>b :Buffers<CR>
 "nmap <Leader>t :Files<CR>
 "nmap <Leader>r :Tags<CR>
@@ -202,6 +218,7 @@ let g:vimtex_indent_enabled=1
 let g:vimtex_indent_bib_enabled=1
 let g:vimtex_indent_on_ampersands=1
 
+let g:translator_target_lang='en'
 
 """"""""" [P]lugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -223,9 +240,9 @@ Plug 'tpope/vim-abolish'
 Plug 'sjl/gundo.vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' 
 Plug 'morhetz/gruvbox' 
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
-Plug 'kostaskonkk/texconceal'
 Plug 'lervag/vimtex' 
 Plug 'Konfekt/FastFold'
 Plug 'ycm-core/YouCompleteMe'
@@ -236,9 +253,11 @@ Plug 'Raimondi/delimitMate'
 Plug 'chrisbra/csv.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'davidhalter/jedi-vim'
+Plug 'ryanoasis/vim-devicons'
 "Plug 'camspiers/animate.vim'
 "Plug 'camspiers/lens.vim'
-"Plug 'taketwo/vim-ros'
+Plug 'taketwo/vim-ros'
+Plug 'voldikss/vim-translator' 
 
 call plug#end() " Initialize plugin system
 
