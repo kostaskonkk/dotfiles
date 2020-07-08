@@ -258,6 +258,7 @@ Plug 'ryanoasis/vim-devicons'
 "Plug 'camspiers/lens.vim'
 Plug 'taketwo/vim-ros'
 Plug 'voldikss/vim-translator' 
+Plug 'sheerun/vim-polyglot' 
 
 call plug#end() " Initialize plugin system
 
