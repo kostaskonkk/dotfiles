@@ -117,9 +117,9 @@ vmap <silent> <leader>r <Plug>TranslateRV
 " Display translation in a window
 nmap <silent> <leader>nw <Plug>TranslateW
 vmap <silent> <leader>z <Plug>TranslateWV
-"nmap <leader>b :Buffers<CR>
-"nmap <Leader>t :Files<CR>
-"nmap <Leader>r :Tags<CR>
+nmap <leader>b :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>t :Tags<CR>
 "
 "Git
 nnoremap <leader>gs :Gstatus<CR>
