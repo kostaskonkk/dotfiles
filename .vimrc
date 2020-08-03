@@ -166,7 +166,7 @@ autocmd BufNewFile,BufRead *.cpp,*.h,*.hpp
 	" I should add badwhitespace also to cpp
 	"highlight badwhitespace ctermbg=red guibg=red
 	"
-autocmd BufNewFile,BufRead *.js
+autocmd BufNewFile,BufRead *.js,*.html,*.css
      \ set shiftwidth=2 | " Two space indents
      \ set tabstop=2    | " Tab key indents two spaces at a time
      \ set expandtab    | " Use spaces when the <Tab> key is pressed
