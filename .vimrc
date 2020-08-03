@@ -165,6 +165,11 @@ autocmd BufNewFile,BufRead *.cpp,*.h,*.hpp
      \ set makeprg=make 
 	" I should add badwhitespace also to cpp
 	"highlight badwhitespace ctermbg=red guibg=red
+	"
+autocmd BufNewFile,BufRead *.js
+     \ set shiftwidth=2 | " Two space indents
+     \ set tabstop=2    | " Tab key indents two spaces at a time
+     \ set expandtab    | " Use spaces when the <Tab> key is pressed
 
 autocmd BufNewFile,BufRead *.py
      \ set foldmethod=indent |
