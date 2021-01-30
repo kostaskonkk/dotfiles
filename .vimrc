@@ -404,7 +404,6 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex' 
 Plug 'Konfekt/FastFold'
-"Plug 'ycm-core/YouCompleteMe'
 Plug 'w0rp/ale'
 Plug 'RRethy/vim-illuminate'
 Plug 'luochen1990/rainbow'
@@ -413,8 +412,6 @@ Plug 'chrisbra/csv.vim'
 Plug 'junegunn/vim-easy-align'
 "Plug 'davidhalter/jedi-vim'
 Plug 'ryanoasis/vim-devicons'
-"Plug 'camspiers/animate.vim'
-"Plug 'camspiers/lens.vim'
 Plug 'taketwo/vim-ros'
 Plug 'voldikss/vim-translator' 
 "Plug 'sheerun/vim-polyglot' 
@@ -422,22 +419,3 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'maxmellon/vim-jsx-pretty'
 
 call plug#end() " Initialize plugin system
-
-function! OpenBibtexPDF()
-    let s:word = expand("<cword>")
-    let s:cmd = "silent !setsid mupdf `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
-    execute s:cmd
-endfunction 
-
-function! OpenZathuraPDF()
-    let s:word = expand("<cword>")
-    let s:cmd = "silent !setsid zathura `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
-    execute s:cmd
-endfunction 
-
-function! OpenEvincePDF()
-    let s:word = expand("<cword>")
-    let s:cmd = "silent !setsid evince `find ~/report/papers/ -iname '" . s:word . ".pdf' | head -1`&"
-    execute s:cmd
-endfunction 
-
