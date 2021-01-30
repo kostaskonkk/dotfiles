@@ -85,6 +85,7 @@ let g:Illuminate_delay = 300
 nnoremap Y y$
 "[L]eader Mappings
 let mapleader=" "     " leader is space and not \
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 nnoremap <leader>w   :w<CR>
 nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
@@ -389,7 +390,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdcommenter'|Plug 'scrooloose/nerdtree'
-"Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/vim-peekaboo' "opens windows with the content of the registers
 Plug 'dag/vim-fish'
 Plug 'junegunn/fzf.vim' |Plug 'junegunn/fzf'
 Plug 'majutsushi/tagbar'
@@ -417,5 +418,6 @@ Plug 'voldikss/vim-translator'
 "Plug 'sheerun/vim-polyglot' 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 call plug#end() " Initialize plugin system
