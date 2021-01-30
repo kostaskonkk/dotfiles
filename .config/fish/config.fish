@@ -1,4 +1,5 @@
 set fish_greeting #removes greeting
+set ros_abbr
 fish_vi_key_bindings
 #fzf_key_bindings
 
@@ -34,6 +35,7 @@ set -g theme_nerd_fonts no
 set -g theme_powerline_fonts yes
 set -g default_user your_normal_user
 set -g theme_color_scheme gruvbox
+
 # GIT
 abbr g 'git'
 abbr ga 'git add'
@@ -76,7 +78,7 @@ alias a='vim ~/.aliases'
 abbr i 'vim ~/.config/i3/config' 
 abbr v 'vim ~/.vimrc'
 abbr f 'vim ~/.config/fish/config.fish'
-alias s='source ~/.config/fish/config.fish'
+abbr s 'source ~/.config/fish/config.fish'
 #alias path='echo -e ${PATH//:/\\n}'
 alias cal='ncal -MC3'
 #cd() { builtin cd "$@"; ll; }    # Always list dir contents after 'cd'
@@ -84,7 +86,6 @@ alias ll='ls -FGlAhp --time-style=+"%d/%m/%y %H:%M"'
 alias la='ls -A'
 alias l='ls -CF'
 alias vs='vim -S'
-alias screens='sh ~/.screenlayout/monitor_laptop.sh'
 alias cl='xrandr --output eDP-1 --off'
 alias ol='xrandr --output eDP-1 --auto'
 alias m='mupdf'
@@ -99,15 +100,16 @@ abbr rr 'rosrun'
 abbr rh 'rostopic hz /'
 abbr ro 'rostopic echo /rosout'
 abbr list 'rostopic list'
+abbr nav 'roscd dashgo_nav'
+abbr smart 'roscd smart_node'
 alias mmac='export ROS_MASTER_URI=http://localhost:11311'
 alias rviz='rosrun rviz rviz &'
-alias mocap='roslaunch mocap_optitrack exp.launch'
-alias midi='rosrun midi_ros midi_input_node'
+abbr server_autoreload 'cd ~/scripts && find webgo/ |entr -r python webgo/src/webgo.py'
 
 if [ -f /opt/ros/melodic/share/rosbash/rosfish ];
   source /opt/ros/melodic/share/rosbash/rosfish
-  bass source ~/catkin_ws/devel/setup.bash
   bass source ~/simulator_ws/devel/setup.bash
+  bass source ~/dashgo_ws/devel/setup.bash
   export ROS_MASTER_URI=http://localhost:11311
 end
 ########################## ROBOT #############################
@@ -115,14 +117,8 @@ end
 abbr bot 'ssh eaibot@192.168.31.200'
 abbr pi 'ping 192.168.31.200'
 abbr mbot 'export ROS_MASTER_URI=http://192.168.31.200:11311 && export ROS_IP=192.168.31.101'
-alias bags_move='scp -r odroid@192.168.0.101:/home/odroid/kostas/bagfiles/* /home/kostas/Dropbox/experiments/'
-alias video_move='scp pi@192.168.1.103:/home/pi/ocam.h264 /home/kostas/Dropbox/experiments/ocam.h264'
-alias ch='ntpdate -q 192.168.0.101' # Time related
-alias adjust_time='sudo ntpdate -u pool.ntp.org' # Time related  
-alias carodom='scp -r /home/kostas/datmo_ws/src/odometry/* odroid@192.168.0.101:/home/odroid/datmo_ws/src/odometry'
-alias cardatmo='scp -r /home/kostas/datmo_ws/src/datmo/ odroid@192.168.0.101:/home/odroid/datmo_ws/src/datmo'
-#alias carmk='echo "cd ~/datmo_ws && catkin_make"|car'
-
+abbr rnav 'export ROS_MASTER_URI=http://192.168.31.200:11311 && export ROS_IP=192.168.31.101 && roslaunch dashgo_rviz view_navigation.launch'
+abbr ovpn 'sudo openvpn --config .client.ovpn'
 
 ####################### [V]arious #############################
 
@@ -131,23 +127,10 @@ alias malias='history | tail -n2 | head -n1 | alias_maker'
 alias cc='xclip -selection clipboard'
 alias pc='xclip -o -selection clipboard'
 
-alias bags='cd ~/Dropbox/experiments/7/derivatives'
-alias results='cd ~/results'
-alias presentation_='cd ~/presentation'
-
 alias rec='recordmydesktop --fps 10 --no-sound'
 alias rec30='recordmydesktop --fps 30 --no-sound'
 alias conv='ffmpeg -i out.ogv -f mp4 out.mp4'
-
-####################### [R]eport #############################
-
-alias report_='cd ~/report'
-alias report_introduction='vim ~/report/introduction.tex'
-alias report_localization='vim ~/report/localization.tex'
-alias report_papers=' cd ~/report/papers/'
-alias report_figures_=' cd ~/report/figures/'
-alias report_figures_ink=' cd ~/report/figures/ink/'
-alias g=' grep -irn'
+abbr g ' grep -irn'
 #alias ss=' gnome-screenshot -af /home/kostas/report/figures/screenshots/$(date +"%d%H:%M").png'
 alias θσ=' setxkbmap us'
 alias gr=' setxkbmap gr'

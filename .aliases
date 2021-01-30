@@ -1,8 +1,8 @@
 #filtered vim: filetype=sh: 
 
 ######################## D[A]TMO ##############################
-export ROS_WORKSPACE=/home/kostas/datmo_ws
-alias datmo_='cd ~/datmo_ws/src/datmo'
+export ROS_WORKSPACE=/home/kostas/catkin_ws
+alias datmo_='cd ~/catkin_ws/src/datmo'
 alias vdatmo='vim -S ~/datmo_ws/src/datmo/.datmo.vim'
 alias t='roslaunch datmo test.launch'
 alias ts=' roslaunch datmo sim_test.launch'
@@ -78,9 +78,10 @@ fi
 
 if [ -f /opt/ros/melodic/setup.bash ]; then
   source /opt/ros/melodic/setup.bash
-  source /home/kostas/datmo_ws/devel/setup.bash
-  #source ~/Documents/barc/workspace/devel/setup.bash
+  source /home/kostas/catkin_ws/devel/setup.bash
+  source /home/kostas/simulator_ws/devel/setup.bash
   export ROS_MASTER_URI=http://localhost:11311
+  export ROS_URI=http://localhost:11311
 fi
 ######################### [D]SV #############################
 
@@ -94,17 +95,6 @@ alias adjust_time='sudo ntpdate -u pool.ntp.org' # Time related
 alias carodom='scp -r /home/kostas/datmo_ws/src/odometry/* kostas@192.168.0.101:/home/kostas/datmo_ws/src/odometry'
 alias cardatmo='scp -r /home/kostas/datmo_ws/src/datmo/ kostas@192.168.0.101:/home/kostas/datmo_ws/src/'
 alias carmk='echo "cd ~/datmo_ws && catkin_make"|car'
-
-###################### P[u]llupz ############################
-
-alias publish_site='scp -r ~/Dropbox/pullupz/website/* pi@192.168.1.3:/var/www/html/'
-alias publish='scp -r ~/Dropbox/pullupz pi@192.168.1.3:/home/pi/'
-alias pullupz='cd ~/Dropbox/pullupz && ls'
-
-####################### [N]otes #############################
-alias todo='vim ~/Dropbox/todo.md'
-alias notes='cd ~/Dropbox/report/notes'
-alias notes_car='vim ~/Dropbox/report/notes/car.md'
 
 ####################### [V]arious #############################
 
@@ -121,21 +111,11 @@ alias rec='recordmydesktop --fps 10 --no-sound'
 alias rec30='recordmydesktop --fps 30 --no-sound'
 alias conv='ffmpeg -i out.ogv -f mp4 out.mp4'
 
-####################### [R]eport #############################
+alias datmo_compile='cd ~/datmo_ws && find  src/datmo/src/ -ignore_readdir_race |entr catkin_make -DCATKIN_WHITELIST_PACKAGES=datmo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
 
-alias report_='cd ~/report'
-alias report_introduction='vim ~/report/introduction.tex'
-alias report_localization='vim ~/report/localization.tex'
-alias report_papers=' cd ~/report/papers/'
-alias report_figures_=' cd ~/report/figures/'
-alias report_figures_ink=' cd ~/report/figures/ink/'
 alias g=' grep -irn'
 alias ss=' gnome-screenshot -af /home/kostas/report/figures/screenshots/$(date +"%d%H:%M").png'
-alias train=' clisp ~/projects/train.lisp'
 alias θσ=' setxkbmap us'
 alias gr=' setxkbmap gr'
-alias baars=' m ~/report/papers/delft/baars2018modelling.pdf'
 #alias car=' cd ~/datmo_ws/src/car_demo-master/car_demo/'
 alias sim='roslaunch car_demo sim.launch'
-alias vevo=' vim -S .evo.vim'
-alias rp=' cd ~/report/papers/'
