@@ -27,6 +27,7 @@ for_window [class="Spotify"] move workspace 10:Music🎵
 
 exec --no-startup-id "spotify"
 exec --no-startup-id "slack"
+exec --no-startup-id "thunderbird"
 #exec_always --no-startup-id "st -e vim ~/Dropbox/todo.md"
 #exec --no-startup-id "kitty -T 'jobs' -e vim ~/job-applications/letter.tex "
 #exec_always --no-startup-id st -e alsamixer
@@ -62,7 +63,7 @@ new_window pixel 4
 #F-keys shortcuts
 bindsym F9 exec playerctl play-pause
 bindsym F10 exec playerctl stop
-bindsym F11 exec playerctl previous
+#bindsym F11 exec playerctl previous
 bindsym F12 exec playerctl next
 
 #bindsym $mod+F1 exec --no-startup-id echo "😜" | tr -d '\n' | xclip -selection primary && xdotool key Shift+Insert

@@ -101,7 +101,6 @@ abbr rh 'rostopic hz /'
 abbr ro 'rostopic echo /rosout'
 abbr list 'rostopic list'
 abbr nav 'roscd dashgo_nav'
-abbr smart 'roscd smart_node'
 alias mmac='export ROS_MASTER_URI=http://localhost:11311'
 alias rviz='rosrun rviz rviz &'
 abbr server_autoreload 'cd ~/scripts && find webgo/ |entr -r python webgo/src/webgo.py'
@@ -109,7 +108,7 @@ abbr server_autoreload 'cd ~/scripts && find webgo/ |entr -r python webgo/src/we
 if [ -f /opt/ros/melodic/share/rosbash/rosfish ];
   source /opt/ros/melodic/share/rosbash/rosfish
   bass source ~/simulator_ws/devel/setup.bash
-  bass source ~/dashgo_ws/devel/setup.bash
+  bass source ~/catkin_ws/devel/setup.bash
   export ROS_MASTER_URI=http://localhost:11311
 end
 ########################## ROBOT #############################
@@ -119,6 +118,7 @@ abbr pi 'ping 192.168.31.200'
 abbr mbot 'export ROS_MASTER_URI=http://192.168.31.200:11311 && export ROS_IP=192.168.31.101'
 abbr rnav 'export ROS_MASTER_URI=http://192.168.31.200:11311 && export ROS_IP=192.168.31.101 && roslaunch dashgo_rviz view_navigation.launch'
 abbr ovpn 'sudo openvpn --config .client.ovpn'
+
 
 ####################### [V]arious #############################
 
@@ -135,6 +135,12 @@ abbr g ' grep -irn'
 alias θσ=' setxkbmap us'
 alias gr=' setxkbmap gr'
 abbr keyboard "setxkbmap -layout us,gr -option 'grp:win_space_toggle' -option 'ctrl:swap_lalt_lctl_lwin' -option 'caps:escape'"
+
+
+######################### H2L #################################
+abbr 0 'cd ~/h2l/nul-serie/nul-serie'
+abbr vh2l 'source ~/vh2l/bin/activate.fish'
+export PYTHONPATH="$PYTHONPATH:/home/kostas/h2l/nul-serie/nul-serie/"
 
 # Start X at login
 if status --is-login
