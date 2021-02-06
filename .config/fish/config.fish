@@ -139,7 +139,7 @@ abbr keyboard "setxkbmap -layout us,gr -option 'grp:win_space_toggle' -option 'c
 
 ######################### H2L #################################
 abbr 0 'cd ~/h2l/nul-serie/nul-serie'
-abbr vh2l 'source ~/vh2l/bin/activate.fish'
+abbr sv 'source venv/bin/activate.fish'
 export PYTHONPATH="$PYTHONPATH:/home/kostas/h2l/nul-serie/nul-serie/"
 
 # Start X at login
