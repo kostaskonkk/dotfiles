@@ -138,8 +138,9 @@ abbr keyboard "setxkbmap -layout us,gr -option 'grp:win_space_toggle' -option 'c
 
 
 ######################### H2L #################################
-abbr 0 'cd ~/h2l/nul-serie/nul-serie'
+abbr 0 'cd ~/h2l/nul-serie/nul-serie/path_planner'
 abbr sv 'source venv/bin/activate.fish'
+abbr planner 'cd ~/h2l/nul-serie/nul-serie/path_planner && source venv/bin/activate.fish && find path_planner.py | entr -r python3 path_planner.py'
 export PYTHONPATH="$PYTHONPATH:/home/kostas/h2l/nul-serie/nul-serie/"
 
 # Start X at login
