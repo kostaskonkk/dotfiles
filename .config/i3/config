@@ -77,6 +77,7 @@ floating_modifier $mod
 # start applications
 bindsym $mod+$mod2+f exec firefox
 bindsym $mod+Return exec kitty
+bindsym $mod+$mod2+Return exec gnome-terminal
 bindsym $mod+d exec dmenu_run 
 bindsym $mod+$mod2+w exec firefox https://web.whatsapp.com
 bindsym $mod+$mod2+m exec firefox https://messenger.com
