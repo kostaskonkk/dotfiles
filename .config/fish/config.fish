@@ -103,11 +103,9 @@ abbr list 'rostopic list'
 abbr nav 'roscd dashgo_nav'
 alias mmac='export ROS_MASTER_URI=http://localhost:11311'
 alias rviz='rosrun rviz rviz &'
-abbr server_autoreload 'cd ~/scripts && find webgo/ |entr -r python webgo/src/webgo.py'
 
 if [ -f /opt/ros/melodic/share/rosbash/rosfish ];
   source /opt/ros/melodic/share/rosbash/rosfish
-  bass source ~/simulator_ws/devel/setup.bash
   bass source ~/catkin_ws/devel/setup.bash
   export ROS_MASTER_URI=http://localhost:11311
 end
@@ -144,6 +142,7 @@ abbr 0w 'cd ~/h2l/nul-serie/nul-serie/user_interface/webapp'
 abbr 0p 'cd ~/h2l/nul-serie/nul-serie/path_planner'
 abbr 0f 'cd ~/h2l/nul-serie/nul-serie/follow_path'
 abbr sv 'source venv/bin/activate.fish'
+abbr wo 'ssh -Y kostas@wopr.local'
 abbr planner 'cd ~/h2l/nul-serie/nul-serie/path_planner && source venv/bin/activate.fish && find path_planner.py | entr -r python3 path_planner.py'
 export PYTHONPATH="$PYTHONPATH:/home/kostas/h2l/nul-serie/nul-serie/"
 
