@@ -106,7 +106,6 @@ alias rviz='rosrun rviz rviz &'
 
 if [ -f /opt/ros/melodic/share/rosbash/rosfish ];
   source /opt/ros/melodic/share/rosbash/rosfish
-  bass source ~/catkin_ws/devel/setup.bash
   export ROS_MASTER_URI=http://localhost:11311
 end
 ########################## ROBOT #############################
