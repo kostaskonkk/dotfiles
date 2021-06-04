@@ -1,7 +1,7 @@
 set fish_greeting #removes greeting
 set ros_abbr
 fish_vi_key_bindings
-#fzf_key_bindings
+fzf_key_bindings
 
 # Set the normal and visual mode cursors to a block
 set fish_cursor_default block
@@ -144,7 +144,7 @@ abbr 0f 'cd ~/h2l/nul-serie/nul-serie/follow_path'
 abbr sv 'source venv/bin/activate.fish'
 abbr wo 'ssh -Y kostas@wopr.local'
 abbr planner 'cd ~/h2l/nul-serie/nul-serie/path_planner && source venv/bin/activate.fish && find path_planner.py | entr -r python3 path_planner.py'
-export PYTHONPATH="$PYTHONPATH:/home/kostas/h2l/nul-serie/nul-serie/"
+export PYTHONPATH="$PYTHONPATH:/home/kostas/nul-serie/nul-serie/:/home/kostas/dataset_generation/"
 
 # Start X at login
 if status --is-login
