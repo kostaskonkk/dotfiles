@@ -119,7 +119,7 @@ vmap <silent> <leader>r <Plug>TranslateRV
 nmap <silent> <leader>nw <Plug>TranslateW
 vmap <silent> <leader>z <Plug>TranslateWV
 nmap <leader>b :Buffers<CR>
-nmap <Leader>f :GitFiles<CR>
+nmap <Leader>f :Files<CR>
 nmap <Leader>t :Tags<CR>
 "
 "Git
@@ -143,6 +143,18 @@ nmap <leader>h <C-w>h
 nmap <leader>j <C-w>j
 nmap <leader>k <C-w>k
 nmap <leader>l <C-w>l
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
 "Control Shortcuts
 "Windows view with just control
@@ -415,6 +427,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'ryanoasis/vim-devicons'
 Plug 'taketwo/vim-ros'
 Plug 'voldikss/vim-translator' 
+Plug 'tpope/vim-dadbod'
 "Plug 'sheerun/vim-polyglot' 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'maxmellon/vim-jsx-pretty'

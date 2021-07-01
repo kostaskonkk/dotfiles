@@ -5,4 +5,4 @@
 !.gitignore
 !.latexmkrc
 !.vimrc
-
+!.config/nvim/coc-settings.json
