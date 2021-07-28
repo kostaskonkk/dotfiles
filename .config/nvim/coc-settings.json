@@ -1,9 +1,11 @@
 {
     "python.linting.flake8Enabled": true,
     "python.jediEnabled": false,
-    "pyright.enable": true
-
-
+    "pyright.enable": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["-S"],
+    "coc.preferences.formatOnType": true,
+    "coc.preferences.formatOnSaveFiletypes": ["python"]
 }
 
 
