@@ -119,7 +119,8 @@ vmap <silent> <leader>r <Plug>TranslateRV
 nmap <silent> <leader>nw <Plug>TranslateW
 vmap <silent> <leader>z <Plug>TranslateWV
 nmap <leader>b :Buffers<CR>
-nmap <Leader>f :Files<CR>
+"nmap <Leader>f :Files<CR>
+nnoremap <silent> <leader>f :GFiles --cached --others --exclude-standard<cr>
 nmap <Leader>t :Tags<CR>
 "
 "Git
