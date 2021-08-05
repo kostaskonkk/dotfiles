@@ -196,7 +196,7 @@ autocmd BufNewFile,BufRead *.py
      \ set tabstop=4 |
      \ set softtabstop=4 |
      \ set shiftwidth=4 |
-     \ set textwidth=79 |
+     "\ set textwidth=79 |
      \ set expandtab |
 "nnoremap <leader>l   :Dispatch! python3 ~/datmo_ws/src/evo/datmo_evaluation.py <CR>
      "\ set autoindent |
