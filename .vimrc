@@ -190,7 +190,7 @@ autocmd BufNewFile,BufRead *.js,*.html,*.css
      \ set foldlevelstart=4 |
      \ let javaScript_fold=1
     
-
+""" PYTHON
 autocmd BufNewFile,BufRead *.py
      \ set foldmethod=indent |
      \ set tabstop=4 |
@@ -201,6 +201,8 @@ autocmd BufNewFile,BufRead *.py
 "nnoremap <leader>l   :Dispatch! python3 ~/datmo_ws/src/evo/datmo_evaluation.py <CR>
      "\ set autoindent |
      "\ let b:dispatch = 'python3 ~/datmo_ws/src/evo/datmo_evaluation.py'
+
+let NERDTreeIgnore = ['\.pyc$', '\__pycache__$']
 
 autocmd BufNewFile,BufRead *.tex
      \ set wrap linebreak nolist |
