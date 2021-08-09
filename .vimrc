@@ -202,7 +202,7 @@ autocmd BufNewFile,BufRead *.py
      "\ set autoindent |
      "\ let b:dispatch = 'python3 ~/datmo_ws/src/evo/datmo_evaluation.py'
 
-let NERDTreeIgnore = ['\.pyc$', '\__pycache__$']
+let NERDTreeIgnore = ['\.pyc$']
 
 autocmd BufNewFile,BufRead *.tex
      \ set wrap linebreak nolist |
