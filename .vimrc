@@ -124,7 +124,7 @@ nnoremap <silent> <leader>f :GFiles --cached --others --exclude-standard<cr>
 nmap <Leader>t :Tags<CR>
 "
 "Git
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gc :Gcommit -v -q<CR>
 nnoremap <leader>ga :Gcommit --amend<CR>
 nnoremap <leader>gt :Gcommit -v -q %<CR>
