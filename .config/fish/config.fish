@@ -106,6 +106,7 @@ alias rviz='rosrun rviz rviz &'
 
 if [ -f /opt/ros/melodic/share/rosbash/rosfish ];
   source /opt/ros/melodic/share/rosbash/rosfish
+  bass source /home/kostas/catkin_ws/devel/setup.bash
   export ROS_MASTER_URI=http://localhost:11311
 end
 ########################## ROBOT #############################
@@ -144,7 +145,7 @@ abbr 0f 'cd ~/h2l/nul-serie/nul-serie/follow_path'
 abbr sv 'source venv/bin/activate.fish'
 abbr wo 'ssh -Y kostas@wopr.local'
 abbr planner 'cd ~/h2l/nul-serie/nul-serie/path_planner && source venv/bin/activate.fish && find path_planner.py | entr -r python3 path_planner.py'
-export PYTHONPATH="$PYTHONPATH:/home/kostas/nul-serie/nul-serie/:/home/kostas/dataset_generation/"
+export PYTHONPATH="$PYTHONPATH:/home/kostas/nul-serie/nul-serie/:/home/kostas/dataset_generation/:/home/kostas/catkin_ws/src/dashgo/backend/src"
 
 # Start X at login
 if status --is-login
