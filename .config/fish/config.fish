@@ -139,6 +139,7 @@ abbr keyboard "setxkbmap -layout us,gr -option 'grp:win_space_toggle' -option 'c
 abbr hd 'cd ~/dataset_generation/datasets && source ../venv/bin/activate.fish'
 abbr hc 'cd ~/nul-serie/nul-serie/config_manager && source venv/bin/activate.fish'
 abbr hp 'cd ~/nul-serie/nul-serie/path_planner && source venv/bin/activate.fish'
+abbr hs 'cd ~/nul-serie/nul-serie/system_control && source venv/bin/activate.fish'
 abbr hu 'cd ~/user-interface && source venv/bin/activate.fish'
 abbr 0 'cd ~/h2l/nul-serie/nul-serie/'
 abbr 0s 'cd ~/h2l/nul-serie/nul-serie/user_interface/server'
