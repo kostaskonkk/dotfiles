@@ -65,6 +65,8 @@ else
   colorscheme gruvbox         " awesome dark colorscheme
   set background=dark
 endif
+colorscheme gruvbox         " awesome dark colorscheme
+set background=dark
 
 "colorscheme PaperColor      " Light colorschem
 "colorscheme atom-dark      " awesome colorscheme
@@ -91,8 +93,8 @@ nnoremap <leader>a   :wa<CR>
 nnoremap <leader>q   :q<CR>
 nnoremap <leader>x   :x<CR>
 nnoremap <leader>m   :Make<CR>
-nnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
-vnoremap <leader><leader> :call NERDComment(0,"toggle")<CR>
+nnoremap <leader><leader> :call nerdcommenter#Comment(0,"toggle")<CR>
+vnoremap <leader><leader> :call nerdcommenter#Comment(0,"toggle")<CR>
 nnoremap <Leader>y "+y
 nnoremap <Leader>d "+d
 vnoremap <Leader>y "+y
@@ -428,9 +430,10 @@ Plug 'chrisbra/csv.vim'
 Plug 'junegunn/vim-easy-align'
 "Plug 'davidhalter/jedi-vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'taketwo/vim-ros'
+"Plug 'taketwo/vim-ros'
 Plug 'voldikss/vim-translator' 
 Plug 'tpope/vim-dadbod'
+Plug 'rmagatti/auto-session' "musthave automatically saves sessions
 "Plug 'sheerun/vim-polyglot' 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'maxmellon/vim-jsx-pretty'
