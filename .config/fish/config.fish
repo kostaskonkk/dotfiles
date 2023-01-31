@@ -101,6 +101,7 @@ abbr rh 'rostopic hz /'
 abbr ro 'rostopic echo /rosout'
 abbr list 'rostopic list'
 abbr nav 'roscd dashgo_nav'
+abbr rvinavigation 'rosrun rviz rviz -d $HOME/catkin_ws/src/omnia/omnia_bringup/rviz/navigation_debug.rviz'
 alias mmac='export ROS_MASTER_URI=http://localhost:11311'
 alias rviz='rosrun rviz rviz &'
 
@@ -115,7 +116,6 @@ abbr bot 'ssh eaibot@192.168.31.200'
 abbr pi 'ping 192.168.31.200'
 abbr mbot 'export ROS_MASTER_URI=http://192.168.31.200:11311 && export ROS_IP=192.168.31.101'
 abbr rnav 'export ROS_MASTER_URI=http://192.168.31.200:11311 && export ROS_IP=192.168.31.101 && roslaunch dashgo_rviz view_navigation.launch'
-abbr ovpn 'sudo openvpn --config .client.ovpn'
 
 
 ####################### [V]arious #############################
@@ -136,11 +136,15 @@ abbr keyboard "setxkbmap -layout us,gr -option 'grp:win_space_toggle' -option 'c
 
 
 ######################### H2L #################################
+abbr hb 'cd ~/user-interface/backend/app && poetry shell'
+abbr hu 'cd ~/user-interface/ && docker-compose -f docker-compose.dev.yml up'
+abbr hpp 'cd ~/user-interface/path_planner/app/ && source ../venv/bin/activate.fish && python3 viewer.py'
+abbr hp 'cd ~/user-interface/path_planner/app && source ../venv/bin/activate.fish'
+abbr hbv 'cd ~/user-interface/backend/app && poetry shell && vim'
 abbr hd 'cd ~/dataset_generation/datasets && source ../venv/bin/activate.fish'
 abbr hc 'cd ~/nul-serie/nul-serie/config_manager && source venv/bin/activate.fish'
-abbr hp 'cd ~/nul-serie/nul-serie/path_planner && source venv/bin/activate.fish'
-abbr hs 'cd ~/nul-serie/nul-serie/system_control && source venv/bin/activate.fish'
-abbr hu 'cd ~/user-interface && source venv/bin/activate.fish'
+abbr hpv 'cd ~/user-interface/path_planner/app && source ../venv/bin/activate.fish && vim'
+abbr hm 'cd ~/nul-serie/nul-serie/machine_control && source venv/bin/activate.fish'
 abbr 0 'cd ~/h2l/nul-serie/nul-serie/'
 abbr 0s 'cd ~/h2l/nul-serie/nul-serie/user_interface/server'
 abbr 0w 'cd ~/h2l/nul-serie/nul-serie/user_interface/webapp'
@@ -148,7 +152,7 @@ abbr 0f 'cd ~/h2l/nul-serie/nul-serie/follow_path'
 abbr sv 'source venv/bin/activate.fish'
 abbr wo 'ssh -Y kostas@wopr.local'
 abbr planner 'cd ~/h2l/nul-serie/nul-serie/path_planner && source venv/bin/activate.fish && find path_planner.py | entr -r python3 path_planner.py'
-export PYTHONPATH="$PYTHONPATH:/home/kostas/nul-serie/nul-serie/:/home/kostas/dataset_generation/:/home/kostas/catkin_ws/src/dashgo/backend/src"
+export PYTHONPATH="$PYTHONPATH:/home/kostas/nul-serie/nul-serie/:/home/kostas/dataset_generation/:/home/kostas/catkin_ws/src/dashgo/backend/src:/home/kostas/user-interface/path_planner/app"
 
 # Start X at login
 if status --is-login
@@ -156,3 +160,15 @@ if status --is-login
     exec startx /usr/bin/i3 -- -keeptty
   end
 end
+
+#export DB_SERVER="192.168.0.109"
+#export DB_SERVER="localhost"
+export DB_SERVER="172.16.2.2"
+export DB_USER="kostas"
+export DB_PASSWORD="#^s%TW{_FxV2swZ3"
+
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
+export PATH="$PATH:/home/kostas/developer_toolbox/bash_tools"
+#eval `ssh-agent -s`
+ssh-add

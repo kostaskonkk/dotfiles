@@ -38,9 +38,6 @@ vnoremap <silent> # :<C-U>
 set wildignore=*.pdf
 set splitright
 
-let g:ale_c_build_dir = 'build'
-let g:ale_linters = {'cpp': ['g++']}
-
 "[U]LTISNIPS
 let g:UltiSnipsExpandTrigger="<C-k>"
 "let g:UltiSnipsExpandTrigger="<space-tab>"
@@ -105,8 +102,8 @@ vnoremap <Leader>p :set paste<CR>"+p:set nopaste<CR>
 vnoremap <Leader>P :set paste<CR>"+P:set nopaste<CR>
 nnoremap <leader>o :setlocal spell! spelllang=en_us<CR> " 'o' for 'orthography'
 nnoremap <leader>b   :ls<CR>:b<Space>
-nnoremap <leader>v   :ls<CR>:vsplit<Space>
-nnoremap <leader>s   :ls<CR>:split<Space>
+nnoremap <leader>v   :ls<CR>:vsplit<CR><CR><C-w>k
+nnoremap <leader>s   :ls<CR>:split<CR><CR><C-w>j
 
 "Plugin Calls
 nnoremap <silent> <Leader>ng :Rg <C-R><C-W><CR>
@@ -114,6 +111,7 @@ nnoremap <leader>nu   :GundoToggle<CR> " toggle gundo
 nnoremap <leader>nt   :TagbarToggle<CR> " toggle tagbar
 nmap     <leader>nn :NERDTreeToggle<CR> 
 nmap     <leader>ns :source ~/.vimrc<CR>
+nmap     <leader>nv :e ~/.vimrc<CR>
 " Replace the text with translation
 nmap <silent> <leader>e <Plug>TranslateR
 vmap <silent> <leader>r <Plug>TranslateRV
@@ -123,7 +121,7 @@ vmap <silent> <leader>z <Plug>TranslateWV
 nmap <leader>b :Buffers<CR>
 "nmap <Leader>f :Files<CR>
 nnoremap <silent> <leader>f :GFiles --cached --others --exclude-standard<cr>
-nmap <Leader>t :Tags<CR>
+nmap <Leader>t :term<CR>
 "
 "Git
 nnoremap <leader>gs :Git<CR>
@@ -141,35 +139,48 @@ nnoremap <leader>gb :Git branch<Space>
 nnoremap <leader>go :Git checkout<Space>
 nnoremap <leader>gps :Dispatch! git push<CR>
 nnoremap <leader>gpl :Dispatch! git pull<CR>
+
+
+"tnoremap <Esc> <C-\><C-n>:bd!<CR>
+"tnoremap <Esc> <C-\><C-n><C-w>h
+
+"Control Shortcuts
+"Windows view with just control
 "Windows view 
 nmap <leader>h <C-w>h
 nmap <leader>j <C-w>j
 nmap <leader>k <C-w>k
 nmap <leader>l <C-w>l
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
-inoremap <A-h> <C-\><C-N><C-w>h
-inoremap <A-j> <C-\><C-N><C-w>j
-inoremap <A-k> <C-\><C-N><C-w>k
-inoremap <A-l> <C-\><C-N><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-
-"Control Shortcuts
-"Windows view with just control
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
+"tnoremap <leader>h <C-\><C-n><C-w>h
+"tnoremap <leader>j <C-\><C-n><C-w>j
+"tnoremap <leader>k <C-\><C-n><C-w>k
+"tnoremap <leader>l <C-\><C-n><C-w>l
 "nmap <C-H> <C-w>H
 "nmap <C-J> <C-w>J
 "nmap <C-K> <C-w>K
 "nmap <C-L> <C-w>L
 
+
+" AUTOCOMMANDS
+" on windows resize make splits equal
+autocmd VimResized * exe "normal \<c-w>="
+" saves as I type, so everything gets reformatted and linted
+"autocmd TextChanged,TextChangedI <buffer> silent write
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
 autocmd BufNewFile,BufRead *.cpp,*.h,*.hpp
      \ set shiftwidth=2 | " Two space indents
@@ -203,6 +214,9 @@ autocmd BufNewFile,BufRead *.py
 "nnoremap <leader>l   :Dispatch! python3 ~/datmo_ws/src/evo/datmo_evaluation.py <CR>
      "\ set autoindent |
      "\ let b:dispatch = 'python3 ~/datmo_ws/src/evo/datmo_evaluation.py'
+"
+autocmd BufNewFile,BufRead *.hs
+     \ set expandtab |
 
 let NERDTreeIgnore = ['\.pyc$']
 
@@ -220,6 +234,12 @@ autocmd BufNewFile,BufRead *.md
 
 autocmd BufNewFile,BufRead *.log  set autoread
 autocmd BufNewFile,BufRead *.log  au CursorHold * checktime
+
+autocmd BufNewFile,BufRead *.scm
+     \ let maplocalleader = ","|
+     \ set tabstop=2 |
+     \ set expandtab |
+     \ set shiftwidth=2 |
 
 """"""""" [Y]CM 
 let g:ycm_server_python_interpreter="/usr/bin/python3"
@@ -321,8 +341,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -330,24 +348,16 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 "xmap <leader>f  <Plug>(coc-format-selected)
 "nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+"xmap <leader>a  <Plug>(coc-codeaction-selected)
+"nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
+"nmap <leader>ac  <Plug>(coc-codeaction)
+
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>a  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -362,8 +372,8 @@ omap ac <Plug>(coc-classobj-a)
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+"nmap <silent> <C-s> <Plug>(coc-range-select)
+"xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -389,13 +399,57 @@ nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+"nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 "nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 "nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+"Use <tab> and <S-tab> to navigate completion list: >
+
+  "function! s:check_back_space() abort
+    "let col = col('.') - 1
+    "return !col || getline('.')[col - 1]  =~ '\s'
+  "endfunction
+
+  "" Insert <tab> when previous text is space, refresh completion if not.
+  "inoremap <silent><expr> <TAB>
+	"\ coc#pum#visible() ? coc#pum#next(1):
+	"\ <SID>check_back_space() ? "\<Tab>" :
+	"\ coc#refresh()
+  "inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+""Use <c-space> to trigger completion: >
+
+  "if has('nvim')
+    "inoremap <silent><expr> <c-space> coc#refresh()
+  "else
+    "inoremap <silent><expr> <c-@> coc#refresh()
+  "endif
+
+""Use <CR> to confirm completion, use: 
+
+
+"Map <tab> for trigger completion, completion confirm, snippet expand and jump
+"like VSCode: >
+
+  inoremap <silent><expr> <TAB>
+    \ coc#pum#visible() ? coc#_select_confirm() :
+    \ coc#expandableOrJumpable() ?
+    \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
+  let g:coc_snippet_next = '<tab>'
+
 
 """"""""" [P]lugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -406,12 +460,14 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+
+Plug 'neovimhaskell/haskell-vim'
 Plug 'scrooloose/nerdcommenter'|Plug 'scrooloose/nerdtree'
 Plug 'junegunn/vim-peekaboo' "opens windows with the content of the registers
 Plug 'dag/vim-fish'
 Plug 'junegunn/fzf.vim' |Plug 'junegunn/fzf'
 Plug 'majutsushi/tagbar'
-Plug 'tpope/vim-obsession'|Plug 'tpope/vim-surround'|Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'|Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch' |Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
 Plug 'sjl/gundo.vim'
@@ -420,21 +476,22 @@ Plug 'morhetz/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'|Plug 'honza/vim-snippets'
+Plug 'kassio/neoterm' " sane terminal window candidate
 Plug 'lervag/vimtex' 
 Plug 'Konfekt/FastFold'
-Plug 'w0rp/ale'
 Plug 'RRethy/vim-illuminate'
 Plug 'luochen1990/rainbow'
 Plug 'Raimondi/delimitMate'
 Plug 'chrisbra/csv.vim'
 Plug 'junegunn/vim-easy-align'
-"Plug 'davidhalter/jedi-vim'
 Plug 'ryanoasis/vim-devicons'
 "Plug 'taketwo/vim-ros'
 Plug 'voldikss/vim-translator' 
 Plug 'tpope/vim-dadbod'
-Plug 'rmagatti/auto-session' "musthave automatically saves sessions
+"Plug 'tpope/vim-obsession' 
+"Plug 'rmagatti/auto-session' "musthave automatically saves sessions
 "Plug 'sheerun/vim-polyglot' 
+"Plug 'Olical/conjure'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }

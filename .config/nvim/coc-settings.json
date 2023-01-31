@@ -4,14 +4,18 @@
   "python.jediEnabled": false,
   "python.analysis.diagnosticMode": "workspace",
   "pyright.enable": true,
-  "python.formatting.enable": false,
+  "python.formatting.enable": true,
   "python.formatting.provider": "black",
   "coc.preferences.formatOnSaveFiletypes": [
     "python",
     "css",
     "javascript",
     "javascriptreact",
+    "typescript",
+    "typescriptreact",
     "jsx",
+    "ts",
+    "tsx",
     "json"
   ]
 }
